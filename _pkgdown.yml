@@ -1,0 +1,20 @@
+---
+url: https://github.com/phuse-org/uteals
+
+template:
+  bootstrap: 5
+
+navbar:
+  structure:
+    left: [intro, reference, articles, news]
+
+reference:
+  - title:
+    contents:
+      - uteals
+  - title: Decorators
+    contents:
+      - ends_with("decorator")
+  - title: Transformators
+    contents:
+      - ends_with("transformator")

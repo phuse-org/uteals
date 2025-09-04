@@ -1,0 +1,4 @@
+^LICENSE\.md$
+^\.lintr
+^docs/
+^\_pkgdown\.yml
