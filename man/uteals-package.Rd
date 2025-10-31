@@ -21,7 +21,18 @@ Useful links:
 
 Authors:
 \itemize{
-  \item  Johnson and Johnson \email{jnj@its.jnj.com}
+  \item Nadia Abraham \email{NAbraha5@ITS.JNJ.com}
+  \item Chanchal Bhalla \email{CBhalla@ITS.JNJ.com}
+  \item Peyman Eshghi \email{PEshghi@its.jnj.com}
+  \item Pranith Gourisetty \email{PGourise@ITS.JNJ.com}
+  \item Sohan Lal \email{SLal8@ITS.JNJ.com}
+  \item Przemyslaw Posiadala \email{PPosiada@ITS.JNJ.com}
+  \item Alina Tselinina \email{ATselini@ITS.JNJ.com}
+}
+
+Other contributors:
+\itemize{
+  \item PHUSE [copyright holder]
 }
 
 }
