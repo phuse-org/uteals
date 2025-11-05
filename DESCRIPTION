@@ -7,12 +7,12 @@ Authors@R:
     c(
       person("Nadia", "Abraham", , "NAbraha5@ITS.JNJ.com", role = "aut"),
       person("Chanchal", "Bhalla", , "CBhalla@ITS.JNJ.com", role = "aut"),
-      person("Peyman", "Eshghi", , "PEshghi@its.jnj.com", role = "aut"),
+      person("Peyman", "Eshghi", , "PEshghi@its.jnj.com", role = c("aut", "cre")),
       person("Pranith", "Gourisetty", , "PGourise@ITS.JNJ.com", role = "aut"),
       person("Sohan", "Lal", , "SLal8@ITS.JNJ.com", role = "aut"),
       person("Przemyslaw", "Posiadala", , "PPosiada@ITS.JNJ.com", role = "aut"),
       person("Alina", "Tselinina", , "ATselini@ITS.JNJ.com", role = "aut"),
-      person("Konrad", "Pagacz", , "konrad.pagacz@gmail.com", role = c("aut", "cre")),
+      person("Konrad", "Pagacz", , "konrad.pagacz@gmail.com", role = "aut"),
       person(given = "PHUSE",  role = "cph")
     )
 Description: Provides transformator and decorator modules extending the features of other `teal` modules.
