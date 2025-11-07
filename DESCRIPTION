@@ -15,7 +15,8 @@ Authors@R:
       person("Konrad", "Pagacz", , "konrad.pagacz@gmail.com", role = "aut"),
       person(given = "PHUSE",  role = "cph")
     )
-Description: Provides transformator and decorator modules extending the features of other `teal` modules.
+Description: Provides common decorators and transformators, and other utility 
+    functions to extends 'teal' framework.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -23,6 +24,7 @@ RoxygenNote: 7.3.3
 Depends:
   R (>= 4.1.0)
 Imports:
+  checkmate,
   dplyr,
   ggplot2,
   methods,
@@ -37,4 +39,9 @@ Imports:
 Suggests:
   teal.data,
   teal.modules.general,
-  teal.transform
+  teal.transform,
+  yaml,
+  rAccess,
+  knitr,
+  rmarkdown
+VignetteBuilder: knitr
