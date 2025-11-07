@@ -106,7 +106,6 @@ parameters:
   unit_display: 'dropdown'
   user_df: !expr tibble::tribble(
     ~userid, ~username,
-    "admin", "Administrator",
     "user1", "Regular User",
     "user2", "Limited User")
   use_rconnect_users: FALSE
@@ -175,7 +174,6 @@ parameters:
   unit_display: 'dropdown'
   user_df: !expr tibble::tribble(
     ~userid, ~username,
-    "admin", "Administrator",
     "user1", "Regular User",
     "user2", "Limited User")
   use_rconnect_users: FALSE
