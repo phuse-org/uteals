@@ -1,12 +1,50 @@
 # uteals
 
-An R package that provides utility functions and wrappers to complement
-the [teal package](https://cran.r-project.org/package=teal).
+An R package that provides common decorators, transformators, and
+utility functions to enhance the [teal
+package](https://cran.r-project.org/package=teal) ecosystem.
+
+## Installation
+
+``` r
+# Install from GitHub
+devtools::install_github("phuse-org/uteals")
+```
 
 ## Development Status
 
 This package is currently under development. Please see references and
 vignettes for latest available features.
+
+## Current Features
+
+### Decorators
+
+- **[`ggplot_decorator()`](https://github.com/phuse-org/uteals/reference/ggplot_decorator.md)** -
+  Enhances teal modules with ggplot2 functionality
+- **[`patchwork_plot_decorator()`](https://github.com/phuse-org/uteals/reference/patchwork_plot_decorator.md)** -
+  Combines multiple plots using patchwork
+
+### Transformators
+
+- **[`merge_levels_transformator()`](https://github.com/phuse-org/uteals/reference/merge_levels_transformator.md)** -
+  Merges factor levels in datasets
+- **[`or_filtering_transformator()`](https://github.com/phuse-org/uteals/reference/or_filtering_transformator.md)** -
+  Implements OR-based filtering logic
+
+### Access Management
+
+- **[`extract_modules_to_yaml()`](https://github.com/phuse-org/uteals/reference/extract_modules_to_yaml.md)** -
+  Extracts module structure to YAML configuration
+- **[`keep_by_label()`](https://github.com/phuse-org/uteals/reference/keep_by_label.md)** -
+  Filters modules by label patterns
+- **[`remove_by_label()`](https://github.com/phuse-org/uteals/reference/remove_by_label.md)** -
+  Removes modules by label patterns
+
+## Vignettes
+
+- [Module Access Management with
+  rAccess](https://github.com/phuse-org/uteals/articles/module-access-management.md)
 
 ## About
 
