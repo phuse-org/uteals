@@ -3,7 +3,7 @@
 \docType{class}
 \name{BlockConditions-class}
 \alias{BlockConditions-class}
-\title{Class "BlockConditions"}
+\title{Class \code{BlockConditions}}
 \description{
 This class represents a collection of conditions used for filtering datasets.
 }

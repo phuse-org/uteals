@@ -23,3 +23,6 @@ reference:
       - extract_modules_to_yaml
       - keep_by_label
       - remove_by_label
+  - title: Utility functions
+    contents:
+      - g_forest_with_transform

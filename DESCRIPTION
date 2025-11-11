@@ -15,7 +15,7 @@ Authors@R:
       person("Konrad", "Pagacz", , "konrad.pagacz@gmail.com", role = "aut"),
       person(given = "PHUSE",  role = "cph")
     )
-Description: Provides common decorators and transformators, and other utility 
+Description: Provides common decorators and transformators, and other utility
     functions to extends 'teal' framework.
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -25,23 +25,32 @@ Depends:
   R (>= 4.1.0)
 Imports:
   checkmate,
+  cowplot,
   dplyr,
+  formatters,
   ggplot2,
+  ggplotify,
+  junco,
   methods,
+  openxlsx,
   patchwork,
   rlang,
+  rtables,
   shiny,
   shinyBS,
   shinyWidgets,
   shinyjs,
   teal,
-  teal.code
+  teal.code,
+  tern
 Suggests:
+  forcats,
+  knitr,
+  rAccess,
+  rmarkdown,
   teal.data,
+  teal.modules.clinical,
   teal.modules.general,
   teal.transform,
-  yaml,
-  rAccess,
-  knitr,
-  rmarkdown
+  yaml
 VignetteBuilder: knitr

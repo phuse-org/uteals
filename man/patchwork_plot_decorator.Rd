@@ -9,7 +9,7 @@ patchwork_plot_decorator(output_name, label_text = "decorator")
 \arguments{
 \item{output_name}{(\code{character(1)}) A name for the output plot object.}
 
-\item{label_text}{(\code{character(1)}) A customised label text for the decorator.}
+\item{label_text}{(\code{character(1)}) A customized label text for the decorator.}
 }
 \value{
 (\code{teal.data::qenv}) Returns a modified plot object with the transformation applied.

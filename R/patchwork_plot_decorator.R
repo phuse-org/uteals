@@ -3,7 +3,7 @@
 #' @description `r lifecycle::badge("experimental")`
 #' Decorator function to add plot title and footnote to patchwork plots
 #' @param output_name (`character(1)`) A name for the output plot object.
-#' @param label_text (`character(1)`) A customised label text for the decorator.
+#' @param label_text (`character(1)`) A customized label text for the decorator.
 #' @return (`teal.data::qenv`) Returns a modified plot object with the transformation applied.
 #'
 #' @details The module creates a UI with text controls for plot title and footnote.
@@ -20,7 +20,6 @@ patchwork_plot_decorator <- function(output_name, label_text = "decorator") {
       shiny::tagList(
         shiny::textInput(inputId = ns("plot_title"), label = "Specify plot title", value = ""),
         shiny::textInput(inputId = ns("plot_footnote"), label = "Specify plot_footnote", value = ""),
-
       )
     },
     server = function(id, data) {
