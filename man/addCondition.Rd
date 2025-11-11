@@ -2,7 +2,7 @@
 % Please edit documentation in R/or_filtering_transformator.R
 \name{addCondition}
 \alias{addCondition}
-\title{Add a condition to a BlockConditions object}
+\title{Add a condition to a \code{BlockConditions} object}
 \usage{
 addCondition(object, variable, operator, value)
 }
@@ -19,6 +19,6 @@ addCondition(object, variable, operator, value)
 An updated \code{BlockConditions} object with the new condition added.
 }
 \description{
-Add a condition to a BlockConditions object
+Add a condition to a \code{BlockConditions} object
 }
 \keyword{internal}

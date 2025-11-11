@@ -7,7 +7,7 @@
 #'
 #' @param dataname (`character(1)`) the name of the dataset
 #' which columns will be used for possible transformation.
-#' And dataname should be passed in quotes ex: "ADSL".
+#' `dataname` should be passed in quotes ex: `"ADSL"`.
 #' @param column_name (`character(1)`) field or variable from the dataset.
 #' @param control_group (`character(1)`) one of the existing level from the selected `column_name`.
 #' @param label_name (`character(1)`) label for the new field or variable.

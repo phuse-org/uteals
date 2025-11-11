@@ -9,7 +9,7 @@ create_rel_risk_transformator(dataname, column_name, control_group, label_name)
 \arguments{
 \item{dataname}{(\code{character(1)}) the name of the dataset
 which columns will be used for possible transformation.
-And dataname should be passed in quotes ex: "ADSL".}
+\code{dataname} should be passed in quotes ex: \code{"ADSL"}.}
 
 \item{column_name}{(\code{character(1)}) field or variable from the dataset.}
 

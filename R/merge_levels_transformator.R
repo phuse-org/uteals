@@ -3,8 +3,8 @@
 #' @description `r lifecycle::badge("experimental")`
 #' @details
 #' This transformator allows the user to select a column from the dataset
-#' and combine values of this column into a single level. Unselected levels
-#' are unaffected.
+#' and combine values of this column into a single level. Only selected
+#' levels are affected.
 #'
 #' The new combined level is called "Combined".
 #'

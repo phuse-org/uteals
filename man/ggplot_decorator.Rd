@@ -2,7 +2,7 @@
 % Please edit documentation in R/ggplot_decorator.R
 \name{ggplot_decorator}
 \alias{ggplot_decorator}
-\title{ggplot Decorator}
+\title{\code{ggplot} decorator}
 \usage{
 ggplot_decorator(
   output_name,
@@ -15,11 +15,11 @@ ggplot_decorator(
 )
 }
 \arguments{
-\item{output_name}{A name for the output plot object.}
+\item{output_name}{a name for the output plot object.}
 
-\item{label_text}{Customized label text for the decorator}
+\item{label_text}{customized label text for the decorator}
 
-\item{render_ui}{Vector of ggplot_options from the following list:
+\item{render_ui}{vector of \code{ggplot_options} from the following list:
 "title" - Title of the plot,
 "footnote" - Footnote of the plot,
 "y_breaks" - Value of breaks(numeric) for y-axis. Note: y_limits_max and y_limits_min
@@ -38,20 +38,20 @@ should also be provided,
 "font_size_axis_title"- Font size of axis title text. Note: numeric value should be provided,
 "font_size_axis_text"- Font size of axis labels text. Note: numeric value should be provided}
 
-\item{plot_options}{Named list with the list of values for the ggplot options.
+\item{plot_options}{named list with the list of values for the \code{ggplot} options.
 The app developer can specify the required list of options while calling the decorator.}
 }
 \value{
-Returns a modified plot object with the transformation applied.
+\code{teal::teal_transform_module} Returns a modified plot object with the transformation applied.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
-Decorator function to update various settings for ggplot plot objects
+Decorator function to update various settings for \code{ggplot} plot objects
 }
 \details{
 The module creates a UI with text controls for specifying the list
-of ggplot options given in the plot_options param value.
-The entered ggplot options are applied to ggplot plot object.
+of \code{ggplot} options given in the \code{plot_options} parameter value.
+The entered \code{ggplot} options are applied to \code{ggplot} plot object.
 }
 \examples{
 app <- teal::init(

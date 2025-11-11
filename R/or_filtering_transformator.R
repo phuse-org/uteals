@@ -1,4 +1,4 @@
-#' Class "BlockConditions"
+#' Class `BlockConditions`
 #'
 #' This class represents a collection of conditions used for filtering datasets.
 #'
@@ -10,7 +10,7 @@
 #' @keywords internal
 setClass("BlockConditions", slots = list(conditions = "list"))
 
-#' Add a condition to a BlockConditions object
+#' Add a condition to a `BlockConditions` object
 #'
 #' @param object A `BlockConditions` object.
 #' @param variable A character string specifying the variable/column name.

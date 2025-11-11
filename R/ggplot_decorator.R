@@ -1,10 +1,10 @@
-#' ggplot Decorator
+#' `ggplot` decorator
 #'
 #' @description `r lifecycle::badge("experimental")`
-#' Decorator function to update various settings for ggplot plot objects
-#' @param output_name A name for the output plot object.
-#' @param label_text Customized label text for the decorator
-#' @param render_ui Vector of ggplot_options from the following list:
+#' Decorator function to update various settings for `ggplot` plot objects
+#' @param output_name a name for the output plot object.
+#' @param label_text customized label text for the decorator
+#' @param render_ui vector of `ggplot_options` from the following list:
 #' "title" - Title of the plot,
 #' "footnote" - Footnote of the plot,
 #' "y_breaks" - Value of breaks(numeric) for y-axis. Note: y_limits_max and y_limits_min
@@ -22,14 +22,14 @@
 #' "font_size_plot_title"- Font size of plot title text. Note: numeric value should be provided,
 #' "font_size_axis_title"- Font size of axis title text. Note: numeric value should be provided,
 #' "font_size_axis_text"- Font size of axis labels text. Note: numeric value should be provided
-#' @param plot_options Named list with the list of values for the ggplot options.
+#' @param plot_options named list with the list of values for the `ggplot` options.
 #' The app developer can specify the required list of options while calling the decorator.
 #'
-#' @return Returns a modified plot object with the transformation applied.
+#' @return `teal::teal_transform_module` Returns a modified plot object with the transformation applied.
 #'
 #' @details The module creates a UI with text controls for specifying the list
-#' of ggplot options given in the plot_options param value.
-#' The entered ggplot options are applied to ggplot plot object.
+#' of `ggplot` options given in the `plot_options` parameter value.
+#' The entered `ggplot` options are applied to `ggplot` plot object.
 #'
 #' @import teal shiny ggplot2
 #'
