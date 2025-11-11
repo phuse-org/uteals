@@ -18,6 +18,11 @@ reference:
   - title: Transformators
     contents:
       - ends_with("transformator")
+  - title: Access Management
+    contents:
+      - extract_modules_to_yaml
+      - keep_by_label
+      - remove_by_label
   - title: Utility functions
     contents:
       - g_forest_with_transform
