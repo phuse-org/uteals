@@ -1,4 +1,3 @@
-
 #' Extract Non-Parent Module Labels to YAML
 #'
 #' @description `r lifecycle::badge("experimental")`
@@ -21,7 +20,7 @@ extract_modules_to_yaml <- function(mods, filepath) {
   # Recursively extract module labels, excluding parent containers
   extract_labels <- function(mod_obj) {
     labels <- character(0)
-    
+
     if (inherits(mod_obj, "teal_module")) {
       # This is a leaf module - extract its label
       return(mod_obj$label)
@@ -31,13 +30,13 @@ extract_modules_to_yaml <- function(mods, filepath) {
         labels <- c(labels, extract_labels(child))
       }
     }
-    
+
     return(labels)
   }
-  
+
   # Extract all non-parent module labels
   non_parent_labels <- extract_labels(mods)
-  
+
   # Create panel_str structure
   panel_str <- list(
     list(access_panel = "ADMIN"),
@@ -46,10 +45,10 @@ extract_modules_to_yaml <- function(mods, filepath) {
       access_units = lapply(non_parent_labels, function(label) list(unit = label))
     )
   )
-  
+
   # Write to YAML file
   writeLines(yaml::as.yaml(list(panel_str = panel_str)), filepath)
-  
+
   cat("Generated", filepath, "with", length(non_parent_labels), "non-parent module labels\n")
   return(non_parent_labels)
 }
@@ -80,10 +79,14 @@ keep_by_label <- function(x, label) {
       length,
       lapply(x$children, keep_by_label, label = label)
     )
-    if (length(x$children) == 0) return(NULL)
+    if (length(x$children) == 0) {
+      return(NULL)
+    }
     return(x)
   }
-  if (x$label %in% label) return(x)
+  if (x$label %in% label) {
+    return(x)
+  }
   return(NULL)
 }
 
@@ -101,7 +104,7 @@ keep_by_label <- function(x, label) {
 #' \dontrun{
 #' # Remove a single module
 #' filtered_mods <- remove_by_label(mods, "Deaths")
-#' 
+#'
 #' # Remove multiple modules
 #' filtered_mods <- remove_by_label(mods, c("Deaths", "Lab Summary Table"))
 #' }
@@ -109,19 +112,21 @@ keep_by_label <- function(x, label) {
 #' @export
 remove_by_label <- function(x, label) {
   checkmate::assert_multi_class(x, c("teal_modules", "teal_module"))
-  
+
   # Check if label exists and matches
   if (!is.null(x$label) && length(x$label) > 0 && x$label %in% label) {
     return(NULL)
   }
-  
+
   if (inherits(x, "teal_modules")) {
     x$children <- Filter(
       function(child) !is.null(child),
       lapply(x$children, remove_by_label, label = label)
     )
-    if (length(x$children) == 0) return(NULL)
+    if (length(x$children) == 0) {
+      return(NULL)
+    }
   }
-  
+
   x
 }
