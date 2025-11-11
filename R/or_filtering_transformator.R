@@ -137,8 +137,8 @@ or_filtering_transformator <- function(dataname) {
     },
     server = function(id, data) {
       shiny::moduleServer(id, function(input, output, session) {
-        blockObjects <- shiny::reactiveVal(list())
-        rVals <- shiny::reactiveValues(filter_conditions = list())
+        block_objects <- shiny::reactiveVal(list())
+        r_vals <- shiny::reactiveValues(filter_conditions = list())
         alt_id <- shiny::reactiveVal(0) # Counter for unique IDs
 
         ns <- shiny::NS(id)
@@ -161,9 +161,9 @@ or_filtering_transformator <- function(dataname) {
 
           # Create new block objects when adding a block
           new_block <- methods::new("BlockConditions", conditions = list())
-          blocks <- blockObjects()
+          blocks <- block_objects()
           blocks[[paste0("block_", current_id)]] <- new_block
-          blockObjects(blocks)
+          block_objects(blocks)
 
           shiny::insertUI(
             selector = paste0("#", session$ns("add_alternative")),
@@ -252,7 +252,7 @@ or_filtering_transformator <- function(dataname) {
 
           observeEvent(input[[paste0("add_condition_", current_id)]], {
             # Add condition to the block object
-            blocks <- blockObjects()
+            blocks <- block_objects()
             current_block <- blocks[[paste0("block_", current_id)]]
             variable <- input[[paste0("column_selector_", current_id)]]
             operator <- input[[paste0("operator_selector_", current_id)]]
@@ -275,7 +275,7 @@ or_filtering_transformator <- function(dataname) {
             # Add condition to the block object
             current_block <- addCondition(current_block, variable, operator, value)
             blocks[[paste0("block_", current_id)]] <- current_block
-            blockObjects(blocks)
+            block_objects(blocks)
 
             block_conditions[[as.character(current_id)]] <- c(
               block_conditions[[as.character(current_id)]], list(cond_str)
@@ -355,11 +355,11 @@ or_filtering_transformator <- function(dataname) {
             block_conditions[[as.character(current_block_id)]][[cond_index]] <- NULL
 
             # Remove from block object
-            blocks <- blockObjects()
+            blocks <- block_objects()
             current_block <- blocks[[paste0("block_", current_block_id)]]
             current_block@conditions <- current_block@conditions[-cond_index]
             blocks[[paste0("block_", current_block_id)]] <- current_block
-            blockObjects(blocks)
+            block_objects(blocks)
 
             # Re-render the UI
             update_condition_ui(current_block_id)
@@ -367,7 +367,7 @@ or_filtering_transformator <- function(dataname) {
         })
 
         final_filter_expr <- reactive({
-          blocks <- blockObjects()
+          blocks <- block_objects()
           exprs <- lapply(names(blocks), function(name) {
             block <- blocks[[name]]
             conds <- lapply(block@conditions, function(cond) {

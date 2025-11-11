@@ -280,7 +280,7 @@ ggplot_decorator <- function(output_name,
                   geom_layers <- sapply(output_name$layers, function(x) class(x$geom)[1])
 
                   if (length(geom_layers) > 0) {
-                    for (i in 1:length(geom_layers)) {
+                    for (i in 1:length(geom_layers)) { # nolint: seq_linter
                       if ("GeomText" %in% geom_layers[i]) {
                         output_name$layers[[i]] <- ggplot2::geom_text(size = as.numeric(font_size_geom_text))
                       }
