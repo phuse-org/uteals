@@ -1,49 +1,45 @@
-# Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
-# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+---
+name: Docs 📚
+
 on:
   push:
-    branches: [main, master, dev]
+    branches:
+      - main
+    paths:
+      - "inst/templates/**"
+      - "_pkgdown.*"
+      - DESCRIPTION
+      - "**.md"
+      - "**.Rmd"
+      - "man/**"
+      - "LICENSE.*"
+      - NAMESPACE
   pull_request:
-  release:
-    types: [published]
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+    branches:
+      - main
+    paths:
+      - "inst/templates/**"
+      - "_pkgdown.*"
+      - DESCRIPTION
+      - "**.md"
+      - "**.Rmd"
+      - "man/**"
+      - "LICENSE.*"
+      - NAMESPACE
   workflow_dispatch:
 
-name: pkgdown.yaml
-
-permissions: read-all
-
 jobs:
-  pkgdown:
-    runs-on: ubuntu-latest
-    # Only restrict concurrency for non-PR jobs
-    concurrency:
-      group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
-    env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: r-lib/actions/setup-pandoc@v2
-
-      - uses: r-lib/actions/setup-r@v2
-        with:
-          use-public-rspm: true
-
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          extra-packages: any::pkgdown, local::.
-          needs: website
-
-      - name: Build site
-        run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
-        shell: Rscript {0}
-
-      - name: Deploy to GitHub pages 🚀
-        if: github.event_name != 'pull_request'
-        uses: JamesIves/github-pages-deploy-action@v4.5.0
-        with:
-          clean: false
-          branch: gh-pages
-          folder: docs
+  docs:
+    name: Pkgdown Docs 📚
+    uses: insightsengineering/r.pkg.template/.github/workflows/pkgdown.yaml@main
+    secrets:
+      REPO_GITHUB_TOKEN: ${{ secrets.REPO_GITHUB_TOKEN }}
+    with:
+      default-landing-page: latest-tag
+      additional-unit-test-report-directories: unit-test-report-non-cran
+      deps-installation-method: setup-r-dependencies
