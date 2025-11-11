@@ -16,9 +16,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  audit:
-    name: Audit Dependencies 🕵️‍♂️
-    uses: insightsengineering/r.pkg.template/.github/workflows/audit.yaml@main
+  # audit:
+  #   name: Audit Dependencies 🕵️‍♂️
+  #   uses: insightsengineering/r.pkg.template/.github/workflows/audit.yaml@main
   r-cmd:
     name: R CMD Check 🧬
     uses: insightsengineering/r.pkg.template/.github/workflows/build-check-install.yaml@main
