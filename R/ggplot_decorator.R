@@ -34,8 +34,6 @@
 #' @import teal shiny ggplot2
 #'
 #' @examples
-#' library(teal)
-#' library(teal.modules.general)
 #' app <- teal::init(
 #'   data = teal.data::teal_data(IRIS = iris, code = "IRIS <- iris"),
 #'   modules = teal::modules(

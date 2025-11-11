@@ -54,8 +54,6 @@ of ggplot options given in the plot_options param value.
 The entered ggplot options are applied to ggplot plot object.
 }
 \examples{
-library(teal)
-library(teal.modules.general)
 app <- teal::init(
   data = teal.data::teal_data(IRIS = iris, code = "IRIS <- iris"),
   modules = teal::modules(
