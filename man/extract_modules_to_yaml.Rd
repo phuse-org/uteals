@@ -2,7 +2,7 @@
 % Please edit documentation in R/r_access_utilities.R
 \name{extract_modules_to_yaml}
 \alias{extract_modules_to_yaml}
-\title{Extract Non-Parent Module Labels to YAML}
+\title{Extract Non-Parent Module Labels to \code{YAML}}
 \usage{
 extract_modules_to_yaml(mods, filepath)
 }
@@ -10,7 +10,7 @@ extract_modules_to_yaml(mods, filepath)
 \item{mods}{(\code{teal_module} or \code{teal_modules}) a teal modules object
 containing the module structure.}
 
-\item{filepath}{(\code{character(1)}) character string specifying the output YAML file path.}
+\item{filepath}{(\code{character(1)}) character string specifying the output \code{YAML} file path.}
 }
 \value{
 Character vector of non-parent module labels
@@ -18,7 +18,7 @@ Character vector of non-parent module labels
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 Extracts module labels from a teal modules object, filters out parent modules
-(grouping containers), and generates a YAML file with the functional modules.
+(grouping containers), and generates a \code{YAML} file with the functional modules.
 }
 \examples{
 # Extract modules from mods object to YAML file

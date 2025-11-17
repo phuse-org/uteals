@@ -1,5 +1,5 @@
 ---
-title: "Module Access Management with rAccess"
+title: "Module Access Management with `rAccess`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Module Access Management with rAccess}
@@ -16,11 +16,11 @@ knitr::opts_chunk$set(
 ```
 
 
-This vignette demonstrates how to implement module-level access control in teal applications using the rAccess package integration provided by uteals.
+This vignette demonstrates how to implement module-level access control in `teal` applications using the `rAccess` package integration provided by uteals.
 
 ## Overview
 
-The rAccess package enables role-based access control for teal modules, allowing you to:
+The `rAccess` package enables role-based access control for `teal` modules, allowing you to:
 
 - Restrict module access based on user permissions
 - Implement admin-only functionality
@@ -92,7 +92,7 @@ panel_str:
   - unit: Summary Statistics
 ```
 
-### Step 2: Create rAccess Configuration
+### Step 2: Create `rAccess` Configuration
 
 Create your main configuration file (`rAccess_config.yml`):
 
@@ -142,17 +142,17 @@ restricted_modules <- remove_by_label(all_modules, c("Admin Panel"))
 server <- function(input, output, session) {
   # Get user identity
   user_id <- ifelse(interactive(), Sys.getenv("USER"), session$user)
-  
+
   # Initialize rAccess
   iam <- rAccess$new(user = user_id, config = "rAccess_config.yml")
-  
+
   # Get user permissions
   user_access <- iam$get_user_accesslist()
   allowed_modules <- unlist(user_access, use.names = FALSE)
-  
+
   # Filter modules
   filtered_modules <- keep_by_label(all_modules, allowed_modules)
-  
+
   # Handle edge cases
   if (is.null(filtered_modules)) {
     filtered_modules <- create_no_access_module()
@@ -202,12 +202,12 @@ all_modules <- modules(
       select = select_spec(choices = variable_choices(iris))
     ),
     y = data_extract_spec(
-      dataname = "IRIS", 
+      dataname = "IRIS",
       select = select_spec(choices = variable_choices(iris))
     )
   ),
   tm_outliers(
-    label = "Summary Statistics", 
+    label = "Summary Statistics",
     outlier_var = data_extract_spec(
       dataname = "MTCARS",
       select = select_spec(choices = variable_choices(mtcars, c("mpg", "hp", "wt")))
@@ -218,16 +218,16 @@ all_modules <- modules(
 ### UI Implementation
 ui <- bslib::page_navbar(
   title = "Teal Access Demo",
-  
+
   # Main application tab
   bslib::nav_panel(
     "Analytics Modules",
     uiOutput("teal_ui")
   ),
-  
+
   # Admin panel (conditionally visible)
   bslib::nav_panel(
-    "Access Control", 
+    "Access Control",
     rAccess::module_iam_ui("access_control"),
     tags$div(
       class = "alert alert-info",
@@ -241,20 +241,20 @@ ui <- bslib::page_navbar(
 server <- function(input, output, session) {
   # User authentication
   user_id <- ifelse(interactive(), "user1", session$user)
-  
+
   # Initialize access control
   iam <- rAccess$new(user = user_id, config = "rAccess_config.yml")
-  
+
   # Admin module server (conditional)
   if (iam$no_admin() || iam$is_admin()) {
     rAccess::module_iam_server("access_control", iam)
   }
-  
+
   # Filter modules based on permissions
   user_access_list <- iam$get_user_accesslist()
   users_modules <- unlist(user_access_list, use.names = FALSE)
   filtered_modules <- keep_by_label(all_modules, users_modules)
-  
+
   # Handle no access
   if (is.null(filtered_modules)) {
     filtered_modules <- modules(
@@ -269,7 +269,7 @@ server <- function(input, output, session) {
       )
     )
   }
-  
+
   # Render teal UI
   output$teal_ui <- renderUI({
     tagList(
@@ -277,7 +277,7 @@ server <- function(input, output, session) {
       ui_session_info("session_info")
     )
   })
-  
+
   # Teal server
   srv_teal("teal_app", data = data, modules = filtered_modules)
   srv_session_info("session_info")
@@ -295,23 +295,23 @@ if (interactive()) {
 
 ### Running the Example
 
-The app will show different modules based on the user:  
-- `admin`: Access to admin panel  
-- `other users`: Access based on rAccess permissions  
-- Unauthorized users: "No Access" message  
+The app will show different modules based on the user:
+- `admin`: Access to admin panel
+- `other users`: Access based on `rAccess` permissions
+- Unauthorized users: "No Access" message
 
 **Note**: Until you define and add at least one admin, the admin tab will be accessible by everyone. Once there is at least one admin defined, access control becomes enforced.
 
 ### Access-boards Storage Setup
-In this example, with `board_type: local` configured in `rAccess_config.yml`, access lists are 
-stored locally in the `./data/` directory within your application. Alternative 
-storage options include `AWS S3` or `Posit Connect` pins - refer to the rAccess 
+In this example, with `board_type: local` configured in `rAccess_config.yml`, access lists are
+stored locally in the `./data/` directory within your application. Alternative
+storage options include `AWS S3` or `Posit Connect` pins - refer to the `rAccess`
 documentation for configuration details.
 
 ### Debugging Tips
 
 ```r
-# Ensure the rAccess configuration (`rAccess_config.yml` in the example) is 
+# Ensure the rAccess configuration (`rAccess_config.yml` in the example) is
 accessible by your app.
 
 # Ensure module labels match exactly between configuration and code
@@ -331,12 +331,12 @@ print(sapply(all_modules$children, function(x) x$label))
 The uteals package provides essential utilities for implementing access control in teal applications:
 
 - `extract_modules_to_yaml()`: Automates configuration generation
-- `keep_by_label()`: Filters modules by user permissions  
+- `keep_by_label()`: Filters modules by user permissions
 - `remove_by_label()`: Excludes restricted modules
 
 This integration enables secure, role-based access control while maintaining the flexibility and power of the teal framework.
 
 ## Further Reading
 
-- [rAccess Documentation](https://johnsonandjohnson.github.io/rAccess/)
-- [Teal as Shiny Module](https://insightsengineering.github.io/teal/latest-tag/articles/teal-as-a-shiny-module.html)
+- [`rAccess` Documentation](https://johnsonandjohnson.github.io/rAccess/)
+- [`Teal` as `Shiny` Module](https://insightsengineering.github.io/teal/latest-tag/articles/teal-as-a-shiny-module.html)

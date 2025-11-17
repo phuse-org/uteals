@@ -1,12 +1,12 @@
-#' Extract Non-Parent Module Labels to YAML
+#' Extract Non-Parent Module Labels to `YAML`
 #'
 #' @description `r lifecycle::badge("experimental")`
 #' Extracts module labels from a teal modules object, filters out parent modules
-#' (grouping containers), and generates a YAML file with the functional modules.
+#' (grouping containers), and generates a `YAML` file with the functional modules.
 #'
 #' @param mods (`teal_module` or `teal_modules`) a teal modules object
 #'   containing the module structure.
-#' @param filepath (`character(1)`) character string specifying the output YAML file path.
+#' @param filepath (`character(1)`) character string specifying the output `YAML` file path.
 #'
 #' @return Character vector of non-parent module labels
 #'
