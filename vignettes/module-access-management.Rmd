@@ -2,7 +2,7 @@
 title: "Module Access Management with `rAccess`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Module Access Management with rAccess}
+  %\VignetteIndexEntry{Module Access Management with `rAccess`}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
