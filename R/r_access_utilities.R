@@ -4,16 +4,20 @@
 #' Extracts module labels from a teal modules object, filters out parent modules
 #' (grouping containers), and generates a YAML file with the functional modules.
 #'
-#' @param mods A teal modules object containing the module structure
-#' @param filepath Character string specifying the output YAML file path
+#' @param mods (`teal_module` or `teal_modules`) a teal modules object
+#'   containing the module structure.
+#' @param filepath (`character(1)`) character string specifying the output YAML file path.
 #'
 #' @return Character vector of non-parent module labels
 #'
+#' @import yaml
 #' @examples
-#' \dontrun{
 #' # Extract modules from mods object to YAML file
+#' mods <- teal::modules(
+#'   teal::example_module("mod1"),
+#'   teal::example_module("mod2")
+#' )
 #' labels <- extract_modules_to_yaml(mods, "panel_str_modules.yml")
-#' }
 #'
 #' @export
 extract_modules_to_yaml <- function(mods, filepath) {
@@ -31,7 +35,7 @@ extract_modules_to_yaml <- function(mods, filepath) {
       }
     }
 
-    return(labels)
+    labels
   }
 
   # Extract all non-parent module labels
@@ -50,7 +54,7 @@ extract_modules_to_yaml <- function(mods, filepath) {
   writeLines(yaml::as.yaml(list(panel_str = panel_str)), filepath)
 
   cat("Generated", filepath, "with", length(non_parent_labels), "non-parent module labels\n")
-  return(non_parent_labels)
+  non_parent_labels
 }
 
 #' Filter Teal Modules by Label
@@ -60,16 +64,19 @@ extract_modules_to_yaml <- function(mods, filepath) {
 #' match the specified labels. Removes modules that don't match and empty
 #' parent containers.
 #'
-#' @param x A teal_modules or teal_module object to filter
-#' @param label Character vector of module labels to keep
+#' @param x (`teal_module` or `teal_modules`) the object to filter.
+#' @param label (`character(1)`) character vector of module labels to keep.
 #'
-#' @return Filtered teal_modules or teal_module object, or NULL if no matches
+#' @return Filtered `teal_modules` or `teal_module` object, or `NULL` if none matches.
 #'
+#' @import checkmate
 #' @examples
-#' \dontrun{
 #' # Keep only specific modules by label
+#' mods <- teal::modules(
+#'   teal::example_module("mod1"),
+#'   teal::example_module("mod2")
+#' )
 #' filtered_mods <- keep_by_label(mods, c("Data Table", "Disposition"))
-#' }
 #'
 #' @export
 keep_by_label <- function(x, label) {
@@ -87,27 +94,31 @@ keep_by_label <- function(x, label) {
   if (x$label %in% label) {
     return(x)
   }
-  return(NULL)
+  NULL
 }
 
 #' Remove Teal Modules by Label
 #'
 #' @description `r lifecycle::badge("experimental")`
-#' Recursively removes modules from a teal modules structure that match the specified label(s).
+#' Recursively removes modules from a teal modules structure that match the specified labels.
 #'
-#' @param x A `teal_modules` or `teal_module` object to filter
-#' @param label Character vector of module labels to remove
+#' @param x (`teal_module` or `teal_modules`) The object to filter.
+#' @param label (`character(1)`) character vector of module labels to remove.
 #'
-#' @return The filtered teal modules object with matching modules removed, or NULL if all modules are removed
+#' @return The filtered teal modules object with matching modules removed, or `NULL`
+#'   if all modules are removed.
 #'
+#' @import checkmate
 #' @examples
-#' \dontrun{
+#' mods <- teal::modules(
+#'   teal::example_module("mod1"),
+#'   teal::example_module("mod2")
+#' )
 #' # Remove a single module
 #' filtered_mods <- remove_by_label(mods, "Deaths")
 #'
 #' # Remove multiple modules
 #' filtered_mods <- remove_by_label(mods, c("Deaths", "Lab Summary Table"))
-#' }
 #'
 #' @export
 remove_by_label <- function(x, label) {
