@@ -42,7 +42,8 @@ Imports:
   shinyjs,
   teal,
   teal.code,
-  tern
+  tern,
+  yaml
 Suggests:
   forcats,
   knitr,
@@ -51,6 +52,5 @@ Suggests:
   teal.data,
   teal.modules.clinical,
   teal.modules.general,
-  teal.transform,
-  yaml
+  teal.transform
 VignetteBuilder: knitr
