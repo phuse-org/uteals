@@ -2,6 +2,8 @@
 
 [![Lifecycle:Experimental](https://img.shields.io/badge/Lifecycle-Experimental-blue?style=flat)](https://github.com/phuse-org/uteals/)
 
+[Please Enter our Hex-Design Contest!!](https://github.com/phuse-org/uteals/blob/hex_contest/HEXAGON_DESIGN_CONTEST.md)
+
 An R package that provides common decorators, transformators, and utility
 functions to enhance the [`teal` package](https://cran.r-project.org/package=teal) ecosystem.
 
