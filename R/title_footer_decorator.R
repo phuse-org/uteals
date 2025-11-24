@@ -1,51 +1,52 @@
 # Helper function to replace junco::get_titles_from_file
-get_titles_from_file <- function(id, file = .find_titles_file(input_path), input_path = ".", 
-    title_df = .read_titles_file(file)) 
-{
-    title_df <- title_df[title_df[["TABLE ID"]] == id, , drop = FALSE]
-    message(paste0("Static titles file/data.frame used: "))
-    msg <- NULL
-    if (nrow(title_df) == 0) {
-        msg <- paste0(paste("Warning: Table ID", id, "not found in Title file."), 
-            "\n", "A dummy title will be generated to be able to get rtf file produced.", 
-            "\n", "Ensure the titles file gets updated to include the table identifier")
-        title <- "Table ID not found in titles file, dummy title for rtf generation purpose"
-        main_footer <- "Ensure the titles file gets updated to include the table identifier"
+get_titles_from_file <- function(
+  id, file = .find_titles_file(input_path), input_path = ".",
+  title_df = .read_titles_file(file)
+) {
+  title_df <- title_df[title_df[["TABLE ID"]] == id, , drop = FALSE]
+  message(paste0("Static titles file/data.frame used: "))
+  msg <- NULL
+  if (nrow(title_df) == 0) {
+    msg <- paste0(
+      paste("Warning: Table ID", id, "not found in Title file."),
+      "\n", "A dummy title will be generated to be able to get rtf file produced.",
+      "\n", "Ensure the titles file gets updated to include the table identifier"
+    )
+    title <- "Table ID not found in titles file, dummy title for rtf generation purpose"
+    main_footer <- "Ensure the titles file gets updated to include the table identifier"
+  } else {
+    title <- title_df[title_df$IDENTIFIER == "TITLE", ]$TEXT
+    if (length(title) != 1) {
+      msg <- "Warning: Title file should contain exactly one title record per Table ID"
+    } else {
+      message(file)
     }
-    else {
-        title <- title_df[title_df$IDENTIFIER == "TITLE", ]$TEXT
-        if (length(title) != 1) {
-            msg <- "Warning: Title file should contain exactly one title record per Table ID"
-        }
-        else {
-            message(file)
-        }
-        main_footer <- title_df[grep("^FOOT", title_df$IDENTIFIER), 
-            ]$TEXT
-        if (length(main_footer) == 0) {
-            main_footer <- character()
-        }
+    main_footer <- title_df[grep("^FOOT", title_df$IDENTIFIER), ]$TEXT
+    if (length(main_footer) == 0) {
+      main_footer <- character()
     }
-    if (!is.null(msg)) {
-        warning(msg)
-    }
-    title_foot <- list(title = title, subtitles = NULL, main_footer = main_footer, 
-        prov_footer = NULL)
-    return(title_foot)
+  }
+  if (!is.null(msg)) {
+    warning(msg)
+  }
+  title_foot <- list(
+    title = title, subtitles = NULL, main_footer = main_footer,
+    prov_footer = NULL
+  )
+  return(title_foot)
 }
 
 # Helper function to replace junco::set_titles
-set_titles <- function(obj, titles) 
-{
-    main_title(obj) <- titles$title
-    if (!is.null(titles$subtitles)) {
-        subtitles(obj) <- titles$subtitles
-    }
-    main_footer(obj) <- titles$main_footer
-    if (!is.null(titles$prov_footer)) {
-        prov_footer(obj) <- titles$prov_footer
-    }
-    return(obj)
+set_titles <- function(obj, titles) {
+  main_title(obj) <- titles$title
+  if (!is.null(titles$subtitles)) {
+    subtitles(obj) <- titles$subtitles
+  }
+  main_footer(obj) <- titles$main_footer
+  if (!is.null(titles$prov_footer)) {
+    prov_footer(obj) <- titles$prov_footer
+  }
+  return(obj)
 }
 
 #' Title and Footer Decorator
