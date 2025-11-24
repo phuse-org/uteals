@@ -31,7 +31,6 @@ Imports:
   formatters,
   ggplot2,
   ggplotify,
-  junco,
   methods,
   openxlsx,
   patchwork,
