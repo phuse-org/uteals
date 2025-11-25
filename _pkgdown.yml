@@ -8,9 +8,9 @@ navbar:
   structure:
     left: [intro, reference, articles, news, contest]
   components:
-     contest:
-       text: Hex Contest
-       href: _HEXAGON_DESIGN_CONTEST.html
+    contest:
+      text: Hex Contest
+      href: _HEXAGON_DESIGN_CONTEST.html
 
 reference:
   - title:
