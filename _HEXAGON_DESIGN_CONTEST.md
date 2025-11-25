@@ -13,15 +13,17 @@ The `uteals` package provides decorators, transformators, and utility functions 
 ## Design Guidelines
 
 ### Required Elements
+
 - Package name: **"uteals"**
 - Hexagon format (standard R package hex sticker)
 - Colors that complement the teal package palette:
   - Light blue: `#E4EFFF`
-  - Medium blue: `#80BAFF` 
+  - Medium blue: `#80BAFF`
   - Dark blue: `#4A90E2`
   - Teal green: `#008C72`
 
 ### Design Inspiration
+
 - **Utilities theme**: Tools, gears, building blocks
 - **Teal connection**: Reference to the teal bird or teal package aesthetic
 - **Professional**: Suitable for pharmaceutical/clinical research context
