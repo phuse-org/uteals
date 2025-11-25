@@ -1,0 +1,100 @@
+# `uteals`
+
+[![Lifecycle:Experimental](https://img.shields.io/badge/Lifecycle-Experimental-blue?style=flat)](https://github.com/phuse-org/uteals/)
+
+[Please Enter our Hex-Design
+Contest!!](https://github.com/phuse-org/uteals/blob/hex_contest/HEXAGON_DESIGN_CONTEST.md)
+
+An R package that provides common decorators, transformators, and
+utility functions to enhance the [`teal`
+package](https://cran.r-project.org/package=teal) ecosystem.
+
+## Installation
+
+``` r
+# Install from GitHub
+install.packages("pak")
+pak::pkg_install("phuse-org/uteals@main")
+```
+
+## Development Status
+
+This package is currently under development. Please see
+[references](https://github.com/phuse-org/uteals/phuse-org.github.io/uteals/)
+and [vignettes](https://phuse-org.github.io/uteals/articles/) for latest
+available features.
+
+## About
+
+The `uteals` package is being developed by the **Teal Enhancements for
+Industry Adoption** PHUSE working group. For more information about this
+initiative, visit [`PHUSE`
+website](https://advance.hub.phuse.global/wiki/spaces/WEL/pages/30441473/Teal+Enhancements+for+Cross-Industry+Adoption).
+
+## Contributing
+
+We encourage the open source community to join this effort and
+contribute to the development of `uteals`.
+
+# Package index
+
+- [`uteals`](https://github.com/phuse-org/uteals/reference/uteals-package.md)
+  [`uteals-package`](https://github.com/phuse-org/uteals/reference/uteals-package.md)
+  :
+
+  Decorators and transformators for `teal` modules.
+
+## Decorators
+
+- [`forestplot_x_decorator()`](https://github.com/phuse-org/uteals/reference/forestplot_x_decorator.md)
+  **\[experimental\]** :
+
+  Change X-axis scaling decorator for
+  [`teal.modules.clinical::tm_g_forest_rsp`](https://insightsengineering.github.io/teal.modules.clinical/latest-tag/reference/tm_g_forest_rsp.html).
+
+- [`ggplot_decorator()`](https://github.com/phuse-org/uteals/reference/ggplot_decorator.md)
+  **\[experimental\]** :
+
+  `ggplot` decorator
+
+- [`patchwork_plot_decorator()`](https://github.com/phuse-org/uteals/reference/patchwork_plot_decorator.md)
+  **\[experimental\]** : Patchwork Decorator
+
+- [`title_footer_decorator()`](https://github.com/phuse-org/uteals/reference/title_footer_decorator.md)
+  **\[experimental\]** : Title and Footer Decorator
+
+## Transformators
+
+- [`create_rel_risk_transformator()`](https://github.com/phuse-org/uteals/reference/create_rel_risk_transformator.md)
+  **\[experimental\]** : Create Relative risk column
+- [`merge_levels_transformator()`](https://github.com/phuse-org/uteals/reference/merge_levels_transformator.md)
+  **\[experimental\]** : Combine levels of a variable into one level
+- [`or_filtering_transformator()`](https://github.com/phuse-org/uteals/reference/or_filtering_transformator.md)
+  **\[experimental\]** : Apply Logical AND/OR filter transformations
+
+## Access Management
+
+- [`extract_modules_to_yaml()`](https://github.com/phuse-org/uteals/reference/extract_modules_to_yaml.md)
+  **\[experimental\]** :
+
+  Extract Non-Parent Module Labels to `YAML`
+
+- [`keep_by_label()`](https://github.com/phuse-org/uteals/reference/keep_by_label.md)
+  **\[experimental\]** : Filter Teal Modules by Label
+
+- [`remove_by_label()`](https://github.com/phuse-org/uteals/reference/remove_by_label.md)
+  **\[experimental\]** : Remove Teal Modules by Label
+
+## Utility functions
+
+- [`g_forest_with_transform()`](https://github.com/phuse-org/uteals/reference/g_forest_with_transform.md)
+  **\[experimental\]** :
+
+  Create a forest plot from an `rtable` with x transform settings
+
+# Articles
+
+### All vignettes
+
+- [Module Access Management with
+  \`rAccess\`](https://github.com/phuse-org/uteals/articles/module-access-management.md):

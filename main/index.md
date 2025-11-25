@@ -1,0 +1,37 @@
+# `uteals`
+
+[![Lifecycle:Experimental](https://img.shields.io/badge/Lifecycle-Experimental-blue?style=flat)](https://github.com/phuse-org/uteals/)
+
+[Please Enter our Hex-Design
+Contest!!](https://github.com/phuse-org/uteals/blob/hex_contest/HEXAGON_DESIGN_CONTEST.md)
+
+An R package that provides common decorators, transformators, and
+utility functions to enhance the [`teal`
+package](https://cran.r-project.org/package=teal) ecosystem.
+
+## Installation
+
+``` r
+# Install from GitHub
+install.packages("pak")
+pak::pkg_install("phuse-org/uteals@main")
+```
+
+## Development Status
+
+This package is currently under development. Please see
+[references](https://github.com/phuse-org/uteals/phuse-org.github.io/uteals/)
+and [vignettes](https://phuse-org.github.io/uteals/articles/) for latest
+available features.
+
+## About
+
+The `uteals` package is being developed by the **Teal Enhancements for
+Industry Adoption** PHUSE working group. For more information about this
+initiative, visit [`PHUSE`
+website](https://advance.hub.phuse.global/wiki/spaces/WEL/pages/30441473/Teal+Enhancements+for+Cross-Industry+Adoption).
+
+## Contributing
+
+We encourage the open source community to join this effort and
+contribute to the development of `uteals`.
