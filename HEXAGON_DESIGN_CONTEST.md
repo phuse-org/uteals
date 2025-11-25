@@ -43,9 +43,9 @@ The `uteals` package provides decorators, transformators, and utility functions 
 
 ## Timeline
 
-- **Submission deadline**: 05 December 2025
-- [**Community voting**](https://github.com/phuse-org/uteals/discussions/3): 06 - 12 December 2025
-- **Winner announcement**: 13 December 2025
+- **Submission deadline**: 14 December 2025
+- [**Community voting**](https://github.com/phuse-org/uteals/discussions/3): 15 - 19 December 2025
+- **Winner announcement**: 21 December 2025
 
 ## Recognition
 
