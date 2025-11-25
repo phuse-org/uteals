@@ -11,7 +11,8 @@ functions to enhance the [`teal` package](https://cran.r-project.org/package=tea
 
 ```r
 # Install from GitHub
-devtools::install_github("phuse-org/uteals")
+install.packages("pak")
+pak::pkg_install("phuse-org/uteals@main")
 ```
 
 ## Development Status

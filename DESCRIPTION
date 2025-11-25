@@ -49,9 +49,11 @@ Suggests:
   forcats,
   knitr,
   rAccess,
+  rbmi,
   rmarkdown,
   teal.data,
   teal.modules.clinical,
   teal.modules.general,
   teal.transform
 VignetteBuilder: knitr
+Remotes: insightsengineering/rbmi@v1.5.2, johnsonandjohnson/junco@v0.1.1.1
