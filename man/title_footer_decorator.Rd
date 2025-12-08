@@ -32,3 +32,7 @@ Additionally, it includes a checkbox that user can check to enable
 customization, allowing them to enter their own values for the title and
 footer in the designated input fields.
 }
+\seealso{
+For the exact Excel workbook layout expected by this function, see the package vignette:
+\link{vignette("title_footer_decorator-excel-structure", package = "uteals")}
+}

@@ -22,7 +22,10 @@
 #'
 #' @import openxlsx ggplotify ggplot2 patchwork teal shiny
 #' @importFrom grDevices graphics.off
-#'
+#' 
+#' @seealso For the exact Excel workbook layout expected by this function, see the package vignette:
+#' \link{vignette("title_footer_decorator-excel-structure", package = "uteals")}
+#'   
 #' @export
 title_footer_decorator <- function(output_name, titles_file) {
   checkmate::assert_string(output_name)
