@@ -193,7 +193,10 @@ or_filtering_transformator <- function(dataname) {
                   "Select Condition",
                   choices = c("==", "!=", "<", ">")
                 ),
-                shiny::selectInput(session$ns(paste0("value_input_", view_model$alt_id())), "Select Value", choices = NULL),
+                shiny::selectInput(
+                  session$ns(paste0("value_input_", view_model$alt_id())), "Select Value",
+                  choices = NULL
+                ),
                 shiny::actionButton(
                   session$ns(paste0("add_condition_", view_model$alt_id())),
                   "Add",
