@@ -11,7 +11,7 @@ title_footer_decorator(output_name, titles_file)
 
 \item{titles_file}{(\code{character(1)}) the path to an Excel file containing title and footer
 information. The function expects the titles to be in the first sheet
-named "Sheet1".}
+named \code{Sheet1}.}
 }
 \value{
 \code{\link[teal:teal_transform_module]{teal::teal_transform_module()}}
@@ -34,5 +34,5 @@ footer in the designated input fields.
 }
 \seealso{
 For the exact Excel workbook layout expected by this function, see the package vignette:
-\link{vignette("title_footer_decorator-excel-structure", package = "uteals")}
+\code{vignette("title-footer-decorator-excel-structure", package = "uteals")}
 }

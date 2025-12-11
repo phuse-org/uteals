@@ -9,7 +9,7 @@
 #' @param output_name (`character(1)`) a name for the output object (e.g., a plot or table).
 #' @param titles_file (`character(1)`) the path to an Excel file containing title and footer
 #' information. The function expects the titles to be in the first sheet
-#' named "Sheet1".
+#' named `Sheet1`.
 #'
 #' @return [`teal::teal_transform_module()`]
 #'
@@ -20,11 +20,11 @@
 #' customization, allowing them to enter their own values for the title and
 #' footer in the designated input fields.
 #'
+#' @seealso For the exact Excel workbook layout expected by this function, see the package vignette:
+#' `vignette("title-footer-decorator-excel-structure", package = "uteals")`
+#'
 #' @import openxlsx ggplotify ggplot2 patchwork teal shiny
 #' @importFrom grDevices graphics.off
-#'
-#' @seealso For the exact Excel workbook layout expected by this function, see the package vignette:
-#' \link{vignette("title_footer_decorator-excel-structure", package = "uteals")}
 #'
 #' @export
 title_footer_decorator <- function(output_name, titles_file) {
