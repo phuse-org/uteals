@@ -1,7 +1,7 @@
 # Create a forest plot from an `rtable` with x transform settings
 
 **\[experimental\]** Given a
-[`rtables::rtable()`](https://insightsengineering.github.io/rtables/latest-release/reference/rtable.html)
+[`rtables::rtable()`](https://insightsengineering.github.io/rtables/latest-tag/reference/rtable.html)
 object with at least one column with a single value and one column with
 2 values, converts table to a
 [`ggplot2::ggplot()`](https://ggplot2.tidyverse.org/reference/ggplot.html)

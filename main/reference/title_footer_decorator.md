@@ -22,7 +22,7 @@ title_footer_decorator(output_name, titles_file)
 
   (`character(1)`) the path to an Excel file containing title and footer
   information. The function expects the titles to be in the first sheet
-  named "Sheet1".
+  named `Sheet1`.
 
 ## Value
 
@@ -36,3 +36,9 @@ table or modifying a plot's title and caption accordingly. Additionally,
 it includes a checkbox that user can check to enable customization,
 allowing them to enter their own values for the title and footer in the
 designated input fields.
+
+## See also
+
+For the exact Excel workbook layout expected by this function, see the
+package vignette:
+[`vignette("title-footer-decorator-excel-structure", package = "uteals")`](https://github.com/phuse-org/uteals/articles/title-footer-decorator-excel-structure.md)
