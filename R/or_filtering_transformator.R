@@ -1,34 +1,3 @@
-#' Class `BlockConditions`
-#'
-#' This class represents a collection of conditions used for filtering datasets.
-#'
-#' @section Slots:
-#' \describe{
-#'   \item{\code{conditions}}{A list of conditions,
-#'      where each condition is a list containing variable, operator, and value.}
-#' }
-#' @keywords internal
-setClass("BlockConditions", slots = list(conditions = "list"))
-
-#' Add a condition to a `BlockConditions` object
-#'
-#' @param object A `BlockConditions` object.
-#' @param variable A character string specifying the variable/column name.
-#' @param operator A character string specifying the operator (e.g., "==", "!=", "<", ">", "<=", ">=").
-#' @param value The value to compare against.
-#'
-#' @return An updated `BlockConditions` object with the new condition added.
-#' @method addCondition BlockConditions
-#' @keywords internal
-setGeneric("addCondition", function(object, variable, operator, value) standardGeneric("addCondition"))
-
-#' Add conditions
-#' @keywords internal
-setMethod("addCondition", "BlockConditions", function(object, variable, operator, value) {
-  object@conditions <- c(object@conditions, list(list(variable = variable, operator = operator, value = value)))
-  object
-})
-
 #' Apply Logical AND/OR filter transformations
 #'
 #' @description `r lifecycle::badge("experimental")`
@@ -137,46 +106,64 @@ or_filtering_transformator <- function(dataname) {
     },
     server = function(id, data) {
       shiny::moduleServer(id, function(input, output, session) {
-        block_objects <- shiny::reactiveVal(list())
-        r_vals <- shiny::reactiveValues(filter_conditions = list())
-        alt_id <- shiny::reactiveVal(0) # Counter for unique IDs
-
         ns <- shiny::NS(id)
-        conditions <- shiny::reactiveVal(list())
-        block_conditions <- shiny::reactiveValues() # Store conditions for each block separately
 
-        choices_for_columns <- shiny::reactive({
-          shiny::req(data())
-          names(data()[[dataname]])
-        })
+        view_model <- filtering_transformator_model$new(data, dataname)
 
         output$dataset <- shiny::renderText({
           paste0(dataname, " - Additional Filters")
         })
 
-        # Observe to add new dynamic blocks
+        update_condition_ui <- function(current_block_id) {
+          output[[paste0("condition_ui_", current_block_id)]] <- renderUI({
+            conds <- view_model$block_conditions[[as.character(current_block_id)]]
+            if (is.null(conds) || length(conds) == 0) {
+              shinyjs::hide(paste0("condition_ui_container", current_block_id))
+              return()
+            }
+
+            # Create a list of condition UI elements
+            condition_ui_list <- lapply(seq_along(conds), function(i) {
+              cond_text <- conds[[i]] # get the condition text
+
+              div(
+                style = "display:flex; align-items:center; margin-bottom:4px;",
+                span(cond_text, style = "margin-right:10px;"),
+                actionButton(
+                  session$ns(paste0("remove_", current_block_id, "_", i)),
+                  "X",
+                  class = "btn btn-primary",
+                  style = "
+                      color: white;background: #ed6e6e;font-size: 10px;border: antiquewhite;
+                      height: 19px;width: 17px;padding: 2px;
+                    ",
+                  title = "Remove Condition"
+                )
+              )
+            })
+
+            do.call(tagList, condition_ui_list)
+          })
+          shinyjs::show(paste0("condition_ui_container", current_block_id))
+        }
+
+        # Observe to add a new block = handler of the "Add alternative" button
         shiny::observeEvent(input$add_alternative, {
-          alt_id(alt_id() + 1)
-          current_id <- alt_id()
+          view_model$add_alternative()
 
-          # Create new block objects when adding a block
-          new_block <- methods::new("BlockConditions", conditions = list())
-          blocks <- block_objects()
-          blocks[[paste0("block_", current_id)]] <- new_block
-          block_objects(blocks)
-
+          blocks <- view_model$block_objects()
           shiny::insertUI(
             selector = paste0("#", session$ns("add_alternative")),
             where = "beforeBegin",
             ui = shiny::tags$div(
-              id = paste0("alt_block_", current_id),
+              id = paste0("alt_block_", view_model$alt_id()),
               style = "background-color: #ededed;margin-top: 7px;padding: 10px;",
               shiny::div(
                 style = "display:flex;",
                 shiny::div(
                   class = "col-3",
                   shiny::actionButton(
-                    session$ns(paste0("toggle_alt_", current_id)),
+                    session$ns(paste0("toggle_alt_", view_model$alt_id())),
                     "+",
                     style = "font-size:18px; width:28px; height:28px;background: white;padding: 1px;",
                     title = "Add conditions"
@@ -186,29 +173,29 @@ or_filtering_transformator <- function(dataname) {
                 shinyjs::hidden(
                   shiny::div(
                     class = "col-9",
-                    id = session$ns(paste0("condition_ui_container", current_id)),
-                    shiny::uiOutput(session$ns(paste0("condition_ui_", current_id))),
+                    id = session$ns(paste0("condition_ui_container", view_model$alt_id())),
+                    shiny::uiOutput(session$ns(paste0("condition_ui_", view_model$alt_id()))),
                     style = "margin-left: 5%;"
                   )
                 )
               ),
               shiny::div(
-                id = session$ns(paste0("alt_dropdown_", current_id)),
+                id = session$ns(paste0("alt_dropdown_", view_model$alt_id())),
                 style = "margin-top:10px;",
                 shinyWidgets::pickerInput(
-                  inputId = session$ns(paste0("column_selector_", current_id)),
+                  inputId = session$ns(paste0("column_selector_", view_model$alt_id())),
                   label = "Select Column",
-                  choices = choices_for_columns(),
+                  choices = view_model$choices_for_columns(),
                   choicesOpt = list(subtext = teal.data::col_labels(data()[[dataname]]))
                 ),
                 shiny::selectInput(
-                  session$ns(paste0("operator_selector_", current_id)),
+                  session$ns(paste0("operator_selector_", view_model$alt_id())),
                   "Select Condition",
                   choices = c("==", "!=", "<", ">")
                 ),
-                shiny::selectInput(session$ns(paste0("value_input_", current_id)), "Select Value", choices = NULL),
+                shiny::selectInput(session$ns(paste0("value_input_", view_model$alt_id())), "Select Value", choices = NULL),
                 shiny::actionButton(
-                  session$ns(paste0("add_condition_", current_id)),
+                  session$ns(paste0("add_condition_", view_model$alt_id())),
                   "Add",
                   class = "btn btn-primary",
                   title = "Add condition"
@@ -216,110 +203,43 @@ or_filtering_transformator <- function(dataname) {
               )
             )
           )
-          # Observe toggle button for the new block
-          shiny::observeEvent(input[[paste0("toggle_alt_", current_id)]], {
-            shinyjs::toggle(paste0("alt_dropdown_", current_id))
-          })
 
-          # Update choices for values
-          shiny::observeEvent(input[[paste0("column_selector_", current_id)]], {
-            shiny::req(input[[paste0("column_selector_", current_id)]])
-            selected_col <- input[[paste0("column_selector_", current_id)]]
-            col_data <- data()[[dataname]][[selected_col]]
-
-            if (is.numeric(col_data)) {
-              shiny::updateSelectInput(session, paste0("value_input_", current_id), choices = c(unique(col_data)))
-              shiny::updateSelectInput(
-                session, paste0("operator_selector_", current_id),
-                choices = c("==", "!=", "<=", ">=")
-              )
-            } else if (is.character(col_data) || is.factor(col_data)) {
-              shiny::updateSelectInput(
-                session, paste0("value_input_", current_id),
-                choices = c(levels(factor(col_data)))
-              )
-              shiny::updateSelectInput(session, paste0("operator_selector_", current_id), choices = c("==", "!="))
-            } else {
-              shiny::updateSelectInput(session, paste0("value_input_", current_id), choices = NULL)
-              shiny::updateSelectInput(session, paste0("operator_selector_", current_id), choices = NULL)
-            }
-          })
-
-          # Function to check for duplicate condition
-          is_duplicate_condition <- function(cond_str, block_cond_list) {
-            cond_str %in% block_cond_list
-          }
-
-          observeEvent(input[[paste0("add_condition_", current_id)]], {
-            # Add condition to the block object
-            blocks <- block_objects()
-            current_block <- blocks[[paste0("block_", current_id)]]
-            variable <- input[[paste0("column_selector_", current_id)]]
-            operator <- input[[paste0("operator_selector_", current_id)]]
-            value <- input[[paste0("value_input_", current_id)]]
+          # Handler for the Add button for the new block
+          observeEvent(input[[paste0("add_condition_", view_model$alt_id())]], {
+            blocks <- view_model$block_objects()
+            current_block <- blocks[[paste0("block_", view_model$alt_id())]]
+            variable <- input[[paste0("column_selector_", view_model$alt_id())]]
+            operator <- input[[paste0("operator_selector_", view_model$alt_id())]]
+            value <- input[[paste0("value_input_", view_model$alt_id())]]
 
             cond_str <- paste0(variable, " ", operator, " ", value)
 
             # Check for duplicates in current block
-            existing_conds <- if (is.null(block_conditions[[as.character(current_id)]])) {
+            existing_conds <- if (is.null(view_model$block_conditions[[as.character(view_model$alt_id())]])) {
               list()
             } else {
-              block_conditions[[as.character(current_id)]]
+              view_model$block_conditions[[as.character(view_model$alt_id())]]
             }
 
-            if (is_duplicate_condition(cond_str, existing_conds)) {
+            if (view_model$is_duplicate_condition(cond_str, existing_conds)) {
               shiny::showNotification("This condition already exists in the block.", type = "warning")
               return() # Exit without adding
             }
 
             # Add condition to the block object
             current_block <- addCondition(current_block, variable, operator, value)
-            blocks[[paste0("block_", current_id)]] <- current_block
-            block_objects(blocks)
+            blocks[[paste0("block_", view_model$alt_id())]] <- current_block
+            view_model$block_objects(blocks)
 
-            block_conditions[[as.character(current_id)]] <- c(
-              block_conditions[[as.character(current_id)]], list(cond_str)
+            view_model$block_conditions[[as.character(view_model$alt_id())]] <- c(
+              view_model$block_conditions[[as.character(view_model$alt_id())]], list(cond_str)
             )
 
             # Update the UI
-            update_condition_ui(current_id)
+            update_condition_ui(view_model$alt_id())
           })
 
-          update_condition_ui <- function(current_block_id) {
-            output[[paste0("condition_ui_", current_block_id)]] <- renderUI({
-              conds <- block_conditions[[as.character(current_block_id)]]
-              if (is.null(conds) || length(conds) == 0) {
-                shinyjs::hide(paste0("condition_ui_container", current_block_id))
-                return()
-              }
-
-              # Create a list of condition UI elements
-              condition_ui_list <- lapply(seq_along(conds), function(i) {
-                cond_text <- conds[[i]] # get the condition text
-
-                div(
-                  style = "display:flex; align-items:center; margin-bottom:4px;",
-                  span(cond_text, style = "margin-right:10px;"),
-                  actionButton(
-                    session$ns(paste0("remove_", current_block_id, "_", i)),
-                    "X",
-                    class = "btn btn-primary",
-                    style = "
-                      color: white;background: #ed6e6e;font-size: 10px;border: antiquewhite;
-                      height: 19px;width: 17px;padding: 2px;
-                    ",
-                    title = "Remove Condition"
-                  )
-                )
-              })
-
-              do.call(tagList, condition_ui_list)
-            })
-            shinyjs::show(paste0("condition_ui_container", current_block_id))
-          }
-
           prev_button_states <- reactiveValues()
-
           observe({
             # Find all remove button IDs
             all_ids <- grep("^remove_", names(input), value = TRUE)
@@ -351,49 +271,59 @@ or_filtering_transformator <- function(dataname) {
             cond_index <- as.numeric(parts[3])
 
             # Condition removal
-            shiny::req(block_conditions[[as.character(current_block_id)]])
-            block_conditions[[as.character(current_block_id)]][[cond_index]] <- NULL
+            shiny::req(view_model$block_conditions[[as.character(current_block_id)]])
+            view_model$block_conditions[[as.character(current_block_id)]][[cond_index]] <- NULL
 
             # Remove from block object
-            blocks <- block_objects()
+            blocks <- view_model$block_objects()
             current_block <- blocks[[paste0("block_", current_block_id)]]
             current_block@conditions <- current_block@conditions[-cond_index]
             blocks[[paste0("block_", current_block_id)]] <- current_block
-            block_objects(blocks)
+            view_model$block_objects(blocks)
 
             # Re-render the UI
             update_condition_ui(current_block_id)
           })
         })
 
-        final_filter_expr <- reactive({
-          blocks <- block_objects()
-          exprs <- lapply(names(blocks), function(name) {
-            block <- blocks[[name]]
-            conds <- lapply(block@conditions, function(cond) {
-              var <- cond$variable
-              val <- if (is.numeric(data()[[dataname]][[cond$variable]])) {
-                cond$value
-              } else {
-                paste0("'", cond$value, "'")
-              }
-              paste0(var, " ", cond$operator, " ", val)
-            })
-            paste0("(", paste(conds, collapse = " & "), ")")
+        # Observe toggle button for new blocks
+        shiny::observeEvent(eventExpr = view_model$alt_id(), handlerExpr = {
+          current_id <- view_model$alt_id()
+          shiny::observeEvent(input[[paste0("toggle_alt_", current_id)]], {
+            shinyjs::toggle(paste0("alt_dropdown_", current_id))
           })
-          paste(paste(exprs, collapse = " | "))
         })
 
-        final_exp <- shiny::reactive({
-          filter_expr <- final_filter_expr()
-          expression <- gsub("\\(\\)", "", filter_expr)
-          expr <- paste(gsub("\\s*\\|\\s*$", "", expression))
-          paste(gsub("^\\s*[|&]+\\s*", "", expr))
+        # Update choices for values for the new block
+        shiny::observeEvent(eventExpr = view_model$alt_id(), handlerExpr = {
+          current_id <- view_model$alt_id()
+          shiny::observeEvent(input[[paste0("column_selector_", current_id)]], {
+            shiny::req(input[[paste0("column_selector_", current_id)]])
+            selected_col <- input[[paste0("column_selector_", current_id)]]
+            col_data <- data()[[dataname]][[selected_col]]
+
+            if (is.numeric(col_data)) {
+              shiny::updateSelectInput(session, paste0("value_input_", current_id), choices = c(unique(col_data)))
+              shiny::updateSelectInput(
+                session, paste0("operator_selector_", current_id),
+                choices = c("==", "!=", "<=", ">=")
+              )
+            } else if (is.character(col_data) || is.factor(col_data)) {
+              shiny::updateSelectInput(
+                session, paste0("value_input_", current_id),
+                choices = c(levels(factor(col_data)))
+              )
+              shiny::updateSelectInput(session, paste0("operator_selector_", current_id), choices = c("==", "!="))
+            } else {
+              shiny::updateSelectInput(session, paste0("value_input_", current_id), choices = NULL)
+              shiny::updateSelectInput(session, paste0("operator_selector_", current_id), choices = NULL)
+            }
+          })
         })
 
         shiny::observeEvent(input$preview, {
           # Get the filter expression
-          filter_expr <- final_filter_expr()
+          filter_expr <- view_model$final_filter_expr()
 
           shiny::showModal(
             shiny::modalDialog(
@@ -423,7 +353,7 @@ or_filtering_transformator <- function(dataname) {
               }
               df
             },
-            filters = final_exp(),
+            filters = view_model$final_exp(),
             df = as.name(dataname)
           )
         })

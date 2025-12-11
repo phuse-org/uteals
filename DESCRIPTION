@@ -25,6 +25,7 @@ RoxygenNote: 7.3.3
 Depends:
   R (>= 4.1.0)
 Imports:
+  R6,
   checkmate,
   cowplot,
   dplyr,
