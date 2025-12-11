@@ -227,7 +227,7 @@ or_filtering_transformator <- function(dataname) {
             }
 
             # Add condition to the block object
-            current_block <- addCondition(current_block, variable, operator, value)
+            current_block <- add_condition(current_block, variable, operator, value)
             blocks[[paste0("block_", view_model$alt_id())]] <- current_block
             view_model$block_objects(blocks)
 

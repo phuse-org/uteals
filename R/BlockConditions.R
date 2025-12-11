@@ -18,13 +18,13 @@ setClass("BlockConditions", slots = list(conditions = "list"))
 #' @param value The value to compare against.
 #'
 #' @return An updated `BlockConditions` object with the new condition added.
-#' @method addCondition BlockConditions
+#' @method add_condition BlockConditions
 #' @keywords internal
-setGeneric("addCondition", function(object, variable, operator, value) standardGeneric("addCondition"))
+setGeneric("add_condition", function(object, variable, operator, value) standardGeneric("add_condition"))
 
 #' Add conditions
 #' @keywords internal
-setMethod("addCondition", "BlockConditions", function(object, variable, operator, value) {
+setMethod("add_condition", "BlockConditions", function(object, variable, operator, value) {
   object@conditions <- c(object@conditions, list(list(variable = variable, operator = operator, value = value)))
   object
 })
