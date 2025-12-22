@@ -2,9 +2,6 @@
 
 [![Lifecycle:Experimental](https://img.shields.io/badge/Lifecycle-Experimental-blue?style=flat)](https://github.com/phuse-org/uteals/)
 
-[Please Enter our Hex-Design
-Contest!!](https://github.com/phuse-org/uteals/blob/hex_contest/HEXAGON_DESIGN_CONTEST.md)
-
 An R package that provides common decorators, transformators, and
 utility functions to enhance the [`teal`
 package](https://cran.r-project.org/package=teal) ecosystem.
@@ -30,6 +27,14 @@ The `uteals` package is being developed by the **Teal Enhancements for
 Industry Adoption** PHUSE working group. For more information about this
 initiative, visit [`PHUSE`
 website](https://advance.hub.phuse.global/wiki/spaces/WEL/pages/30441473/Teal+Enhancements+for+Cross-Industry+Adoption).
+
+## Acknowledgements
+
+The package hex sticker has been designed and produced by [Alan
+Harrison](https://github.com/aharri34), who won the community design
+contest.  
+We are grateful for Alan’s winning design and the community’s
+contribution to the visual identity of the `uteals` package.
 
 ## Contributing
 
