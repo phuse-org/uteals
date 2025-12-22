@@ -1,4 +1,4 @@
-# `uteals`
+# uteals <a href="https://github.com/phuse-org/uteals"><img src="man/figures/logo.png" align="right" height="138" alt="uteals website" /></a>
 
 [![Lifecycle:Experimental](https://img.shields.io/badge/Lifecycle-Experimental-blue?style=flat)](https://github.com/phuse-org/uteals/)
 
