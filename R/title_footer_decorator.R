@@ -10,6 +10,10 @@
 #' @param titles_file (`character(1)`) the path to an Excel file containing title and footer
 #' information. The function expects the titles to be in the first sheet
 #' named `Sheet1`.
+#' @param choices (`character`) an array of titles and footers, which are available for
+#' selection. Default `NULL`, indicates all titles and footers are available.
+#' @param selected (`character(1)`) the selected title or footer. Default `NULL`,
+#' indicates no title or footer is selected.
 #'
 #' @return [`teal::teal_transform_module()`]
 #'
@@ -26,20 +30,86 @@
 #' @import openxlsx ggplotify ggplot2 patchwork teal shiny
 #' @importFrom grDevices graphics.off
 #'
+#' @examples
+#' library(openxlsx)
+#' library(teal.modules.general)
+#'
+#' example_excel <- data.frame(
+#'   `TABLE ID` = c(
+#'     "DO_NOT_DELETE",
+#'     "TSFAE01A", "TSFAE01A", "TSFAE01A",
+#'     "TSFAE01B", "TSFAE01B"
+#'   ),
+#'   IDENTIFIER = c(
+#'     "DO_NOT_DELETE",
+#'     "TITLE", "FOOTNOTE1", "FOOTNOTE2",
+#'     "TITLE", "FOOTNOTE1"
+#'   ),
+#'   TEXT = c(
+#'     "DO_NOT_DELETE",
+#'     "Adverse Events Summary A", "Source: Clinical Study Report", "Confidential",
+#'     "Adverse Events Summary B", "Draft Version"
+#'   ),
+#'   stringsAsFactors = FALSE,
+#'   check.names = FALSE
+#' )
+#'
+#' temp_titles <- tempfile(fileext = ".xlsx")
+#' write.xlsx(example_excel, temp_titles, sheetName = "Sheet1", asTable = TRUE)
+#' plot_module <- tm_g_scatterplot(
+#'   label = "Scatter Plot",
+#'   x = data_extract_spec(
+#'     dataname = "IRIS",
+#'     select = select_spec(
+#'       choices = variable_choices("IRIS", c("Sepal.Length", "Sepal.Width")), selected = "Sepal.Length"
+#'     )
+#'   ),
+#'   y = data_extract_spec(
+#'     dataname = "IRIS",
+#'     select = select_spec(
+#'       choices = variable_choices("IRIS", c("Petal.Length", "Petal.Width")), selected = "Petal.Length"
+#'     )
+#'   ),
+#'   decorators = list(
+#'     plot = title_footer_decorator("plot", temp_titles, choices = c("TSFAE01A", "TSFAE01B"), selected = NULL)
+#'   )
+#' )
+#'
+#' # Initialize the teal app
+#' app <- init(
+#'   data = teal_data(IRIS = iris),
+#'   modules = list(plot_module)
+#' )
+#'
+#' # Run the app
+#' if (interactive()) {
+#'   shinyApp(app$ui, app$server)
+#' }
+#'
 #' @export
-title_footer_decorator <- function(output_name, titles_file) {
+title_footer_decorator <- function(output_name, titles_file, choices = NULL, selected = NULL) {
   checkmate::assert_string(output_name)
   checkmate::assert_string(titles_file)
+  checkmate::assert_character(choices, null.ok = TRUE)
+  checkmate::assert_string(selected, null.ok = TRUE)
 
   titles <- openxlsx::read.xlsx(titles_file, "Sheet1")
   titles$TABLE.ID[1] <- "blank"
+
+  choices <- `if`(is.null(choices), unique(titles$TABLE.ID), intersect(choices, titles$TABLE.ID))
+  checkmate::assert(
+    checkmate::check_null(selected),
+    \() `if`(selected %in% choices, TRUE, "selected must be one of the choices")
+  )
+
+
   teal::teal_transform_module(
     label = "Title and footer decorator",
     ui = function(id) {
       ns <- NS(id)
       tagList(
         div(
-          selectInput(ns("selectTitle"), label = "Select Title", choices = unique(titles$TABLE.ID)),
+          selectInput(ns("selectTitle"), label = "Select Title", choices = choices, selected = selected),
           checkboxInput(ns("customize"), label = "Customize Title and Footer", value = FALSE),
           uiOutput(ns("customInputs"))
         )
@@ -134,11 +204,11 @@ title_footer_decorator <- function(output_name, titles_file) {
                     patchwork::plot_annotation(title = titles_footers$title, caption = titles_footers$main_footer)
                 } else if ((inherits(output_name, "ggplot")) && !(inherits(output_name, "patchwork"))) {
                   output_name <- output_name +
-                    ggplot2::labs(title = titles_footers$title, 100, caption = titles_footers$main_footer) +
+                    ggplot2::labs(title = titles_footers$title, caption = titles_footers$main_footer) +
                     ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0))
                 } else if ((inherits(output_name, "trellis")) || (inherits(output_name, "grob"))) {
                   output_name <- ggplotify::as.ggplot(output_name) +
-                    ggplot2::labs(title = titles_footers$title, 100, caption = titles_footers$main_footer) +
+                    ggplot2::labs(title = titles_footers$title, caption = titles_footers$main_footer) +
                     ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0))
                 } else {
                   output_name <- output_name

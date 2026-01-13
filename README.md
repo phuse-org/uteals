@@ -26,9 +26,9 @@ The `uteals` package is being developed by the **Teal Enhancements for Industry 
 For more information about this initiative,
 visit [`PHUSE` website](https://advance.hub.phuse.global/wiki/spaces/WEL/pages/30441473/Teal+Enhancements+for+Cross-Industry+Adoption).
 
-## Acknowledgements
+## Acknowledgments
 
-The package hex sticker has been designed and produced by [Alan Harrison](https://github.com/aharri34), who won the community design contest.  
+The package hex sticker has been designed and produced by [Alan Harrison](https://github.com/aharri34), who won the community design contest.
 We are grateful for Alan's winning design and the community's contribution to the visual identity of the `uteals` package.
 
 ## Contributing
