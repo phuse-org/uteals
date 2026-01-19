@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE coverage SYSTEM "https://raw.githubusercontent.com/cobertura/cobertura/master/cobertura/src/site/htdocs/xml/coverage-04.dtd">
-<coverage line-rate="0" branch-rate="0" lines-covered="0" lines-valid="1078" branches-covered="0" branches-valid="0" complexity="0" version="3.6.5" timestamp="2025-12-22 18:07:04.531521">
+<coverage line-rate="0" branch-rate="0" lines-covered="0" lines-valid="1077" branches-covered="0" branches-valid="0" complexity="0" version="3.6.5" timestamp="2026-01-19 12:59:31.772848">
   <sources>
     <source>/__w/uteals/uteals/uteals</source>
   </sources>
@@ -1563,7 +1563,6 @@
                 <line number="362" hits="0" branch="false"/>
                 <line number="363" hits="0" branch="false"/>
                 <line number="364" hits="0" branch="false"/>
-                <line number="365" hits="0" branch="false"/>
               </lines>
             </method>
           </methods>
@@ -1822,7 +1821,6 @@
             <line number="362" hits="0" branch="false"/>
             <line number="363" hits="0" branch="false"/>
             <line number="364" hits="0" branch="false"/>
-            <line number="365" hits="0" branch="false"/>
           </lines>
         </class>
         <class name="patchwork_plot_decorator.R" filename="R/patchwork_plot_decorator.R" line-rate="0" branch-rate="0" complexity="0">
