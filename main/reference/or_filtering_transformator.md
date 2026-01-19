@@ -80,6 +80,7 @@ or_filtering_transformator(dataname)
 ## Examples
 
 ``` r
+
 app <- teal::init(
   data = teal.data::teal_data(IRIS = iris),
   modules = teal::modules(teal::example_module(

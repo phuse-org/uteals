@@ -15,6 +15,7 @@ Below is an example of a table that would work for the decorator. The
 part of the file.
 
 ``` r
+
 example_excel <- data.frame(
   TABLE_ID = c(
     "DO_NOT_DELETE",

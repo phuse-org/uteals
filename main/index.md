@@ -9,6 +9,7 @@ package](https://cran.r-project.org/package=teal) ecosystem.
 ## Installation
 
 ``` r
+
 # Install from GitHub
 install.packages("pak")
 pak::pkg_install("phuse-org/uteals@main")

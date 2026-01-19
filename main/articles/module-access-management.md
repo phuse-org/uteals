@@ -20,6 +20,7 @@ use.
 ## Library Calls
 
 ``` r
+
 library(uteals)
 library(teal)
 library(teal.modules.general)
@@ -33,6 +34,7 @@ library(bslib)
 Here’s a minimal example to get started:
 
 ``` r
+
 # 1. Create modules
 mods <- modules(
   tm_data_table("Data Table"),
@@ -55,6 +57,7 @@ Use the
 function to automatically generate the module structure:
 
 ``` r
+
 # Define your teal modules
 mods <- modules(
   tm_data_table("Data Table"),
@@ -117,6 +120,7 @@ panel_str:
 ### Pattern 1: Basic Module Filtering
 
 ``` r
+
 # Filter modules based on user access
 user_modules <- c("Data Table", "Variable Browser")
 filtered_modules <- keep_by_label(all_modules, user_modules)
@@ -128,6 +132,7 @@ restricted_modules <- remove_by_label(all_modules, c("Admin Panel"))
 ### Pattern 2: Dynamic Access Control
 
 ``` r
+
 server <- function(input, output, session) {
   # Get user identity
   user_id <- ifelse(interactive(), Sys.getenv("USER"), session$user)
@@ -171,6 +176,7 @@ parameters:
 ```
 
 ``` r
+
 ### Data Setup
 # Prepare sample data
 data <- teal.data::teal_data(

@@ -26,14 +26,14 @@ Source:
 [`DESCRIPTION`](https://github.com/phuse-org/uteals/blob/main/DESCRIPTION)
 
 Abraham N, Bhalla C, Eshghi P, Gourisetty P, Lal S, Posiadala P,
-Tselinina A, Pagacz K (2025). *uteals: Decorators and Transformators for
+Tselinina A, Pagacz K (2026). *uteals: Decorators and Transformators for
 'teal' Modules*. R package version 0.0.1.9000,
 <https://github.com/phuse-org/uteals>.
 
     @Manual{,
       title = {uteals: Decorators and Transformators for `teal` Modules},
       author = {Nadia Abraham and Chanchal Bhalla and Peyman Eshghi and Pranith Gourisetty and Sohan Lal and Przemyslaw Posiadala and Alina Tselinina and Konrad Pagacz},
-      year = {2025},
+      year = {2026},
       note = {R package version 0.0.1.9000},
       url = {https://github.com/phuse-org/uteals},
     }

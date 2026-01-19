@@ -32,6 +32,7 @@ Merging works only for `character` or `factor` columns.
 ## Examples
 
 ``` r
+
 app <- teal::init(
   data = teal.data::teal_data(IRIS = iris, code = "IRIS <- iris"),
   modules = teal::modules(

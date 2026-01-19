@@ -41,6 +41,7 @@ from the dataset and create a relative risk column.
 ## Examples
 
 ``` r
+
 app <- teal::init(
   data = teal.data::teal_data(IRIS = iris, code = "IRIS <- iris"),
   modules = teal::modules(
