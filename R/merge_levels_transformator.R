@@ -69,7 +69,7 @@ merge_levels_transformator <- function(dataname) {
 
         # reactive that returns levels for the currently selected column
         arm_levels <- shiny::eventReactive(input$selected_columns, {
-          req(input$selected_columns)
+          shiny::req(input$selected_columns)
           col_data <- data()[[dataname]][[input$selected_columns]]
           # levels() returns NULL for character vectors, convert to factor levels
           if (is.factor(col_data)) {
@@ -96,7 +96,7 @@ merge_levels_transformator <- function(dataname) {
         # - if last existing mapping row is empty, just update its choices and store column
         # - otherwise create a new mapping row for the new column
         shiny::observeEvent(input$selected_columns, {
-          req(input$selected_columns)
+          shiny::req(input$selected_columns)
 
           if (length(counter$ind) > 0 && max(counter$ind) > 0) {
             last_idx <- max(counter$ind)
