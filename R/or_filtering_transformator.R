@@ -354,7 +354,6 @@ or_filtering_transformator <- function(dataname) {
               if (filters != "" & filters != "()") {
                 df <- df |> dplyr::filter(!!rlang::parse_expr(filters))
               }
-              df
             },
             filters = view_model$final_exp(),
             df = as.name(dataname)
