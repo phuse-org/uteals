@@ -61,17 +61,24 @@
 #'   x = data_extract_spec(
 #'     dataname = "IRIS",
 #'     select = select_spec(
-#'       choices = variable_choices("IRIS", c("Sepal.Length", "Sepal.Width")), selected = "Sepal.Length"
+#'       choices = variable_choices(
+#'         "IRIS", c("Sepal.Length", "Sepal.Width")
+#'       ), selected = "Sepal.Length"
 #'     )
 #'   ),
 #'   y = data_extract_spec(
 #'     dataname = "IRIS",
 #'     select = select_spec(
-#'       choices = variable_choices("IRIS", c("Petal.Length", "Petal.Width")), selected = "Petal.Length"
+#'       choices = variable_choices(
+#'         "IRIS", c("Petal.Length", "Petal.Width")
+#'       ), selected = "Petal.Length"
 #'     )
 #'   ),
 #'   decorators = list(
-#'     plot = title_footer_decorator("plot", temp_titles, choices = c("TSFAE01A", "TSFAE01B"), selected = NULL)
+#'     plot = title_footer_decorator(
+#'       "plot", temp_titles,
+#'       choices = c("TSFAE01A", "TSFAE01B"), selected = NULL
+#'     )
 #'   )
 #' )
 #'
