@@ -100,14 +100,14 @@ merge_levels_transformator <- function(dataname) {
 
           if (length(counter$ind) > 0 && max(counter$ind) > 0) {
             last_idx <- max(counter$ind)
-            prevSelectInputId <- paste0("col_levels_", last_idx)
-            prevTextInputId <- paste0("col_merged_name_", last_idx)
+            prev_select_input_id <- paste0("col_levels_", last_idx)
+            prev_text_input_id <- paste0("col_merged_name_", last_idx)
 
             # If the last mapping row hasn't been filled, update its choices and store column
-            if (is.null(input[[prevSelectInputId]]) || input[[prevTextInputId]] == "") {
+            if (is.null(input[[prev_select_input_id]]) || input[[prev_text_input_id]] == "") {
               shiny::updateSelectInput(
                 session,
-                inputId = prevSelectInputId,
+                inputId = prev_select_input_id,
                 choices = arm_levels()
               )
               current_rec <- id_names_map()
@@ -133,9 +133,9 @@ merge_levels_transformator <- function(dataname) {
           id_names_map(current_rec)
 
           new_idx <- max(counter$ind)
-          newSelectInputId <- paste0("col_levels_", new_idx)
-          newTextInputId <- paste0("col_merged_name_", new_idx)
-          newActionButtonId <- paste0("close_button_", new_idx)
+          new_select_input_id <- paste0("col_levels_", new_idx)
+          new_text_input_id <- paste0("col_merged_name_", new_idx)
+          new_action_button_id <- paste0("close_button_", new_idx)
 
           shiny::insertUI(
             selector = paste0("#", ns("mapping_fluid_rows")),
@@ -145,7 +145,7 @@ merge_levels_transformator <- function(dataname) {
                 shiny::column(
                   width = 6,
                   shiny::selectInput(
-                    inputId = ns(newSelectInputId),
+                    inputId = ns(new_select_input_id),
                     label = paste0("Merged variable values: ", input$selected_columns),
                     choices = arm_levels(),
                     multiple = TRUE
@@ -154,7 +154,7 @@ merge_levels_transformator <- function(dataname) {
                 shiny::column(
                   width = 4,
                   shiny::textInput(
-                    inputId = ns(newTextInputId), label = "Merged variable name", placeholder = "Combined"
+                    inputId = ns(new_text_input_id), label = "Merged variable name", placeholder = "Combined"
                   )
                 ),
                 shiny::column(
@@ -162,10 +162,11 @@ merge_levels_transformator <- function(dataname) {
                   br(),
                   br(),
                   shiny::actionButton(
-                    inputId = session$ns(newActionButtonId),
+                    inputId = session$ns(new_action_button_id),
                     label = "X",
                     class = "btn btn-primary",
-                    style = "color: white;background: #ed6e6e;font-size: 10px;border: antiquewhite;height: 28px;width: 28px;padding: 2px;"
+                    style = "color: white;background: #ed6e6e;font-size: 10px;border: antiquewhite;
+                    height: 28px;width: 28px;padding: 2px;"
                   )
                 )
               )
@@ -211,9 +212,9 @@ merge_levels_transformator <- function(dataname) {
           current_rec[[as.character(max(counter$ind))]] <- input$selected_columns
           id_names_map(current_rec)
 
-          newSelectInputId <- paste0("col_levels_", max(counter$ind))
-          newTextInputId <- paste0("col_merged_name_", max(counter$ind))
-          newActionButtonId <- paste0("close_button_", max(counter$ind))
+          new_select_input_id <- paste0("col_levels_", max(counter$ind))
+          new_text_input_id <- paste0("col_merged_name_", max(counter$ind))
+          new_action_button_id <- paste0("close_button_", max(counter$ind))
 
           shiny::insertUI(
             selector = paste0("#", ns("mapping_fluid_rows")),
@@ -223,7 +224,7 @@ merge_levels_transformator <- function(dataname) {
                 shiny::column(
                   width = 6,
                   shiny::selectInput(
-                    inputId = ns(newSelectInputId),
+                    inputId = ns(new_select_input_id),
                     label = paste0("Merged variable values: ", input$selected_columns),
                     choices = arm_levels(),
                     multiple = TRUE
@@ -231,17 +232,22 @@ merge_levels_transformator <- function(dataname) {
                 ),
                 shiny::column(
                   width = 4,
-                  shiny::textInput(inputId = ns(newTextInputId), label = "Merged variable name", placeholder = "Combined")
+                  shiny::textInput(
+                    inputId = ns(new_text_input_id),
+                    label = "Merged variable name",
+                    placeholder = "Combined"
+                  )
                 ),
                 shiny::column(
                   width = 2,
                   br(),
                   br(),
                   shiny::actionButton(
-                    inputId = session$ns(newActionButtonId),
+                    inputId = session$ns(new_action_button_id),
                     label = "X",
                     class = "btn btn-primary",
-                    style = "color: white;background: #ed6e6e;font-size: 10px;border: antiquewhite;height: 28px;width: 28px;padding: 2px;"
+                    style = "color: white;background: #ed6e6e;font-size: 10px;border: antiquewhite;
+                    height: 28px;width: 28px;padding: 2px;"
                   )
                 )
               )
