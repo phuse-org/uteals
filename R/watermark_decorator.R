@@ -77,7 +77,7 @@ watermark_decorator <- function(output_name, watermark_text = "", font_size = 90
                   set_cell("watermark", watermark_text)
 
               },
-              output_name = as.name(output_name),
+              output_name = as.name(output_name)
             )
           } else {
             res <- within(

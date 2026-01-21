@@ -44,7 +44,9 @@ Imports:
   teal,
   teal.code,
   tern,
-  yaml
+  yaml,
+  gridify,
+  rtables.officer
 Suggests:
   forcats,
   knitr,
