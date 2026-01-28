@@ -34,18 +34,15 @@
 #'
 #' @export
 merge_column_levels_transformator <- function(dataname) {
-  lifecycle::deprecate_warn(
-    what = "merge_column_levels_transformator()", when = "0.11.0", with = "uteals::merge_levels_transformator()"
-  )
-
+  
   teal::teal_transform_module(
     label = paste0("Merge Column Levels - ", dataname),
     ui = function(id) {
-      ns <- shiny::NS(id)
-
-      shiny::tagList(
-        shiny::tags$style(
-          shiny::HTML(
+      ns <- NS(id)
+      
+      tagList(
+        tags$style(
+          HTML(
             "
                     .centered-button {
                       display: flex;
@@ -56,7 +53,7 @@ merge_column_levels_transformator <- function(dataname) {
                   "
           )
         ),
-        shiny::div(
+        div(
           style = "float: right; margin-right: 10px;",
           tags$span(
             tags$i(
@@ -69,24 +66,24 @@ merge_column_levels_transformator <- function(dataname) {
         shinyWidgets::pickerInput(
           inputId = ns("selected_columns"), label = "Selected column", choices = NULL, multiple = FALSE
         ),
-        shiny::div(id = ns("mapping_fluid_rows")),
-        shiny::div(
+        div(id = ns("mapping_fluid_rows")),
+        div(
           class = "centered-button",
-          shiny::actionButton(ns("plus_button"), label = "Apply"),
-          shiny::actionButton(ns("reset_button"), label = "Reset")
+          actionButton(ns("plus_button"), label = "Apply"),
+          actionButton(ns("reset_button"), label = "Reset")
         )
       )
     },
     server = function(id, data) {
-      shiny::moduleServer(id, function(input, output, session) {
+      moduleServer(id, function(input, output, session) {
         ns <- session$ns
-
-        arm_levels <- shiny::eventReactive(input$selected_columns, {
+        
+        arm_levels <- eventReactive(input$selected_columns, {
           levels(data()[[dataname]][[input$selected_columns]])
         })
-
+        
         # Update the column names in the selectInput
-        shiny::observe({
+        observe({
           trt_columns <- names(data()[[dataname]])
           shinyWidgets::updatePickerInput(
             session,
@@ -96,19 +93,19 @@ merge_column_levels_transformator <- function(dataname) {
             choicesOpt = list(subtext = formatters::var_labels(data()[[dataname]]))
           )
         })
-
-        counter <- shiny::reactiveValues(ind = c(0), prev_max = 0)
-        id_names_map <- shiny::reactiveVal(list())
-
-        shiny::observeEvent(list(input$selected_columns), {
-          shiny::req(input$selected_columns)
-
+        
+        counter <- reactiveValues(ind = c(0), prev_max = 0)
+        id_names_map <- reactiveVal(list())
+        
+        observeEvent(list(input$selected_columns), {
+          req(input$selected_columns)
+          
           if (max(counter$ind) > 0) {
             prevSelectInputId <- paste0("col_levels_", max(counter$ind))
             prevTextInputId <- paste0("col_merged_name_", max(counter$ind))
-
+            
             if (is.null(input[[prevSelectInputId]]) | (input[[prevTextInputId]] == "")) {
-              shiny::updateSelectInput(
+              updateSelectInput(
                 session,
                 label = paste0("Merged levels :", input$selected_columns),
                 inputId = prevSelectInputId,
@@ -118,48 +115,48 @@ merge_column_levels_transformator <- function(dataname) {
               current_rec <- id_names_map()
               current_rec[[max(counter$ind)]] <- input$selected_columns
               id_names_map(current_rec)
-
+              
               return()
             }
           }
-
+          
           if (length(counter$ind) == 0) { # case of one of close button was clicked
             counter$ind <- c(counter$prev_max + 1)
           } else {
             counter$ind <- c(counter$ind, max(counter$ind) + 1)
           }
-
+          
           counter$prev_max <- max(counter$ind)
           counter$ind <- setdiff(counter$ind, 0)
-
+          
           ## Store the Column label in reactive val
           current_rec <- id_names_map()
           current_rec[[max(counter$ind)]] <- input$selected_columns
           id_names_map(current_rec)
-
+          
           newSelectInputId <- paste0("col_levels_", max(counter$ind))
           newTextInputId <- paste0("col_merged_name_", max(counter$ind))
           newActionButtonId <- paste0("close_button_", max(counter$ind))
-
-          shiny::insertUI(
+          
+          insertUI(
             selector = paste0("#", ns("mapping_fluid_rows")),
             ui = div(
               id = ns(paste0("div_row_", max(counter$ind))),
-              shiny::fluidRow(
-                shiny::column(
+              fluidRow(
+                column(
                   width = 5,
-                  shiny::selectInput(
+                  selectInput(
                     inputId = ns(newSelectInputId),
                     label = paste0("Merged levels :", input$selected_columns),
                     choices = arm_levels(),
                     multiple = TRUE
                   )
                 ),
-                shiny::column(
+                column(
                   width = 4,
                   textInput(inputId = ns(newTextInputId), label = "Merged level name", placeholder = "Enter new level")
                 ),
-                shiny::column(
+                column(
                   width = 2,
                   br(),
                   br(),
@@ -176,58 +173,59 @@ merge_column_levels_transformator <- function(dataname) {
             multiple = TRUE
           )
         })
-
+        
         trigger <- reactiveVal(0)
-
+        
         observe({
           lapply(counter$ind, function(i) {
             observeEvent(input[[paste0("close_button_", i)]], {
               removeUI(paste0("#", ns(paste0("div_row_", i))), TRUE, TRUE)
-
+              
               counter$ind <- setdiff(counter$ind, i)
               trigger(trigger() + 1)
             })
           })
         })
-
+        
         reset_button_flag <- reactiveVal(FALSE)
-
+        
         # reset button configuration
-        shiny::observeEvent(input$reset_button, {
-          shiny::removeUI(selector = "#mapping_fluid_rows div", TRUE, TRUE)
-
+        observeEvent(input$reset_button, {
+          removeUI(selector = paste0("#", ns("mapping_fluid_rows"), " div"), multiple = TRUE, immediate = TRUE)
+          
           counter$ind <- (counter$prev_max + 1)
+          counter$prev_max <- counter$ind
           newSelectInputId <- paste0("col_levels_", max(counter$ind))
           newTextInputId <- paste0("col_merged_name_", max(counter$ind))
           newActionButtonId <- paste0("close_button_", max(counter$ind))
-
+          
           current_rec <- id_names_map()
           current_rec[[max(counter$ind)]] <- input$selected_columns
           id_names_map(current_rec)
-
-          shiny::insertUI(
-            selector = "#mapping_fluid_rows",
-            ui = shiny::div(
+          
+          insertUI(
+            selector = paste0("#", ns("mapping_fluid_rows")),
+            ui = div(
               id = ns(paste0("div_row_", max(counter$ind))),
-              shiny::fluidRow(
-                shiny::column(
+              fluidRow(
+                column(
                   width = 5,
-                  shiny::selectInput(
+                  selectInput(
                     inputId = ns(newSelectInputId),
                     label = paste0("Merged levels :", input$selected_columns),
                     choices = arm_levels(),
                     multiple = TRUE
                   )
                 ),
-                shiny::column(
+                column(
                   width = 4,
-                  shiny::textInput(inputId = ns(newTextInputId), label = "Merged level name", placeholder = "Enter new level")
+                  textInput(inputId = ns(newTextInputId), label = "Merged level name", placeholder = "Enter new level")
                 ),
-                shiny::column(
+                column(
                   width = 2,
                   br(),
                   br(),
-                  shiny::actionButton(
+                  actionButton(
                     inputId = session$ns(newActionButtonId),
                     label = "X",
                     class = "btn btn-primary",
@@ -239,29 +237,29 @@ merge_column_levels_transformator <- function(dataname) {
             immediate = TRUE,
             multiple = TRUE
           )
-
+          
           reset_button_flag(TRUE)
         })
-
+        
         # generate code dynamically based on the input change & number of items from mapping:
-        data_update <- shiny::eventReactive(list(input$plus_button, input$reset_button, trigger()), {
+        data_update <- eventReactive(list(input$plus_button, input$reset_button, trigger()), {
           final <- list()
           data_list <- list()
-
+          
           if (input$plus_button == 0) {
             return(data_list)
           }
-
+          
           if (reset_button_flag()) {
             reset_button_flag(FALSE)
             return(data_list)
           }
-
+          
           for (i in counter$ind) {
             col_levels <- input[[paste0("col_levels_", i)]]
             col_merged_name <- input[[paste0("col_merged_name_", i)]]
             col_name <- id_names_map()[[i]]
-
+            
             if ((length(col_levels) > 1) & (col_merged_name != "")) {
               data_list <- add_expr(data_list, {
                 substitute(
@@ -285,7 +283,7 @@ merge_column_levels_transformator <- function(dataname) {
           final$data <- bracket_expr(data_list)
           final
         })
-
+        
         # Merge the selected levels into one
         reactive({
           teal.code::eval_code(data(), as.expression(data_update()))
