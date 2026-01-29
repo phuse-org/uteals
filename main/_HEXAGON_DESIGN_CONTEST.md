@@ -15,8 +15,7 @@ package includes:
   [`ggplot_decorator()`](https://github.com/phuse-org/uteals/reference/ggplot_decorator.md),
   [`patchwork_plot_decorator()`](https://github.com/phuse-org/uteals/reference/patchwork_plot_decorator.md),
   …
-- **Transformators**:
-  [`merge_levels_transformator()`](https://github.com/phuse-org/uteals/reference/merge_levels_transformator.md),
+- **Transformators**: `merge_levels_transformator()`,
   [`or_filtering_transformator()`](https://github.com/phuse-org/uteals/reference/or_filtering_transformator.md),
   …
 - **Module Access Management** wrappers:
