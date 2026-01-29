@@ -34,12 +34,11 @@
 #'
 #' @export
 merge_column_levels_transformator <- function(dataname) {
-  
   teal::teal_transform_module(
     label = paste0("Merge Column Levels - ", dataname),
     ui = function(id) {
       ns <- NS(id)
-      
+
       tagList(
         tags$style(
           HTML(
@@ -77,11 +76,11 @@ merge_column_levels_transformator <- function(dataname) {
     server = function(id, data) {
       moduleServer(id, function(input, output, session) {
         ns <- session$ns
-        
+
         arm_levels <- eventReactive(input$selected_columns, {
           levels(data()[[dataname]][[input$selected_columns]])
         })
-        
+
         # Update the column names in the selectInput
         observe({
           trt_columns <- names(data()[[dataname]])
@@ -93,17 +92,17 @@ merge_column_levels_transformator <- function(dataname) {
             choicesOpt = list(subtext = formatters::var_labels(data()[[dataname]]))
           )
         })
-        
+
         counter <- reactiveValues(ind = c(0), prev_max = 0)
         id_names_map <- reactiveVal(list())
-        
+
         observeEvent(list(input$selected_columns), {
           req(input$selected_columns)
-          
+
           if (max(counter$ind) > 0) {
             prevSelectInputId <- paste0("col_levels_", max(counter$ind))
             prevTextInputId <- paste0("col_merged_name_", max(counter$ind))
-            
+
             if (is.null(input[[prevSelectInputId]]) | (input[[prevTextInputId]] == "")) {
               updateSelectInput(
                 session,
@@ -115,29 +114,29 @@ merge_column_levels_transformator <- function(dataname) {
               current_rec <- id_names_map()
               current_rec[[max(counter$ind)]] <- input$selected_columns
               id_names_map(current_rec)
-              
+
               return()
             }
           }
-          
+
           if (length(counter$ind) == 0) { # case of one of close button was clicked
             counter$ind <- c(counter$prev_max + 1)
           } else {
             counter$ind <- c(counter$ind, max(counter$ind) + 1)
           }
-          
+
           counter$prev_max <- max(counter$ind)
           counter$ind <- setdiff(counter$ind, 0)
-          
+
           ## Store the Column label in reactive val
           current_rec <- id_names_map()
           current_rec[[max(counter$ind)]] <- input$selected_columns
           id_names_map(current_rec)
-          
+
           newSelectInputId <- paste0("col_levels_", max(counter$ind))
           newTextInputId <- paste0("col_merged_name_", max(counter$ind))
           newActionButtonId <- paste0("close_button_", max(counter$ind))
-          
+
           insertUI(
             selector = paste0("#", ns("mapping_fluid_rows")),
             ui = div(
@@ -173,36 +172,36 @@ merge_column_levels_transformator <- function(dataname) {
             multiple = TRUE
           )
         })
-        
+
         trigger <- reactiveVal(0)
-        
+
         observe({
           lapply(counter$ind, function(i) {
             observeEvent(input[[paste0("close_button_", i)]], {
               removeUI(paste0("#", ns(paste0("div_row_", i))), TRUE, TRUE)
-              
+
               counter$ind <- setdiff(counter$ind, i)
               trigger(trigger() + 1)
             })
           })
         })
-        
+
         reset_button_flag <- reactiveVal(FALSE)
-        
+
         # reset button configuration
         observeEvent(input$reset_button, {
           removeUI(selector = paste0("#", ns("mapping_fluid_rows"), " div"), multiple = TRUE, immediate = TRUE)
-          
+
           counter$ind <- (counter$prev_max + 1)
           counter$prev_max <- counter$ind
           newSelectInputId <- paste0("col_levels_", max(counter$ind))
           newTextInputId <- paste0("col_merged_name_", max(counter$ind))
           newActionButtonId <- paste0("close_button_", max(counter$ind))
-          
+
           current_rec <- id_names_map()
           current_rec[[max(counter$ind)]] <- input$selected_columns
           id_names_map(current_rec)
-          
+
           insertUI(
             selector = paste0("#", ns("mapping_fluid_rows")),
             ui = div(
@@ -237,29 +236,29 @@ merge_column_levels_transformator <- function(dataname) {
             immediate = TRUE,
             multiple = TRUE
           )
-          
+
           reset_button_flag(TRUE)
         })
-        
+
         # generate code dynamically based on the input change & number of items from mapping:
         data_update <- eventReactive(list(input$plus_button, input$reset_button, trigger()), {
           final <- list()
           data_list <- list()
-          
+
           if (input$plus_button == 0) {
             return(data_list)
           }
-          
+
           if (reset_button_flag()) {
             reset_button_flag(FALSE)
             return(data_list)
           }
-          
+
           for (i in counter$ind) {
             col_levels <- input[[paste0("col_levels_", i)]]
             col_merged_name <- input[[paste0("col_merged_name_", i)]]
             col_name <- id_names_map()[[i]]
-            
+
             if ((length(col_levels) > 1) & (col_merged_name != "")) {
               data_list <- add_expr(data_list, {
                 substitute(
@@ -283,7 +282,7 @@ merge_column_levels_transformator <- function(dataname) {
           final$data <- bracket_expr(data_list)
           final
         })
-        
+
         # Merge the selected levels into one
         reactive({
           teal.code::eval_code(data(), as.expression(data_update()))
