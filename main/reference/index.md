@@ -29,7 +29,7 @@
 
 - [`create_rel_risk_transformator()`](https://github.com/phuse-org/uteals/reference/create_rel_risk_transformator.md)
   **\[experimental\]** : Create Relative risk column
-- [`merge_column_levels_transformator()`](https://github.com/phuse-org/uteals/reference/merge_column_levels_transformator.md)
+- [`merge_levels_transformator()`](https://github.com/phuse-org/uteals/reference/merge_levels_transformator.md)
   **\[experimental\]** : Combine levels of a variable into one level
 - [`or_filtering_transformator()`](https://github.com/phuse-org/uteals/reference/or_filtering_transformator.md)
   **\[experimental\]** : Apply Logical AND/OR filter transformations
