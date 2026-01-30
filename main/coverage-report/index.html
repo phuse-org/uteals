@@ -107,11 +107,1676 @@ table.table-condensed {
       </ul>
       <div class="tab-content" data-tabsetid="covr">
         <div class="tab-pane active" title="Files" data-value="Files" id="tab-covr-1">
-          <div class="datatables html-widget html-fill-item" id="htmlwidget-250c4eb14d817c96a007" style="width:100%;height:500px;"></div>
-          <script type="application/json" data-for="htmlwidget-250c4eb14d817c96a007">{"x":{"filter":"none","vertical":false,"fillContainer":false,"data":[["<a href=\"#\">R/or_filtering_transformator.R<\/a>","<a href=\"#\">R/merge_levels_transformator.R<\/a>","<a href=\"#\">R/ggplot_decorator.R<\/a>","<a href=\"#\">R/forest_plot_decorator.R<\/a>","<a href=\"#\">R/title_footer_decorator.R<\/a>","<a href=\"#\">R/r_access_utilities.R<\/a>","<a href=\"#\">R/create_rel_risk_transformator.R<\/a>","<a href=\"#\">R/patchwork_plot_decorator.R<\/a>","<a href=\"#\">R/or_filtering_transformator_view_model.R<\/a>","<a href=\"#\">R/BlockConditions.R<\/a>"],[365,293,353,370,160,143,84,67,68,55],[191,167,162,145,92,38,31,29,24,11],[0,0,0,0,0,0,0,0,0,0],[191,167,162,145,92,38,31,29,24,11],["0","0","0","0","0","0","0","0","0","0"],["0.00%","0.00%","0.00%","0.00%","0.00%","0.00%","0.00%","0.00%","0.00%","0.00%"]],"container":"<table class=\"row-border\">\n  <thead>\n    <tr>\n      <th>File<\/th>\n      <th>Lines<\/th>\n      <th>Relevant<\/th>\n      <th>Covered<\/th>\n      <th>Missed<\/th>\n      <th>Hits / Line<\/th>\n      <th>Coverage<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"dom":"t","paging":false,"columnDefs":[{"targets":6,"createdCell":"function(td, cellData, rowData, row, col) {\n  var percent = cellData.replace(\"%\", \"\");\n  if (percent > 90) {\n    var grad = \"linear-gradient(90deg, #edfde7 \" + cellData + \", white \" + cellData + \")\";\n  } else if (percent > 75) {\n    var grad = \"linear-gradient(90deg, #f9ffe5 \" + cellData + \", white \" + cellData + \")\";\n  } else {\n    var grad = \"linear-gradient(90deg, #fcece9 \" + cellData + \", white \" + cellData + \")\";\n  }\n  $(td).css(\"background\", grad);\n}\n"},{"className":"dt-right","targets":[1,2,3,4]},{"name":"File","targets":0},{"name":"Lines","targets":1},{"name":"Relevant","targets":2},{"name":"Covered","targets":3},{"name":"Missed","targets":4},{"name":"Hits / Line","targets":5},{"name":"Coverage","targets":6}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\ntable.on('click.dt', 'a', function() {\n  files = $('div#files div');\n  files.not('div.hidden').addClass('hidden');\n  id = $(this).text();\n  files.filter('div[id=\\'' + id + '\\']').removeClass('hidden');\n  $('ul.nav a[data-value=Source]').text(id).tab('show');\n});\n}","selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["options.columnDefs.0.createdCell","callback"],"jsHooks":[]}</script>
+          <div class="datatables html-widget html-fill-item" id="htmlwidget-22928edbc317eaccbc69" style="width:100%;height:500px;"></div>
+          <script type="application/json" data-for="htmlwidget-22928edbc317eaccbc69">{"x":{"filter":"none","vertical":false,"fillContainer":false,"data":[["<a href=\"#\">R/or_filtering_transformator.R<\/a>","<a href=\"#\">R/merge_levels_transformator.R<\/a>","<a href=\"#\">R/ggplot_decorator.R<\/a>","<a href=\"#\">R/forest_plot_decorator.R<\/a>","<a href=\"#\">R/title_footer_decorator.R<\/a>","<a href=\"#\">R/r_access_utilities.R<\/a>","<a href=\"#\">R/create_rel_risk_transformator.R<\/a>","<a href=\"#\">R/patchwork_plot_decorator.R<\/a>","<a href=\"#\">R/or_filtering_transformator_view_model.R<\/a>","<a href=\"#\">R/BlockConditions.R<\/a>"],[365,293,353,370,237,143,84,67,68,55],[191,167,162,145,98,38,31,29,24,11],[0,0,0,0,0,0,0,0,0,0],[191,167,162,145,98,38,31,29,24,11],["0","0","0","0","0","0","0","0","0","0"],["0.00%","0.00%","0.00%","0.00%","0.00%","0.00%","0.00%","0.00%","0.00%","0.00%"]],"container":"<table class=\"row-border\">\n  <thead>\n    <tr>\n      <th>File<\/th>\n      <th>Lines<\/th>\n      <th>Relevant<\/th>\n      <th>Covered<\/th>\n      <th>Missed<\/th>\n      <th>Hits / Line<\/th>\n      <th>Coverage<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"dom":"t","paging":false,"columnDefs":[{"targets":6,"createdCell":"function(td, cellData, rowData, row, col) {\n  var percent = cellData.replace(\"%\", \"\");\n  if (percent > 90) {\n    var grad = \"linear-gradient(90deg, #edfde7 \" + cellData + \", white \" + cellData + \")\";\n  } else if (percent > 75) {\n    var grad = \"linear-gradient(90deg, #f9ffe5 \" + cellData + \", white \" + cellData + \")\";\n  } else {\n    var grad = \"linear-gradient(90deg, #fcece9 \" + cellData + \", white \" + cellData + \")\";\n  }\n  $(td).css(\"background\", grad);\n}\n"},{"className":"dt-right","targets":[1,2,3,4]},{"name":"File","targets":0},{"name":"Lines","targets":1},{"name":"Relevant","targets":2},{"name":"Covered","targets":3},{"name":"Missed","targets":4},{"name":"Hits / Line","targets":5},{"name":"Coverage","targets":6}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\ntable.on('click.dt', 'a', function() {\n  files = $('div#files div');\n  files.not('div.hidden').addClass('hidden');\n  id = $(this).text();\n  files.filter('div[id=\\'' + id + '\\']').removeClass('hidden');\n  $('ul.nav a[data-value=Source]').text(id).tab('show');\n});\n}","selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["options.columnDefs.0.createdCell","callback"],"jsHooks":[]}</script>
         </div>
         <div class="tab-pane" title="Source" data-value="Source" id="tab-covr-2">
           <div id="files">
+            <div id="R/title_footer_decorator.R" class="hidden">
+              <table class="table-condensed">
+                <tbody>
+                  <tr class="never">
+                    <td class="num">1</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' Title and Footer Decorator</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">2</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">3</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @description `r lifecycle::badge("experimental")`</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">4</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' A function to create a UI component for selecting a title and footer</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">5</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' for tables or plots. It reads title information from a specified Excel</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">6</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' file and allows users to choose a title from the provided options.</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">7</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' It also provides user with flexibility to customize the title and footer</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">8</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' according to their specific needs.</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">9</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @param output_name (`character(1)`) a name for the output object (e.g., a plot or table).</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">10</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @param titles_file (`character(1)`) the path to an Excel file containing title and footer</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">11</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' information. The function expects the titles to be in the first sheet</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">12</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' named `Sheet1`.</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">13</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @param choices (`character`) an array of titles and footers, which are available for</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">14</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' selection. Default `NULL`, indicates all titles and footers are available.</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">15</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @param selected (`character(1)`) the selected title or footer. Default `NULL`,</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">16</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' indicates no title or footer is selected.</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">17</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">18</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @return [`teal::teal_transform_module()`]</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">19</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">20</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @details The module creates a UI with a dropdown for selecting a title.</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">21</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' Once a title is selected, it updates the output by either adding titles to</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">22</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' a table or modifying a plot's title and caption accordingly.</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">23</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' Additionally, it includes a checkbox that user can check to enable</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">24</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' customization, allowing them to enter their own values for the title and</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">25</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' footer in the designated input fields.</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">26</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">27</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @seealso For the exact Excel workbook layout expected by this function, see the package vignette:</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">28</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' `vignette("title-footer-decorator-excel-structure", package = "uteals")`</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">29</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">30</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @import openxlsx ggplotify ggplot2 patchwork teal shiny</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">31</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @importFrom grDevices graphics.off</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">32</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">33</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @examples</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">34</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' library(openxlsx)</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">35</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' library(teal.modules.general)</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">36</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">37</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' example_excel &lt;- data.frame(</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">38</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'   `TABLE ID` = c(</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">39</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'     "DO_NOT_DELETE",</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">40</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'     "TSFAE01A", "TSFAE01A", "TSFAE01A",</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">41</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'     "TSFAE01B", "TSFAE01B"</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">42</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'   ),</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">43</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'   IDENTIFIER = c(</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">44</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'     "DO_NOT_DELETE",</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">45</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'     "TITLE", "FOOTNOTE1", "FOOTNOTE2",</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">46</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'     "TITLE", "FOOTNOTE1"</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">47</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'   ),</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">48</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'   TEXT = c(</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">49</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'     "DO_NOT_DELETE",</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">50</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'     "Adverse Events Summary A", "Source: Clinical Study Report", "Confidential",</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">51</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'     "Adverse Events Summary B", "Draft Version"</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">52</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'   ),</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">53</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'   stringsAsFactors = FALSE,</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">54</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'   check.names = FALSE</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">55</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' )</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">56</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">57</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' temp_titles &lt;- tempfile(fileext = ".xlsx")</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">58</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' write.xlsx(example_excel, temp_titles, sheetName = "Sheet1", asTable = TRUE)</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">59</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' plot_module &lt;- tm_g_scatterplot(</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">60</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'   label = "Scatter Plot",</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">61</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'   x = data_extract_spec(</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">62</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'     dataname = "IRIS",</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">63</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'     select = select_spec(</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">64</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'       choices = variable_choices(</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">65</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'         "IRIS", c("Sepal.Length", "Sepal.Width")</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">66</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'       ), selected = "Sepal.Length"</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">67</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'     )</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">68</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'   ),</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">69</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'   y = data_extract_spec(</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">70</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'     dataname = "IRIS",</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">71</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'     select = select_spec(</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">72</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'       choices = variable_choices(</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">73</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'         "IRIS", c("Petal.Length", "Petal.Width")</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">74</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'       ), selected = "Petal.Length"</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">75</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'     )</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">76</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'   ),</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">77</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'   decorators = list(</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">78</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'     plot = title_footer_decorator(</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">79</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'       "plot", temp_titles,</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">80</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'       choices = c("TSFAE01A", "TSFAE01B"), selected = NULL</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">81</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'     )</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">82</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'   )</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">83</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' )</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">84</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">85</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' # Initialize the teal app</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">86</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' app &lt;- init(</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">87</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'   data = teal_data(IRIS = iris),</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">88</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'   modules = list(plot_module)</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">89</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' )</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">90</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">91</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' # Run the app</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">92</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' if (interactive()) {</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">93</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'   shinyApp(app$ui, app$server)</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">94</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' }</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">95</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">96</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @export</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">97</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">title_footer_decorator &lt;- function(output_name, titles_file, choices = NULL, selected = NULL) {</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">98</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  checkmate::assert_string(output_name)</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">99</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  checkmate::assert_string(titles_file)</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">100</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  checkmate::assert_character(choices, null.ok = TRUE)</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">101</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  checkmate::assert_string(selected, null.ok = TRUE)</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">102</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">103</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  titles &lt;- openxlsx::read.xlsx(titles_file, "Sheet1")</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">104</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  titles$TABLE.ID[1] &lt;- "blank"</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">105</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">106</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  choices &lt;- `if`(is.null(choices), unique(titles$TABLE.ID), intersect(choices, titles$TABLE.ID))</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">107</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  checkmate::assert(</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">108</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    checkmate::check_null(selected),</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">109</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    \() `if`(selected %in% choices, TRUE, "selected must be one of the choices")</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">110</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  )</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">111</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">112</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">113</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  teal::teal_transform_module(</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">114</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    label = "Title and footer decorator",</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">115</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    ui = function(id) {</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">116</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">      ns &lt;- NS(id)</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">117</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">      tagList(</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">118</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">        div(</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">119</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">          selectInput(ns("selectTitle"), label = "Select Title", choices = choices, selected = selected),</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">120</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">          checkboxInput(ns("customize"), label = "Customize Title and Footer", value = FALSE),</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">121</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">          uiOutput(ns("customInputs"))</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">122</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">        )</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">123</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">      )</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">124</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    },</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">125</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    server = function(id, data) {</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">126</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">      moduleServer(id, function(input, output, session) {</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">127</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">        # Render UI for custom title and footer when checkbox is checked</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">128</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">        output$customInputs &lt;- renderUI({</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">129</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">          if (input$customize) {</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">130</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">            tagList(</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">131</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              textInput(session$ns("customTitle"), label = "Custom Title", value = ""),</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">132</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              textInput(session$ns("customFooter"), label = "Custom Footer", value = "")</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">133</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">            )</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">134</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">          }</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">135</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">        })</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">136</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">        reactive({</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">137</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">          req(data())</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">138</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">139</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">          res &lt;- within(</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">140</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">            data(),</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">141</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">            {</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">142</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              grDevices::graphics.off()</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">143</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              titles_footers &lt;- list()</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">144</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              titles_footers$title &lt;- ""</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">145</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              titles_footers$main_footer &lt;- ""</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">146</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">            },</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">147</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">            titles_file = titles_file,</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">148</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">            output_type = output_name,</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">149</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">            output_name = as.name(output_name),</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">150</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">            selectTitle = input$selectTitle,</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">151</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">            customize = input$customize,</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">152</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">            customTitle = input$customTitle,</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">153</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">            customFooter = input$customFooter</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">154</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">          )</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">155</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">          # Determine the title and footer</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">156</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">          if (input$customize) {</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">157</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">            res &lt;- within(</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">158</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              res,</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">159</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              {</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">160</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                titles_footers$title &lt;- if (!is.null(customTitle)) customTitle else "default"</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">161</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                titles_footers$main_footer &lt;- if (!is.null(customFooter)) customFooter else "default"</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">162</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              },</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">163</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              titles_file = titles_file,</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">164</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              output_type = output_name,</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">165</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              output_name = as.name(output_name),</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">166</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              selectTitle = input$selectTitle,</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">167</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              customize = input$customize,</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">168</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              customTitle = input$customTitle,</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">169</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              customFooter = input$customFooter</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">170</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">            )</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">171</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">          } else if (input$selectTitle != "blank") {</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">172</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">            res &lt;- within(</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">173</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              res,</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">174</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              {</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">175</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                titles_footers &lt;- junco::get_titles_from_file(selectTitle, file = titles_file)</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">176</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              },</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">177</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              titles_file = titles_file,</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">178</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              output_type = output_name,</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">179</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              output_name = as.name(output_name),</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">180</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              selectTitle = input$selectTitle,</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">181</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              customize = input$customize,</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">182</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              customTitle = input$customTitle,</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">183</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              customFooter = input$customFooter</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">184</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">            )</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">185</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">          }</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">186</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">187</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">          if (output_name == "table") {</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">188</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">            res &lt;- within(</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">189</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              res,</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">190</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              {</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">191</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                output_name &lt;- junco::set_titles(output_name, titles_footers)</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">192</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              },</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">193</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              titles_file = titles_file,</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">194</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              output_type = output_name,</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">195</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              output_name = as.name(output_name),</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">196</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              selectTitle = input$selectTitle,</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">197</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              customize = input$customize,</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">198</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              customTitle = input$customTitle,</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">199</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              customFooter = input$customFooter</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">200</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">            )</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">201</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">          } else {</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">202</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">            res &lt;- within(</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">203</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              res,</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">204</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              {</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">205</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                if (length(titles_footers$main_footer) &gt; 1) {</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">206</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                  titles_footers$main_footer &lt;- paste(titles_footers$main_footer, collapse = "\n")</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">207</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                }</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">208</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">209</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                if ((inherits(output_name, "ggplot")) &amp;&amp; (inherits(output_name, "patchwork"))) {</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">210</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                  output_name &lt;- output_name +</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">211</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                    patchwork::plot_annotation(title = titles_footers$title, caption = titles_footers$main_footer)</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">212</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                } else if ((inherits(output_name, "ggplot")) &amp;&amp; !(inherits(output_name, "patchwork"))) {</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">213</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                  output_name &lt;- output_name +</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">214</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                    ggplot2::labs(title = titles_footers$title, caption = titles_footers$main_footer) +</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">215</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0))</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">216</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                } else if ((inherits(output_name, "trellis")) || (inherits(output_name, "grob"))) {</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">217</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                  output_name &lt;- ggplotify::as.ggplot(output_name) +</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">218</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                    ggplot2::labs(title = titles_footers$title, caption = titles_footers$main_footer) +</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">219</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0))</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">220</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                } else {</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">221</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                  output_name &lt;- output_name</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">222</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                }</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">223</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              },</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">224</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              titles_file = titles_file,</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">225</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              output_type = output_name,</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">226</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              output_name = as.name(output_name),</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">227</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              selectTitle = input$selectTitle,</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">228</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              customize = input$customize,</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">229</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              customTitle = input$customTitle,</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">230</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              customFooter = input$customFooter</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">231</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">            )</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">232</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">          }</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">233</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">        })</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">234</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">      })</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">235</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    }</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">236</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  )</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">237</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">}</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             <div id="R/forest_plot_decorator.R" class="hidden">
               <table class="table-condensed">
                 <tbody>
@@ -10280,1132 +11945,6 @@ table.table-condensed {
                     <td class="coverage"></td>
                     <td class="col-sm-12">
                       <pre class="language-r">)</pre>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div id="R/title_footer_decorator.R" class="hidden">
-              <table class="table-condensed">
-                <tbody>
-                  <tr class="never">
-                    <td class="num">1</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' Title and Footer Decorator</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">2</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">3</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @description `r lifecycle::badge("experimental")`</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">4</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' A function to create a UI component for selecting a title and footer</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">5</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' for tables or plots. It reads title information from a specified Excel</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">6</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' file and allows users to choose a title from the provided options.</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">7</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' It also provides user with flexibility to customize the title and footer</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">8</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' according to their specific needs.</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">9</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @param output_name (`character(1)`) a name for the output object (e.g., a plot or table).</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">10</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @param titles_file (`character(1)`) the path to an Excel file containing title and footer</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">11</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' information. The function expects the titles to be in the first sheet</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">12</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' named `Sheet1`.</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">13</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">14</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @return [`teal::teal_transform_module()`]</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">15</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">16</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @details The module creates a UI with a dropdown for selecting a title.</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">17</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' Once a title is selected, it updates the output by either adding titles to</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">18</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' a table or modifying a plot's title and caption accordingly.</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">19</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' Additionally, it includes a checkbox that user can check to enable</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">20</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' customization, allowing them to enter their own values for the title and</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">21</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' footer in the designated input fields.</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">22</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">23</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @seealso For the exact Excel workbook layout expected by this function, see the package vignette:</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">24</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' `vignette("title-footer-decorator-excel-structure", package = "uteals")`</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">25</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">26</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @import openxlsx ggplotify ggplot2 patchwork teal shiny</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">27</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @importFrom grDevices graphics.off</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">28</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">29</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @export</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">30</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">title_footer_decorator &lt;- function(output_name, titles_file) {</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">31</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  checkmate::assert_string(output_name)</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">32</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  checkmate::assert_string(titles_file)</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">33</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r"></pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">34</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  titles &lt;- openxlsx::read.xlsx(titles_file, "Sheet1")</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">35</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  titles$TABLE.ID[1] &lt;- "blank"</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">36</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  teal::teal_transform_module(</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">37</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">    label = "Title and footer decorator",</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">38</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">    ui = function(id) {</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">39</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">      ns &lt;- NS(id)</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">40</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">      tagList(</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">41</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">        div(</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">42</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">          selectInput(ns("selectTitle"), label = "Select Title", choices = unique(titles$TABLE.ID)),</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">43</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">          checkboxInput(ns("customize"), label = "Customize Title and Footer", value = FALSE),</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">44</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">          uiOutput(ns("customInputs"))</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">45</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">        )</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">46</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">      )</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">47</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">    },</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">48</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">    server = function(id, data) {</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">49</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">      moduleServer(id, function(input, output, session) {</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">50</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">        # Render UI for custom title and footer when checkbox is checked</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">51</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">        output$customInputs &lt;- renderUI({</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">52</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">          if (input$customize) {</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">53</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">            tagList(</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">54</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              textInput(session$ns("customTitle"), label = "Custom Title", value = ""),</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">55</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              textInput(session$ns("customFooter"), label = "Custom Footer", value = "")</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">56</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">            )</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">57</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">          }</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">58</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">        })</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">59</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">        reactive({</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">60</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">          req(data())</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">61</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r"></pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">62</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">          res &lt;- within(</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">63</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">            data(),</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">64</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">            {</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">65</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              grDevices::graphics.off()</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">66</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              titles_footers &lt;- list()</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">67</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              titles_footers$title &lt;- ""</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">68</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              titles_footers$main_footer &lt;- ""</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">69</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">            },</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">70</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">            titles_file = titles_file,</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">71</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">            output_type = output_name,</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">72</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">            output_name = as.name(output_name),</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">73</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">            selectTitle = input$selectTitle,</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">74</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">            customize = input$customize,</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">75</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">            customTitle = input$customTitle,</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">76</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">            customFooter = input$customFooter</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">77</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">          )</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">78</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">          # Determine the title and footer</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">79</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">          if (input$customize) {</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">80</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">            res &lt;- within(</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">81</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              res,</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">82</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              {</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">83</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                titles_footers$title &lt;- if (!is.null(customTitle)) customTitle else "default"</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">84</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                titles_footers$main_footer &lt;- if (!is.null(customFooter)) customFooter else "default"</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">85</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              },</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">86</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              titles_file = titles_file,</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">87</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              output_type = output_name,</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">88</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              output_name = as.name(output_name),</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">89</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              selectTitle = input$selectTitle,</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">90</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              customize = input$customize,</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">91</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              customTitle = input$customTitle,</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">92</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              customFooter = input$customFooter</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">93</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">            )</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">94</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">          } else if (input$selectTitle != "blank") {</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">95</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">            res &lt;- within(</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">96</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              res,</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">97</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              {</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">98</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                titles_footers &lt;- junco::get_titles_from_file(selectTitle, file = titles_file)</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">99</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              },</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">100</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              titles_file = titles_file,</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">101</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              output_type = output_name,</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">102</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              output_name = as.name(output_name),</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">103</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              selectTitle = input$selectTitle,</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">104</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              customize = input$customize,</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">105</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              customTitle = input$customTitle,</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">106</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              customFooter = input$customFooter</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">107</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">            )</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">108</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">          }</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">109</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r"></pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">110</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">          if (output_name == "table") {</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">111</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">            res &lt;- within(</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">112</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              res,</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">113</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              {</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">114</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                output_name &lt;- junco::set_titles(output_name, titles_footers)</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">115</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              },</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">116</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              titles_file = titles_file,</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">117</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              output_type = output_name,</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">118</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              output_name = as.name(output_name),</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">119</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              selectTitle = input$selectTitle,</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">120</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              customize = input$customize,</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">121</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              customTitle = input$customTitle,</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">122</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              customFooter = input$customFooter</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">123</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">            )</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">124</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">          } else {</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">125</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">            res &lt;- within(</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">126</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              res,</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">127</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              {</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">128</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                if (length(titles_footers$main_footer) &gt; 1) {</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">129</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                  titles_footers$main_footer &lt;- paste(titles_footers$main_footer, collapse = "\n")</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">130</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                }</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">131</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r"></pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">132</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                if ((inherits(output_name, "ggplot")) &amp;&amp; (inherits(output_name, "patchwork"))) {</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">133</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                  output_name &lt;- output_name +</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">134</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                    patchwork::plot_annotation(title = titles_footers$title, caption = titles_footers$main_footer)</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">135</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                } else if ((inherits(output_name, "ggplot")) &amp;&amp; !(inherits(output_name, "patchwork"))) {</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">136</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                  output_name &lt;- output_name +</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">137</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                    ggplot2::labs(title = titles_footers$title, 100, caption = titles_footers$main_footer) +</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">138</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0))</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">139</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                } else if ((inherits(output_name, "trellis")) || (inherits(output_name, "grob"))) {</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">140</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                  output_name &lt;- ggplotify::as.ggplot(output_name) +</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">141</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                    ggplot2::labs(title = titles_footers$title, 100, caption = titles_footers$main_footer) +</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">142</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0))</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">143</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                } else {</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">144</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                  output_name &lt;- output_name</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">145</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                }</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">146</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              },</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">147</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              titles_file = titles_file,</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">148</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              output_type = output_name,</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">149</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              output_name = as.name(output_name),</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">150</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              selectTitle = input$selectTitle,</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">151</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              customize = input$customize,</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">152</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              customTitle = input$customTitle,</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">153</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              customFooter = input$customFooter</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">154</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">            )</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">155</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">          }</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">156</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">        })</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">157</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">      })</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">158</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">    }</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">159</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  )</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">160</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">}</pre>
                     </td>
                   </tr>
                 </tbody>
