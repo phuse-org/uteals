@@ -45,14 +45,14 @@ Imports:
   teal,
   teal.code,
   tern,
-  yaml
+  yaml,
+  teal.modules.clinical
 Suggests:
   forcats,
   knitr,
   rAccess,
   rmarkdown,
   teal.data,
-  teal.modules.clinical,
   teal.modules.general,
   teal.transform
 VignetteBuilder: knitr
