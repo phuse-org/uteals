@@ -24,7 +24,7 @@
 #'   data = teal.data::teal_data(IRIS = iris, code = "IRIS <- iris"),
 #'   modules = teal::modules(
 #'     teal::example_module(
-#'       transformators = list(uteals::merge_column_levels_transformator("IRIS"))
+#'       transformators = list(uteals::merge_levels_transformator("IRIS"))
 #'     )
 #'   )
 #' )
@@ -33,7 +33,7 @@
 #' }
 #'
 #' @export
-merge_column_levels_transformator <- function(dataname) {
+merge_levels_transformator <- function(dataname) {
   
   teal::teal_transform_module(
     label = paste0("Merge Column Levels - ", dataname),
