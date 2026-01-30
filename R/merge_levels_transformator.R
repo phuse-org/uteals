@@ -24,7 +24,7 @@
 #'   data = teal.data::teal_data(IRIS = iris, code = "IRIS <- iris"),
 #'   modules = teal::modules(
 #'     teal::example_module(
-#'       transformators = list(merge_levels_transformator("IRIS"))
+#'       transformators = list(uteals::merge_column_levels_transformator("IRIS"))
 #'     )
 #'   )
 #' )
