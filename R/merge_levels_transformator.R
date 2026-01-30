@@ -15,6 +15,7 @@
 #'
 #' @import teal shiny shinyWidgets
 #' @importFrom teal.code eval_code
+#' @importFrom teal.modules.clinical add_expr bracket_expr
 #'
 #' @return `teal::teal_transform_module`
 #'
@@ -24,7 +25,7 @@
 #'   data = teal.data::teal_data(IRIS = iris, code = "IRIS <- iris"),
 #'   modules = teal::modules(
 #'     teal::example_module(
-#'       transformators = list(merge_levels_transformator("IRIS"))
+#'       transformators = list(uteals::merge_levels_transformator("IRIS"))
 #'     )
 #'   )
 #' )
@@ -33,7 +34,7 @@
 #' }
 #'
 #' @export
-merge_column_levels_transformator <- function(dataname) {
+merge_levels_transformator <- function(dataname) {
   teal::teal_transform_module(
     label = paste0("Merge Column Levels - ", dataname),
     ui = function(id) {
@@ -100,14 +101,14 @@ merge_column_levels_transformator <- function(dataname) {
           req(input$selected_columns)
 
           if (max(counter$ind) > 0) {
-            prevSelectInputId <- paste0("col_levels_", max(counter$ind))
-            prevTextInputId <- paste0("col_merged_name_", max(counter$ind))
+            prev_select_inputid <- paste0("col_levels_", max(counter$ind))
+            prev_text_inputid <- paste0("col_merged_name_", max(counter$ind))
 
-            if (is.null(input[[prevSelectInputId]]) | (input[[prevTextInputId]] == "")) {
+            if (is.null(input[[prev_select_inputid]]) | (input[[prev_text_inputid]] == "")) {
               updateSelectInput(
                 session,
                 label = paste0("Merged levels :", input$selected_columns),
-                inputId = prevSelectInputId,
+                inputId = prev_select_inputid,
                 choices = arm_levels()
               )
               ## Store the Column label in reactive val
@@ -133,9 +134,9 @@ merge_column_levels_transformator <- function(dataname) {
           current_rec[[max(counter$ind)]] <- input$selected_columns
           id_names_map(current_rec)
 
-          newSelectInputId <- paste0("col_levels_", max(counter$ind))
-          newTextInputId <- paste0("col_merged_name_", max(counter$ind))
-          newActionButtonId <- paste0("close_button_", max(counter$ind))
+          new_select_inputid <- paste0("col_levels_", max(counter$ind))
+          new_text_inputid <- paste0("col_merged_name_", max(counter$ind))
+          new_action_buttonid <- paste0("close_button_", max(counter$ind))
 
           insertUI(
             selector = paste0("#", ns("mapping_fluid_rows")),
@@ -145,7 +146,7 @@ merge_column_levels_transformator <- function(dataname) {
                 column(
                   width = 5,
                   selectInput(
-                    inputId = ns(newSelectInputId),
+                    inputId = ns(new_select_inputid),
                     label = paste0("Merged levels :", input$selected_columns),
                     choices = arm_levels(),
                     multiple = TRUE
@@ -153,17 +154,25 @@ merge_column_levels_transformator <- function(dataname) {
                 ),
                 column(
                   width = 4,
-                  textInput(inputId = ns(newTextInputId), label = "Merged level name", placeholder = "Enter new level")
+                  textInput(
+                    inputId = ns(new_text_inputid),
+                    label = "Merged level name",
+                    placeholder = "Enter new level"
+                  )
                 ),
                 column(
                   width = 2,
                   br(),
                   br(),
                   actionButton(
-                    inputId = session$ns(newActionButtonId),
+                    inputId = session$ns(new_action_buttonid),
                     label = "X",
                     class = "btn btn-primary",
-                    style = "color: white;background: #ed6e6e;font-size: 10px;border: antiquewhite;height: 19px;width: 17px;padding: 2px;"
+                    style = paste0(
+                      "color: white;background: #ed6e6e;font-size:",
+                      " 10px;border: antiquewhite;height:",
+                      " 19px;width: 17px;padding: 2px;"
+                    )
                   )
                 )
               )
@@ -194,9 +203,9 @@ merge_column_levels_transformator <- function(dataname) {
 
           counter$ind <- (counter$prev_max + 1)
           counter$prev_max <- counter$ind
-          newSelectInputId <- paste0("col_levels_", max(counter$ind))
-          newTextInputId <- paste0("col_merged_name_", max(counter$ind))
-          newActionButtonId <- paste0("close_button_", max(counter$ind))
+          new_select_inputid <- paste0("col_levels_", max(counter$ind))
+          new_text_inputid <- paste0("col_merged_name_", max(counter$ind))
+          new_action_buttonid <- paste0("close_button_", max(counter$ind))
 
           current_rec <- id_names_map()
           current_rec[[max(counter$ind)]] <- input$selected_columns
@@ -210,7 +219,7 @@ merge_column_levels_transformator <- function(dataname) {
                 column(
                   width = 5,
                   selectInput(
-                    inputId = ns(newSelectInputId),
+                    inputId = ns(new_select_inputid),
                     label = paste0("Merged levels :", input$selected_columns),
                     choices = arm_levels(),
                     multiple = TRUE
@@ -218,17 +227,25 @@ merge_column_levels_transformator <- function(dataname) {
                 ),
                 column(
                   width = 4,
-                  textInput(inputId = ns(newTextInputId), label = "Merged level name", placeholder = "Enter new level")
+                  textInput(
+                    inputId = ns(new_text_inputid),
+                    label = "Merged level name",
+                    placeholder = "Enter new level"
+                  )
                 ),
                 column(
                   width = 2,
                   br(),
                   br(),
                   actionButton(
-                    inputId = session$ns(newActionButtonId),
+                    inputId = session$ns(new_action_buttonid),
                     label = "X",
                     class = "btn btn-primary",
-                    style = "color: white;background: #ed6e6e;font-size: 10px;border: antiquewhite;height: 19px;width: 17px;padding: 2px;"
+                    style = paste0(
+                      "color: white;background: #ed6e6e;font-size:",
+                      " 10px;border: antiquewhite;height: ",
+                      "19px;width: 17px;padding: 2px;"
+                    )
                   )
                 )
               )
@@ -260,7 +277,7 @@ merge_column_levels_transformator <- function(dataname) {
             col_name <- id_names_map()[[i]]
 
             if ((length(col_levels) > 1) & (col_merged_name != "")) {
-              data_list <- add_expr(data_list, {
+              data_list <- teal.modules.clinical::add_expr(data_list, {
                 substitute(
                   expr = {
                     dataname[[col_name]] <- as.character(dataname[[col_name]])
@@ -279,7 +296,7 @@ merge_column_levels_transformator <- function(dataname) {
               })
             }
           }
-          final$data <- bracket_expr(data_list)
+          final$data <- teal.modules.clinical::bracket_expr(data_list)
           final
         })
 
