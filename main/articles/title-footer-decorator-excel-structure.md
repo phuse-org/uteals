@@ -7,7 +7,7 @@ lists table identifiers and, for each table, a `TITLE` row and zero or
 more `FOOTNOTE` rows.
 
 The function expects the titles to be in the first sheet named `Sheet1`.
-The column names must be the first row of the file (i.e. `TABLE_ID`,
+The column names must be the first row of the file (i.e. `TABLE ID`,
 `IDENTIFIER`, `TEXT`).
 
 Below is an example of a table that would work for the decorator. The
@@ -17,7 +17,7 @@ part of the file.
 ``` r
 
 example_excel <- data.frame(
-  TABLE_ID = c(
+  `TABLE ID` = c(
     "DO_NOT_DELETE",
     "TSFAE01A", "TSFAE01A", "TSFAE01A", "TSFAE01A", "TSFAE01A", "TSFAE01A", "TSFAE01A",
     "TSFAE01B", "TSFAE01B", "TSFAE01B", "TSFAE01B", "TSFAE01B", "TSFAE01B", "TSFAE01B"
@@ -34,13 +34,14 @@ example_excel <- data.frame(
     "Some title", "First part of footnote", "Another part of footnote", "Another part of footnote",
     "Another part of footnote", "Another part of footnote", "Another part of footnote"
   ),
-  stringsAsFactors = FALSE
+  stringsAsFactors = FALSE,
+  check.names = FALSE
 )
 
 knitr::kable(example_excel)
 ```
 
-| TABLE_ID      | IDENTIFIER    | TEXT                     |
+| TABLE ID      | IDENTIFIER    | TEXT                     |
 |:--------------|:--------------|:-------------------------|
 | DO_NOT_DELETE | DO_NOT_DELETE | DO_NOT_DELETE            |
 | TSFAE01A      | TITLE         | Some title               |
