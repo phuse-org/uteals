@@ -107,7 +107,7 @@ merge_levels_transformator <- function(dataname) {
               updateSelectInput(
                 session,
                 label = paste0("Merged levels :", input$selected_columns),
-                inputId = prev_select_inputId,
+                inputId = prev_select_inputid,
                 choices = arm_levels()
               )
               ## Store the Column label in reactive val
@@ -270,7 +270,7 @@ merge_levels_transformator <- function(dataname) {
             col_name <- id_names_map()[[i]]
 
             if ((length(col_levels) > 1) & (col_merged_name != "")) {
-              data_list <- add_expr(data_list, {
+              data_list <- teal.modules.clinical.junco::add_expr(data_list, {
                 substitute(
                   expr = {
                     dataname[[col_name]] <- as.character(dataname[[col_name]])
@@ -289,7 +289,7 @@ merge_levels_transformator <- function(dataname) {
               })
             }
           }
-          final$data <- bracket_expr(data_list)
+          final$data <- teal.modules.clinical.junco::bracket_expr(data_list)
           final
         })
 
