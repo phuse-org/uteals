@@ -153,9 +153,11 @@ merge_levels_transformator <- function(dataname) {
                 ),
                 column(
                   width = 4,
-                  textInput(inputId = ns(new_text_inputid),
-                            label = "Merged level name",
-                            placeholder = "Enter new level")
+                  textInput(
+                    inputId = ns(new_text_inputid),
+                    label = "Merged level name",
+                    placeholder = "Enter new level"
+                  )
                 ),
                 column(
                   width = 2,
@@ -224,9 +226,11 @@ merge_levels_transformator <- function(dataname) {
                 ),
                 column(
                   width = 4,
-                  textInput(inputId = ns(new_text_inputid),
-                            label = "Merged level name",
-                            placeholder = "Enter new level")
+                  textInput(
+                    inputId = ns(new_text_inputid),
+                    label = "Merged level name",
+                    placeholder = "Enter new level"
+                  )
                 ),
                 column(
                   width = 2,
@@ -236,9 +240,11 @@ merge_levels_transformator <- function(dataname) {
                     inputId = session$ns(new_action_buttonid),
                     label = "X",
                     class = "btn btn-primary",
-                    style = paste0("color: white;background: #ed6e6e;font-size:",
-                                   " 10px;border: antiquewhite;height: ",
-                                   "19px;width: 17px;padding: 2px;")
+                    style = paste0(
+                      "color: white;background: #ed6e6e;font-size:",
+                      " 10px;border: antiquewhite;height: ",
+                      "19px;width: 17px;padding: 2px;"
+                    )
                   )
                 )
               )
