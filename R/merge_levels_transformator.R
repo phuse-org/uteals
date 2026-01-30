@@ -15,6 +15,7 @@
 #'
 #' @import teal shiny shinyWidgets
 #' @importFrom teal.code eval_code
+#' @importFrom teal.modules.clinical add_expr bracket_expr
 #'
 #' @return `teal::teal_transform_module`
 #'
