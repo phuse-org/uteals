@@ -1,5 +1,5 @@
 Package: uteals
-Title: Decorators and Transformators for `teal` Modules
+Title: Shared Utilities to Extend the 'teal' Modules
 Language: en-US
 Version: 0.0.2.9000
 Date: 2025-10-12
@@ -8,7 +8,7 @@ Authors@R:
     c(
       person("Nadia", "Abraham", , "NAbraha5@ITS.JNJ.com", role = "aut"),
       person("Chanchal", "Bhalla", , "CBhalla@ITS.JNJ.com", role = "aut"),
-      person("Peyman", "Eshghi", , "PEshghi@its.jnj.com", role = c("aut", "cre")),
+      person("Peyman", "Eshghi", , "peymaan.es@gmail.com", role = c("aut", "cre")),
       person("Pranith", "Gourisetty", , "PGourise@ITS.JNJ.com", role = "aut"),
       person("Sohan", "Lal", , "SLal8@ITS.JNJ.com", role = "aut"),
       person("Przemyslaw", "Posiadala", , "PPosiada@ITS.JNJ.com", role = "aut"),
