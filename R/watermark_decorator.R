@@ -2,7 +2,8 @@
 #'
 #' @description `r lifecycle::badge("experimental")`
 #' A function to create a UI component for selecting watermark text
-#' for tables or plots. 
+#' for plots. 
+#' Note: Currently tables are not supported
 #' @param output_name (`character(1)`) a name for the output object (e.g., a plot or table).
 #' @param watermark_text (`character(1)`) text to display for the watermark
 #' @param font_size (`character(1)`) font size for the watermark text
@@ -66,32 +67,18 @@ watermark_decorator <- function(output_name, watermark_text = "", font_size = 90
             txtWatermark = input$txtWatermark
           )
           
-          if (output_name == "table") {
-            res <- within(
-              res,
-              {
-                output_name <- gridify::gridify(
-                  object = rtables.officer::tt_to_flextable(output_name, theme = NULL),
-                  layout = gridify_layout
-                ) %>%
-                  set_cell("watermark", watermark_text)
-
-              },
-              output_name = as.name(output_name)
-            )
-          } else {
-            res <- within(
-              res,
-              {
-                output_name <- gridify::gridify(
-                  object = cowplot::as_grob(output_name),
-                  layout = gridify_layout
-                ) %>%
-                  set_cell("watermark", watermark_text)
-              },
-              output_name = as.name(output_name)
-            )
-          }
+          res <- within(
+            res,
+            {
+              output_name <- gridify::gridify(
+                object = cowplot::as_grob(output_name),
+                layout = gridify_layout
+              ) %>%
+                set_cell("watermark", watermark_text)
+            },
+            output_name = as.name(output_name)
+          )
+          
         })
       })
     }
