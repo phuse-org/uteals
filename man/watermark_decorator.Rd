@@ -19,7 +19,8 @@ watermark_decorator(output_name, watermark_text = "", font_size = 90)
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 A function to create a UI component for selecting watermark text
-for tables or plots.
+for plots.
+Note: Currently tables are not supported
 }
 \details{
 The module creates a UI with textInput for specifying watermark text and
