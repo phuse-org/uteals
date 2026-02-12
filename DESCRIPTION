@@ -16,8 +16,12 @@ Authors@R:
       person("Konrad", "Pagacz", , "konrad.pagacz@gmail.com", role = "aut"),
       person(given = "PHUSE",  role = "cph")
     )
-Description: Provides common decorators and transformators, and other utility
-    functions to extends 'teal' framework.
+Description: Provides decorators, transformators, and utility functions
+    to extend the 'teal' framework for interactive data analysis
+    applications. Implements methods for data visualization enhancement,
+    statistical data transformations, and workflow integration tools.
+    Designed to support clinical and pharmaceutical research workflows
+    within the 'teal' ecosystem through modular and reusable components.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
