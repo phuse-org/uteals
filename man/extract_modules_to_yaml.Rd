@@ -27,5 +27,6 @@ mods <- teal::modules(
   teal::example_module("mod2")
 )
 labels <- extract_modules_to_yaml(mods, "panel_str_modules.yml")
+unlink("panel_str_modules.yml")
 
 }
