@@ -7,6 +7,7 @@
 #' @param mods (`teal_module` or `teal_modules`) a teal modules object
 #'   containing the module structure.
 #' @param filepath (`character(1)`) character string specifying the output `YAML` file path.
+#' @param verbose (`logical(1)`) whether to print informational messages. Default is `FALSE`.
 #'
 #' @return Character vector of non-parent module labels
 #'
@@ -18,9 +19,10 @@
 #'   teal::example_module("mod2")
 #' )
 #' labels <- extract_modules_to_yaml(mods, "panel_str_modules.yml")
+#' unlink("panel_str_modules.yml")
 #'
 #' @export
-extract_modules_to_yaml <- function(mods, filepath) {
+extract_modules_to_yaml <- function(mods, filepath, verbose = FALSE) {
   # Recursively extract module labels, excluding parent containers
   extract_labels <- function(mod_obj) {
     labels <- character(0)
@@ -53,7 +55,10 @@ extract_modules_to_yaml <- function(mods, filepath) {
   # Write to YAML file
   writeLines(yaml::as.yaml(list(panel_str = panel_str)), filepath)
 
-  cat("Generated", filepath, "with", length(non_parent_labels), "non-parent module labels\n")
+  if (verbose) {
+    message("Generated ", filepath, " with ", length(non_parent_labels), " non-parent module labels")
+  }
+  
   non_parent_labels
 }
 
