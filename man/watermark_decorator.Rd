@@ -9,9 +9,9 @@ watermark_decorator(output_name, watermark_text = "", font_size = 90)
 \arguments{
 \item{output_name}{(\code{character(1)}) a name for the output object (e.g., a plot or table).}
 
-\item{watermark_text}{(\code{character(1)}) text to display for the watermark}
+\item{watermark_text}{(\code{character(1)}) text to display for the watermark.}
 
-\item{font_size}{(\code{character(1)}) font size for the watermark text}
+\item{font_size}{(\code{character(1)}) font size for the watermark text.}
 }
 \value{
 \code{\link[teal:teal_transform_module]{teal::teal_transform_module()}}
@@ -23,7 +23,7 @@ for plots.
 Note: Currently tables are not supported
 }
 \details{
-The module creates a UI with textInput for specifying watermark text and
+The module creates a UI with \code{textInput} for specifying watermark text and
 font size.
-the entered watermark text is displayed with a default gridify layout.
+the entered watermark text is displayed with a default \code{gridify} layout.
 }
