@@ -4,13 +4,15 @@
 \alias{extract_modules_to_yaml}
 \title{Extract Non-Parent Module Labels to \code{YAML}}
 \usage{
-extract_modules_to_yaml(mods, filepath)
+extract_modules_to_yaml(mods, filepath, verbose = FALSE)
 }
 \arguments{
 \item{mods}{(\code{teal_module} or \code{teal_modules}) a teal modules object
 containing the module structure.}
 
 \item{filepath}{(\code{character(1)}) character string specifying the output \code{YAML} file path.}
+
+\item{verbose}{(\code{logical(1)}) whether to print informational messages. Default is \code{FALSE}.}
 }
 \value{
 Character vector of non-parent module labels
