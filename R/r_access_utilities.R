@@ -10,7 +10,7 @@
 #'
 #' @return Character vector of non-parent module labels
 #'
-#' @import yaml
+#' @importFrom yaml as.yaml
 #' @examples
 #' # Extract modules from mods object to YAML file
 #' mods <- teal::modules(
@@ -18,6 +18,11 @@
 #'   teal::example_module("mod2")
 #' )
 #' labels <- extract_modules_to_yaml(mods, "panel_str_modules.yml")
+#'
+#' # Clean up
+#' if (file.exists("panel_str_modules.yml")) {
+#'   file.remove("panel_str_modules.yml")
+#' }
 #'
 #' @export
 extract_modules_to_yaml <- function(mods, filepath) {
@@ -69,7 +74,7 @@ extract_modules_to_yaml <- function(mods, filepath) {
 #'
 #' @return Filtered `teal_modules` or `teal_module` object, or `NULL` if none matches.
 #'
-#' @import checkmate
+#' @importFrom checkmate assert_multi_class
 #' @examples
 #' # Keep only specific modules by label
 #' mods <- teal::modules(
@@ -108,7 +113,7 @@ keep_by_label <- function(x, label) {
 #' @return The filtered teal modules object with matching modules removed, or `NULL`
 #'   if all modules are removed.
 #'
-#' @import checkmate
+#' @importFrom checkmate assert_multi_class
 #' @examples
 #' mods <- teal::modules(
 #'   teal::example_module("mod1"),

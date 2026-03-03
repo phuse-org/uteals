@@ -170,7 +170,12 @@ forestplot_x_decorator <- function() {
 #'   printed side-by-side via [cowplot::plot_grid()].
 #'
 #' @return `ggplot` forest plot and table.
-#' @import checkmate tern ggplot2 rtables
+#' @importFrom checkmate assert_class assert_number assert_character assert_true
+#' @importFrom tern rtable2gg
+#' @importFrom ggplot2 ggplot theme scale_x_continuous scale_y_continuous coord_cartesian annotate geom_point margin
+#' @importFrom ggplot2 element_rect element_blank element_line element_text aes arrow .pt
+#' @importFrom rtables as_result_df
+#' @importFrom grid unit
 #' @importFrom cowplot plot_grid
 #'
 #' @export

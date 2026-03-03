@@ -14,7 +14,8 @@
 #' font size.
 #' the entered watermark text is displayed with a default `gridify` layout.
 #'
-#' @import cowplot gridify
+#' @importFrom cowplot as_grob
+#' @importFrom gridify gridifyLayout gridifyObject gridifyCells gridifyCell gridify set_cell
 #' @importFrom grDevices graphics.off
 #'
 #' @export
@@ -56,7 +57,10 @@ watermark_decorator <- function(output_name, watermark_text = "", font_size = 90
                 cells = gridify::gridifyCells(
                   title = gridify::gridifyCell(row = 1, col = 1),
                   footer = gridify::gridifyCell(row = 3, col = 1),
-                  watermark = gridify::gridifyCell(row = 1:3, col = 1, rot = 45, gpar = grid::gpar(fontsize = numFontsize, alpha = 0.3))
+                  watermark = gridify::gridifyCell(
+                    row = 1:3, col = 1, rot = 45,
+                    gpar = grid::gpar(fontsize = numFontsize, alpha = 0.3)
+                  )
                 )
               )
             },

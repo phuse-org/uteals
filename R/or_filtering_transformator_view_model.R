@@ -1,6 +1,6 @@
 #' View model for [or_filtering_transformator()].
 #'
-#' @import R6
+#' @importFrom R6 R6Class
 #' @keywords internal
 filtering_transformator_model <- R6::R6Class("filtering_transformator_model",
   public = list(
