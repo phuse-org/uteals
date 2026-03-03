@@ -1,7 +1,11 @@
 # Version 0.0.2.9000
 
+<<<<<<< feature/jgqo373_watermark_decorator
 - Refactored the `merge_levels_transformator` to handle the predefined inputs to the transformator([JGQO-323](https://jira.jnj.com/browse/JGQO-323)).
 - Added new `watermark_decorator`.([#23](https://github.com/phuse-org/uteals/pull/23))
+=======
+- Refactored the `merge_levels_transformator` to handle the predefined inputs to the transformator.
+>>>>>>> main
 
 # Version 0.0.2
 
