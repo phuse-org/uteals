@@ -2,7 +2,7 @@
 #'
 #' @description `r lifecycle::badge("experimental")`
 #' A function to create a UI component for selecting watermark text
-#' for plots. 
+#' for plots.
 #' Note: Currently tables are not supported
 #' @param output_name (`character(1)`) a name for the output object (e.g., a plot or table).
 #' @param watermark_text (`character(1)`) text to display for the watermark
@@ -10,7 +10,7 @@
 #'
 #' @return [`teal::teal_transform_module()`]
 #'
-#' @details The module creates a UI with textInput for specifying watermark text and 
+#' @details The module creates a UI with textInput for specifying watermark text and
 #' font size.
 #' the entered watermark text is displayed with a default gridify layout.
 #'
@@ -21,7 +21,7 @@
 watermark_decorator <- function(output_name, watermark_text = "", font_size = 90) {
   checkmate::assert_string(output_name)
   checkmate::assert_string(watermark_text)
-  
+
   teal::teal_transform_module(
     label = "Watermark decorator",
     ui = function(id) {
@@ -37,7 +37,7 @@ watermark_decorator <- function(output_name, watermark_text = "", font_size = 90
       moduleServer(id, function(input, output, session) {
         reactive({
           req(data())
-          
+
           res <- data()
           # Determine the title and footer
           res <- within(
@@ -66,7 +66,7 @@ watermark_decorator <- function(output_name, watermark_text = "", font_size = 90
             numFontsize = input$numFontsize,
             txtWatermark = input$txtWatermark
           )
-          
+
           res <- within(
             res,
             {
@@ -78,7 +78,6 @@ watermark_decorator <- function(output_name, watermark_text = "", font_size = 90
             },
             output_name = as.name(output_name)
           )
-          
         })
       })
     }
