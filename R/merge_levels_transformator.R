@@ -1,5 +1,6 @@
-##' R6 Class for managing the transformation objects
-TransformationManager <- R6::R6Class(
+# TransformationManager R6 Class for managing the transformation objects
+# @noRd
+TransformationManager <- R6::R6Class( # nolint: object_name_linter.
   "TransformationManager",
   public = list(
     counter = 0,
@@ -13,7 +14,7 @@ TransformationManager <- R6::R6Class(
     add_id = function() {
       self$counter <- self$counter + 1
       self$active_ids(c(self$active_ids(), self$counter))
-      return(self$counter)
+      self$counter
     },
     remove_id = function(id) {
       self$active_ids(setdiff(self$active_ids(), id))
@@ -27,10 +28,13 @@ TransformationManager <- R6::R6Class(
 )
 
 #' UI design of the transformator
+#'
+#' @param id (`character(1)`) the id of the module.
+#' @noRd
 merge_level_transformer_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    useShinyjs(),
+    shinyjs::useShinyjs(),
     tags$div(id = ns("transformation_container")),
     hr(),
     actionButton(ns("add"), "Add", class = "btn-primary"),
@@ -55,7 +59,10 @@ merge_level_transformer_srv <- function(id, data, manager, dataname) {
         req(input[[paste0("col_name_", idx)]])
         col_data <- data()[[dataname]][[input[[paste0("col_name_", idx)]]]]
         choices <- if (is.factor(col_data)) levels(col_data) else unique(col_data)
-        selectInput(ns(paste0("levs_", idx)), "Levels to Update", choices = choices, multiple = TRUE, selected = lev_sel)
+        selectInput(
+          ns(paste0("levs_", idx)), "Levels to Update",
+          choices = choices, multiple = TRUE, selected = lev_sel
+        )
       })
     }
 
@@ -82,7 +89,10 @@ merge_level_transformer_srv <- function(id, data, manager, dataname) {
           div(
             id = body_id,
             style = "margin-top: 10px;",
-            selectInput(ns(paste0("col_name_", idx)), "Variable", choices = names(data()[[dataname]]), selected = var_sel),
+            selectInput(
+              ns(paste0("col_name_", idx)), "Variable",
+              choices = names(data()[[dataname]]), selected = var_sel
+            ),
             uiOutput(ns(paste0("col_levels_ui_", idx))),
             textInput(ns(paste0("new_label_", idx)), "New Level Name", value = new_name)
           ),
@@ -189,7 +199,10 @@ merge_level_transformer_srv <- function(id, data, manager, dataname) {
 #' which columns will be used for possible transformation.
 #' @param predefined (`list`) the list which has variable name, levels and new label
 #'
-#' @import teal shiny shinyWidgets
+#' @importFrom teal teal_transform_module
+#' @importFrom shiny NS tagList actionButton hr div tags uiOutput renderUI req
+#' @importFrom shiny selectInput textInput moduleServer reactiveVal observeEvent observe eventReactive reactive
+#' @importFrom shinyWidgets pickerInput
 #' @importFrom teal.code eval_code
 #' @importFrom teal.modules.clinical add_expr bracket_expr
 #'

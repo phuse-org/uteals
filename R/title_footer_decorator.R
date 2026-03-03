@@ -27,7 +27,12 @@
 #' @seealso For the exact Excel workbook layout expected by this function, see the package vignette:
 #' `vignette("title-footer-decorator-excel-structure", package = "uteals")`
 #'
-#' @import openxlsx ggplotify ggplot2 patchwork teal shiny
+#' @importFrom openxlsx read.xlsx
+#' @importFrom ggplotify as.ggplot
+#' @importFrom ggplot2 labs theme element_text
+#' @importFrom patchwork plot_annotation
+#' @importFrom teal teal_transform_module
+#' @importFrom shiny NS tagList div selectInput checkboxInput uiOutput renderUI textInput moduleServer reactive req
 #' @importFrom grDevices graphics.off
 #'
 #' @examples

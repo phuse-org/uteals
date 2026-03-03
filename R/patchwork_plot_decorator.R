@@ -9,7 +9,9 @@
 #' @details The module creates a UI with text controls for plot title and footnote.
 #' The entered title and footnote text are applied to the patchwork plots.
 #'
-#' @import teal shiny patchwork
+#' @importFrom teal teal_transform_module
+#' @importFrom shiny NS tagList textInput moduleServer reactive req
+#' @importFrom patchwork plot_annotation
 #'
 #' @export
 patchwork_plot_decorator <- function(output_name, label_text = "decorator") {

@@ -41,10 +41,15 @@
 #'
 #' @param dataname (`character(1)`) Name of the dataset to filter. Pass a single dataset name as a string.
 #'
-#' @import teal shiny shinyWidgets dplyr shinyBS rlang
-#' @importFrom methods new
-#' @importFrom shinyjs toggle show hidden hide
+#' @importFrom teal teal_transform_module
+#' @importFrom shiny NS tagList renderText renderUI div span actionButton observeEvent insertUI
+#' @importFrom shiny updateSelectInput showNotification showModal modalDialog reactiveValues observe reactive
+#' @importFrom shinyWidgets pickerInput
+#' @importFrom dplyr filter
+#' @importFrom shinyBS bsModal
 #' @importFrom rlang parse_expr
+#' @importFrom methods new
+#' @importFrom shinyjs toggle show hidden hide useShinyjs
 #'
 #' @return `teal::teal_transform_module`
 #'

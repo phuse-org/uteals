@@ -50,6 +50,7 @@ Imports:
   teal.code,
   tern,
   yaml,
+  gridify,
   teal.modules.clinical
 Suggests:
   forcats,
