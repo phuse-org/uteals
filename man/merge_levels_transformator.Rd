@@ -4,11 +4,13 @@
 \alias{merge_levels_transformator}
 \title{Combine levels of a variable into one level}
 \usage{
-merge_levels_transformator(dataname)
+merge_levels_transformator(dataname, predefined = list())
 }
 \arguments{
 \item{dataname}{(\code{character(1)}) the name of the dataset
 which columns will be used for possible transformation.}
+
+\item{predefined}{(\code{list}) the list which has variable name, levels and new label}
 }
 \value{
 \code{teal::teal_transform_module}
@@ -18,12 +20,8 @@ which columns will be used for possible transformation.}
 }
 \details{
 This transformator allows the user to select a column from the dataset
-and combine values of this column into a single level. Only selected
+and merge levels of this column into a new level. Only selected
 levels are affected.
-
-The new combined level is called "Combined".
-
-Merging works only for \code{character} or \code{factor} columns.
 }
 \examples{
 
@@ -31,7 +29,13 @@ app <- teal::init(
   data = teal.data::teal_data(IRIS = iris, code = "IRIS <- iris"),
   modules = teal::modules(
     teal::example_module(
-      transformators = list(merge_levels_transformator("IRIS"))
+      transformators = list(merge_levels_transformator(
+        dataname = "IRIS",
+        predefined = list(
+          list("Species", "setosa", "SETOSA_WITHIN_FIX"),
+          list("Petal.Width", c(0.2, 0.3, 0.5), 12)
+        )
+      ))
     )
   )
 )

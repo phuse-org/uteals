@@ -17,7 +17,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Peyman Eshghi \email{PEshghi@its.jnj.com}
+\strong{Maintainer}: Peyman Eshghi \email{peymaan.es@gmail.com}
 
 Authors:
 \itemize{
