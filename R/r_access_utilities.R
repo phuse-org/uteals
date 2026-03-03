@@ -63,7 +63,7 @@ extract_modules_to_yaml <- function(mods, filepath, verbose = FALSE) {
   if (verbose) {
     message("Generated ", filepath, " with ", length(non_parent_labels), " non-parent module labels")
   }
-  
+
   non_parent_labels
 }
 
