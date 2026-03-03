@@ -1,7 +1,7 @@
 # Version 0.0.2.9000
 
-- Refactored the `merge_levels_transformator` to handle the predefined inputs to the transformator.
-- Added new `watermark_decorator`([#23](https://github.com/phuse-org/uteals/pull/23)).
+- Refactored the `merge_levels_transformator` to handle the predefined inputs to the transformator ([#25](https://github.com/phuse-org/uteals/pull/25)).
+- Added new `watermark_decorator` ([#23](https://github.com/phuse-org/uteals/pull/23)).
 
 # Version 0.0.2
 
