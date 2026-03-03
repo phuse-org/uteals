@@ -31,7 +31,10 @@
 #' of `ggplot` options given in the `plot_options` parameter value.
 #' The entered `ggplot` options are applied to `ggplot` plot object.
 #'
-#' @import teal shiny ggplot2
+#' @importFrom teal teal_transform_module
+#' @importFrom shiny NS tagList tagAppendChild textInput moduleServer reactive req
+#' @importFrom ggplot2 labs theme element_text scale_y_continuous scale_x_continuous scale_x_discrete
+#' @importFrom ggplot2 scale_y_discrete geom_text layer_scales
 #'
 #' @examples
 #' app <- teal::init(
@@ -195,7 +198,7 @@ ggplot_decorator <- function(output_name,
                   output_name <- output_name +
                     ggplot2::scale_y_continuous(
                       breaks = layer_scales(output_name)$y$break_positions(),
-                      labels = trimws(str_split(y_labels_cont, ",")[[1]])
+                      labels = trimws(strsplit(y_labels_cont, ",")[[1]])
                     )
                 },
                 output_name = as.name(output_name),
@@ -212,7 +215,7 @@ ggplot_decorator <- function(output_name,
                 data4,
                 {
                   output_name <- output_name +
-                    ggplot2::scale_x_continuous(breaks = trimws(str_split(x_breaks, ",")[[1]]))
+                    ggplot2::scale_x_continuous(breaks = trimws(strsplit(x_breaks, ",")[[1]]))
                 },
                 output_name = as.name(output_name),
                 x_breaks = input$x_breaks
@@ -229,7 +232,7 @@ ggplot_decorator <- function(output_name,
                   output_name <- output_name +
                     ggplot2::scale_x_continuous(
                       breaks = layer_scales(output_name)$x$break_positions(),
-                      labels = trimws(str_split(x_labels_cont, ",")[[1]])
+                      labels = trimws(strsplit(x_labels_cont, ",")[[1]])
                     )
                 },
                 output_name = as.name(output_name),
@@ -245,7 +248,7 @@ ggplot_decorator <- function(output_name,
               data7 <- within(
                 data6,
                 {
-                  x_labels_discrete <- trimws(str_split(x_labels_discrete, ",")[[1]])
+                  x_labels_discrete <- trimws(strsplit(x_labels_discrete, ",")[[1]])
                   output_name <- output_name + ggplot2::scale_x_discrete(labels = x_labels_discrete)
                 },
                 output_name = as.name(output_name),
@@ -261,7 +264,7 @@ ggplot_decorator <- function(output_name,
               data8 <- within(
                 data7,
                 {
-                  y_labels_discrete <- trimws(str_split(y_labels_discrete, ",")[[1]])
+                  y_labels_discrete <- trimws(strsplit(y_labels_discrete, ",")[[1]])
                   output_name <- output_name + ggplot2::scale_y_discrete(labels = y_labels_discrete)
                 },
                 output_name = as.name(output_name),

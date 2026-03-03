@@ -7,10 +7,11 @@
 #' @param mods (`teal_module` or `teal_modules`) a teal modules object
 #'   containing the module structure.
 #' @param filepath (`character(1)`) character string specifying the output `YAML` file path.
+#' @param verbose (`logical(1)`) whether to print informational messages. Default is `FALSE`.
 #'
 #' @return Character vector of non-parent module labels
 #'
-#' @import yaml
+#' @importFrom yaml as.yaml
 #' @examples
 #' # Extract modules from mods object to YAML file
 #' mods <- teal::modules(
@@ -18,9 +19,15 @@
 #'   teal::example_module("mod2")
 #' )
 #' labels <- extract_modules_to_yaml(mods, "panel_str_modules.yml")
+#' unlink("panel_str_modules.yml")
+#'
+#' # Clean up
+#' if (file.exists("panel_str_modules.yml")) {
+#'   file.remove("panel_str_modules.yml")
+#' }
 #'
 #' @export
-extract_modules_to_yaml <- function(mods, filepath) {
+extract_modules_to_yaml <- function(mods, filepath, verbose = FALSE) {
   # Recursively extract module labels, excluding parent containers
   extract_labels <- function(mod_obj) {
     labels <- character(0)
@@ -53,7 +60,10 @@ extract_modules_to_yaml <- function(mods, filepath) {
   # Write to YAML file
   writeLines(yaml::as.yaml(list(panel_str = panel_str)), filepath)
 
-  cat("Generated", filepath, "with", length(non_parent_labels), "non-parent module labels\n")
+  if (verbose) {
+    message("Generated ", filepath, " with ", length(non_parent_labels), " non-parent module labels")
+  }
+
   non_parent_labels
 }
 
@@ -69,7 +79,7 @@ extract_modules_to_yaml <- function(mods, filepath) {
 #'
 #' @return Filtered `teal_modules` or `teal_module` object, or `NULL` if none matches.
 #'
-#' @import checkmate
+#' @importFrom checkmate assert_multi_class
 #' @examples
 #' # Keep only specific modules by label
 #' mods <- teal::modules(
@@ -108,7 +118,7 @@ keep_by_label <- function(x, label) {
 #' @return The filtered teal modules object with matching modules removed, or `NULL`
 #'   if all modules are removed.
 #'
-#' @import checkmate
+#' @importFrom checkmate assert_multi_class
 #' @examples
 #' mods <- teal::modules(
 #'   teal::example_module("mod1"),

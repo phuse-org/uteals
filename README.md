@@ -16,7 +16,7 @@ pak::pkg_install("phuse-org/uteals@main")
 ## Development Status
 
 This package is currently under development.
-Please see [references](phuse-org.github.io/uteals/)
+Please see [references](https://phuse-org.github.io/uteals/)
 and [vignettes](https://phuse-org.github.io/uteals/articles/)
 for latest available features.
 

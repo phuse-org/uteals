@@ -12,7 +12,8 @@
 #' @param control_group (`character(1)`) one of the existing level from the selected `column_name`.
 #' @param label_name (`character(1)`) label for the new field or variable.
 #'
-#' @import teal shiny
+#' @importFrom teal teal_transform_module
+#' @importFrom shiny NS tagList selectInput textInput moduleServer observe updateSelectInput reactive
 #'
 #' @return `teal::teal_transform_module`
 #'
