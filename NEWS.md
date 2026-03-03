@@ -1,5 +1,7 @@
 # Version 0.0.2.9000
 
+- Refactored the `merge_levels_transformator` to handle the predefined inputs to the transformator([JGQO-323](https://jira.jnj.com/browse/JGQO-323)).
+
 # Version 0.0.2
 
 - Added `choices` and `selected` parameters to `titles_footer_decorator` (#15).
