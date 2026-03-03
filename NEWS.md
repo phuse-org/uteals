@@ -1,6 +1,6 @@
 # Version 0.0.2.9000
 
-- Refactored the `merge_levels_transformator` to handle the predefined inputs to the transformator([JGQO-323](https://jira.jnj.com/browse/JGQO-323)).
+- Refactored the `merge_levels_transformator` to handle the predefined inputs to the transformator.
 
 # Version 0.0.2
 
