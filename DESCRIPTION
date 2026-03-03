@@ -2,7 +2,7 @@ Package: uteals
 Title: Shared Utilities to Extend the 'teal' Modules
 Language: en-US
 Version: 0.0.2.9000
-Date: 2025-10-12
+Date: 2026-02-04
 URL: https://github.com/phuse-org/uteals
 Authors@R:
     c(
@@ -13,11 +13,15 @@ Authors@R:
       person("Sohan", "Lal", , "SLal8@ITS.JNJ.com", role = "aut"),
       person("Przemyslaw", "Posiadala", , "PPosiada@ITS.JNJ.com", role = "aut"),
       person("Alina", "Tselinina", , "ATselini@ITS.JNJ.com", role = "aut"),
-      person("Konrad", "Pagacz", , "konrad.pagacz@gmail.com", role = "aut"),
+      person("Konrad", "Pagacz", , "konrad.pagacz@gmail.com", role = c("aut")),
       person(given = "PHUSE",  role = "cph")
     )
-Description: Provides common decorators and transformators, and other utility
-    functions to extends 'teal' framework.
+Description: Provides decorators, transformators, and utility functions
+    to extend the 'teal' framework for interactive data analysis
+    applications. Implements methods for data visualization enhancement,
+    statistical data transformations, and workflow integration tools.
+    Designed to support clinical and pharmaceutical research workflows
+    within the 'teal' ecosystem through modular and reusable components.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -57,4 +61,3 @@ Suggests:
   teal.modules.general,
   teal.transform
 VignetteBuilder: knitr
-Additional_repositories: https://johnsonandjohnson.r-universe.dev
