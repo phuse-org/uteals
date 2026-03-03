@@ -1,7 +1,7 @@
 Package: uteals
 Title: Shared Utilities to Extend the 'teal' Modules
 Language: en-US
-Version: 0.0.2
+Version: 0.0.2.9000
 Date: 2026-02-04
 URL: https://github.com/phuse-org/uteals
 Authors@R:
