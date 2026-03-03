@@ -1,6 +1,6 @@
 # Version 0.0.2.9000
 
-- Refactored the `merge_levels_transformator` to handle the predefined inputs to the transformator.
+- Refactored the `merge_levels_transformator` to handle the predefined inputs to the transformator ([#25](https://github.com/phuse-org/uteals/pull/25)).
 
 # Version 0.0.2
 
