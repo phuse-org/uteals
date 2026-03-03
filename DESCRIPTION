@@ -47,7 +47,6 @@ Imports:
   tern,
   yaml,
   gridify,
-  rtables.officer
   teal.modules.clinical
 Suggests:
   forcats,
