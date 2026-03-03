@@ -55,8 +55,6 @@ merge_level_transformer_srv <- function(id, data, manager, dataname) {
         req(input[[paste0("col_name_", idx)]])
         col_data <- data()[[dataname]][[input[[paste0("col_name_", idx)]]]]
         choices <- if (is.factor(col_data)) levels(col_data) else unique(col_data)
-        print("=========")
-        print(lev_sel)
         selectInput(ns(paste0("levs_", idx)), "Levels to Update", choices = choices, multiple = TRUE, selected = lev_sel)
       })
     }
@@ -116,7 +114,6 @@ merge_level_transformer_srv <- function(id, data, manager, dataname) {
       if (!manager$initialized && length(manager$predefined) > 0) {
         for (item in manager$predefined) {
           idx <- manager$add_id()
-          print(item[[2]])
           add_container_row(idx, var_sel = item[[1]], lev_sel = item[[2]], new_name = item[[3]])
         }
         manager$initialized <- TRUE
