@@ -10,7 +10,7 @@ Useful links:
 
 ## Author
 
-**Maintainer**: Peyman Eshghi <PEshghi@its.jnj.com>
+**Maintainer**: Peyman Eshghi <peymaan.es@gmail.com>
 
 Authors:
 

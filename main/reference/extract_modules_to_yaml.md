@@ -7,7 +7,7 @@ file with the functional modules.
 ## Usage
 
 ``` r
-extract_modules_to_yaml(mods, filepath)
+extract_modules_to_yaml(mods, filepath, verbose = FALSE)
 ```
 
 ## Arguments
@@ -22,6 +22,11 @@ extract_modules_to_yaml(mods, filepath)
   (`character(1)`) character string specifying the output `YAML` file
   path.
 
+- verbose:
+
+  (`logical(1)`) whether to print informational messages. Default is
+  `FALSE`.
+
 ## Value
 
 Character vector of non-parent module labels
@@ -35,5 +40,10 @@ mods <- teal::modules(
   teal::example_module("mod2")
 )
 labels <- extract_modules_to_yaml(mods, "panel_str_modules.yml")
-#> Generated panel_str_modules.yml with 2 non-parent module labels
+unlink("panel_str_modules.yml")
+
+# Clean up
+if (file.exists("panel_str_modules.yml")) {
+  file.remove("panel_str_modules.yml")
+}
 ```

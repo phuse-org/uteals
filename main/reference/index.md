@@ -25,6 +25,9 @@
 - [`title_footer_decorator()`](https://github.com/phuse-org/uteals/reference/title_footer_decorator.md)
   **\[experimental\]** : Title and Footer Decorator
 
+- [`watermark_decorator()`](https://github.com/phuse-org/uteals/reference/watermark_decorator.md)
+  **\[experimental\]** : Watermark Decorator
+
 ## Transformators
 
 - [`create_rel_risk_transformator()`](https://github.com/phuse-org/uteals/reference/create_rel_risk_transformator.md)
