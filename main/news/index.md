@@ -7,6 +7,9 @@
   ([\#25](https://github.com/phuse-org/uteals/pull/25)).
 - Added new `watermark_decorator`
   ([\#23](https://github.com/phuse-org/uteals/pull/23)).
+- Changed the example to a working one in
+  `create_rel_risk_transformator`
+  ([\#27](https://github.com/phuse-org/uteals/pull/27))
 
 ## Version 0.0.2
 

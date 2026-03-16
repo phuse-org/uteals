@@ -35,33 +35,33 @@ g_forest_with_transform(
 
 - tbl:
 
-  (`VTableTree`)  
+  (`VTableTree`)\
   `rtables` table with at least one column with a single value and one
   column with 2 values.
 
 - col_x:
 
-  (`integer(1)` or `NULL`)  
+  (`integer(1)` or `NULL`)\
   column index with estimator. By default tries to get this from `tbl`
   attribute `col_x`, otherwise needs to be manually specified. If
   `NULL`, points will be excluded from forest plot.
 
 - col_ci:
 
-  (`integer(1)` or `NULL`)  
+  (`integer(1)` or `NULL`)\
   column index with confidence intervals. By default tries to get this
   from `tbl` attribute `col_ci`, otherwise needs to be manually
   specified. If `NULL`, lines will be excluded from forest plot.
 
 - vline:
 
-  (`numeric`)  
+  (`numeric`)\
   position of the vertical reference line on the plot. like 0 and 1 in
   forest plot.
 
 - forest_header:
 
-  (`character(2)`)  
+  (`character(2)`)\
   text displayed to the left and right of `vline`, respectively. If
   `vline = NULL` then `forest_header` is not printed. By default tries
   to get this from `tbl` attribute `forest_header`. If `NULL`, defaults
@@ -70,23 +70,23 @@ g_forest_with_transform(
 
 - xlim:
 
-  (`numeric`)  
+  (`numeric`)\
   range of x-axis limits. Example: `c(0.1, 10)`
 
 - transform_x:
 
-  (`character`)  
+  (`character`)\
   function for x-values transformation
 
 - x_at:
 
-  (`numeric`)  
+  (`numeric`)\
   specifies the tick marks on the axis. The value of
   `union(xlim, vline)` or Example: `c(0.1,1,10)`.
 
 - width_columns:
 
-  (`numeric`)  
+  (`numeric`)\
   a vector of column widths. Each element's position in `colwidths`
   corresponds to the column of `tbl` in the same position. If `NULL`,
   column widths are calculated according to maximum number of characters
@@ -94,24 +94,24 @@ g_forest_with_transform(
 
 - lbl_col_padding:
 
-  (`numeric`)  
+  (`numeric`)\
   padding between label and columns value. Default is `0`.
 
 - rel_width_forest:
 
-  (`proportion`)  
+  (`proportion`)\
   proportion of total width to allocate to the forest plot. Relative
   width of table is then `1 - rel_width_forest`. If `as_list = TRUE`,
   this parameter is ignored.
 
 - font_size:
 
-  (`numeric(1)`)  
+  (`numeric(1)`)\
   font size.
 
 - col_symbol_size:
 
-  (`numeric` or `NULL`)  
+  (`numeric` or `NULL`)\
   column index from `tbl` containing data to be used to determine
   relative size for estimator plot symbol. Typically, the symbol size is
   proportional to the sample size used to calculate the estimator. If
@@ -121,18 +121,18 @@ g_forest_with_transform(
 
 - col:
 
-  (`character`)  
+  (`character`)\
   color(s).
 
 - ggtheme:
 
-  (`theme`)  
+  (`theme`)\
   a graphical theme as provided by `ggplot2` to control styling of the
   plot.
 
 - as_list:
 
-  (`flag`)  
+  (`flag`)\
   whether the two `ggplot` objects should be returned as a list. If
   `TRUE`, a named list with two elements, `table` and `plot`, will be
   returned. If `FALSE` (default) the table and forest plot are printed
