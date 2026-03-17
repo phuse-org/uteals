@@ -43,7 +43,7 @@
 #'   ADSL <- teal.data::rADSL
 #' })
 #' join_keys(data) <- default_cdisc_join_keys[names(data)]
-#' 
+#'
 #' # teal.modules.general >= 0.6.0
 #' app <- init(
 #'   data = data,
@@ -78,9 +78,9 @@
 #'     )
 #'   )
 #' )
-#' 
+#'
 #' if (interactive()) {
-#' shinyApp(app$ui, app$server)
+#'   shinyApp(app$ui, app$server)
 #' }
 #'
 #' @export
