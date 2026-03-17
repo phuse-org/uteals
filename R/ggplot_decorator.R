@@ -370,7 +370,6 @@ ggplot_decorator <- function(output_name,
             },
             output_name = as.name(output_name)
           )
-
         })
       })
     }
