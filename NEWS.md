@@ -3,6 +3,7 @@
 - Refactored the `merge_levels_transformator` to handle the predefined inputs to the transformator ([#25](https://github.com/phuse-org/uteals/pull/25)).
 - Added new `watermark_decorator` ([#23](https://github.com/phuse-org/uteals/pull/23)).
 - Changed the example to a working one in `create_rel_risk_transformator` ([#27](https://github.com/phuse-org/uteals/pull/27))
+- Changed the example to a working one in `ggplot_decorator` ([#28](https://github.com/phuse-org/uteals/pull/28))
 
 # Version 0.0.2
 
