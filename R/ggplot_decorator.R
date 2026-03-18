@@ -37,17 +37,38 @@
 #' @importFrom ggplot2 scale_y_discrete geom_text layer_scales
 #'
 #' @examples
-#' app <- teal::init(
-#'   data = teal.data::teal_data(IRIS = iris, code = "IRIS <- iris"),
-#'   modules = teal::modules(
+#' data <- teal.data::teal_data()
+#' data <- within(data, {
+#'   require(nestcolor)
+#'   ADSL <- teal.data::rADSL
+#' })
+#' join_keys(data) <- default_cdisc_join_keys[names(data)]
+#'
+#' # teal.modules.general >= 0.6.0
+#' app <- init(
+#'   data = data,
+#'   modules = modules(
 #'     teal.modules.general::tm_g_scatterplot(
+#'       label = "Scatterplot Choices",
 #'       x = teal.transform::data_extract_spec(
-#'         dataname = "IRIS",
-#'         select = teal.transform::select_spec(choices = teal.transform::variable_choices(iris))
+#'         dataname = "ADSL",
+#'         select = teal.transform::select_spec(
+#'           label = "Select variable:",
+#'           choices = teal.transform::variable_choices(data[["ADSL"]], c("AGE", "BMRKR1", "BMRKR2")),
+#'           selected = "AGE",
+#'           multiple = FALSE,
+#'           fixed = FALSE
+#'         )
 #'       ),
-#'       y = teal.transform::data_extract_spec(
-#'         dataname = "IRIS",
-#'         select = teal.transform::select_spec(choices = teal.transform::variable_choices(iris))
+#'       y = data_extract_spec(
+#'         dataname = "ADSL",
+#'         select = teal.transform::select_spec(
+#'           label = "Select variable:",
+#'           choices = teal.transform::variable_choices(data[["ADSL"]], c("AGE", "BMRKR1", "BMRKR2")),
+#'           selected = "BMRKR1",
+#'           multiple = FALSE,
+#'           fixed = FALSE
+#'         )
 #'       ),
 #'       decorators = list(
 #'         plot = ggplot_decorator(
@@ -57,6 +78,7 @@
 #'     )
 #'   )
 #' )
+#'
 #' if (interactive()) {
 #'   shinyApp(app$ui, app$server)
 #' }
@@ -129,7 +151,6 @@ ggplot_decorator <- function(output_name,
       shiny::moduleServer(id, function(input, output, session) {
         shiny::reactive({
           shiny::req(data())
-
           data1 <- data()
 
           if ("title" %in% to_render) {
