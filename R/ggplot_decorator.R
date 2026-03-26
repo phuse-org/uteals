@@ -39,15 +39,14 @@
 #' @examples
 #' data <- teal.data::teal_data()
 #' data <- within(data, {
-#'   require(nestcolor)
 #'   ADSL <- teal.data::rADSL
 #' })
-#' join_keys(data) <- default_cdisc_join_keys[names(data)]
+#' teal.data::join_keys(data) <- teal.data::default_cdisc_join_keys[names(data)]
 #'
 #' # teal.modules.general >= 0.6.0
-#' app <- init(
+#' app <- teal::init(
 #'   data = data,
-#'   modules = modules(
+#'   modules = teal::modules(
 #'     teal.modules.general::tm_g_scatterplot(
 #'       label = "Scatterplot Choices",
 #'       x = teal.transform::data_extract_spec(
@@ -60,7 +59,7 @@
 #'           fixed = FALSE
 #'         )
 #'       ),
-#'       y = data_extract_spec(
+#'       y = teal.transform::data_extract_spec(
 #'         dataname = "ADSL",
 #'         select = teal.transform::select_spec(
 #'           label = "Select variable:",
@@ -80,7 +79,7 @@
 #' )
 #'
 #' if (interactive()) {
-#'   shinyApp(app$ui, app$server)
+#'   shiny::shinyApp(app$ui, app$server)
 #' }
 #'
 #' @export
