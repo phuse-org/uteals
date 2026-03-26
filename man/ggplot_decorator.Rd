@@ -54,17 +54,37 @@ of \code{ggplot} options given in the \code{plot_options} parameter value.
 The entered \code{ggplot} options are applied to \code{ggplot} plot object.
 }
 \examples{
+data <- teal.data::teal_data()
+data <- within(data, {
+  ADSL <- teal.data::rADSL
+})
+teal.data::join_keys(data) <- teal.data::default_cdisc_join_keys[names(data)]
+
+# teal.modules.general >= 0.6.0
 app <- teal::init(
-  data = teal.data::teal_data(IRIS = iris, code = "IRIS <- iris"),
+  data = data,
   modules = teal::modules(
     teal.modules.general::tm_g_scatterplot(
+      label = "Scatterplot Choices",
       x = teal.transform::data_extract_spec(
-        dataname = "IRIS",
-        select = teal.transform::select_spec(choices = teal.transform::variable_choices(iris))
+        dataname = "ADSL",
+        select = teal.transform::select_spec(
+          label = "Select variable:",
+          choices = teal.transform::variable_choices(data[["ADSL"]], c("AGE", "BMRKR1", "BMRKR2")),
+          selected = "AGE",
+          multiple = FALSE,
+          fixed = FALSE
+        )
       ),
       y = teal.transform::data_extract_spec(
-        dataname = "IRIS",
-        select = teal.transform::select_spec(choices = teal.transform::variable_choices(iris))
+        dataname = "ADSL",
+        select = teal.transform::select_spec(
+          label = "Select variable:",
+          choices = teal.transform::variable_choices(data[["ADSL"]], c("AGE", "BMRKR1", "BMRKR2")),
+          selected = "BMRKR1",
+          multiple = FALSE,
+          fixed = FALSE
+        )
       ),
       decorators = list(
         plot = ggplot_decorator(
@@ -74,8 +94,9 @@ app <- teal::init(
     )
   )
 )
+
 if (interactive()) {
-  shinyApp(app$ui, app$server)
+  shiny::shinyApp(app$ui, app$server)
 }
 
 }

@@ -23,7 +23,12 @@
 #'   data = teal.data::teal_data(IRIS = iris, code = "IRIS <- iris"),
 #'   modules = teal::modules(
 #'     teal::example_module(
-#'       transformators = list(create_rel_risk_transformator("IRIS", label_name = "test", control_group = "setosa", column_name = "Species"))
+#'       transformators = list(
+#'         create_rel_risk_transformator("IRIS",
+#'           label_name = "test",
+#'           control_group = "setosa", column_name = "Species"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -45,8 +50,6 @@ create_rel_risk_transformator <- function(dataname, column_name, control_group, 
     },
     server = function(id, data) {
       moduleServer(id, function(input, output, session) {
-        ns <- session$ns
-
         # Update the column names in the selectInput
         observe({
           df <- data()[[dataname]]
