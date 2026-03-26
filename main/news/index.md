@@ -10,6 +10,8 @@
 - Changed the example to a working one in
   `create_rel_risk_transformator`
   ([\#27](https://github.com/phuse-org/uteals/pull/27))
+- Changed the example to a working one in `ggplot_decorator`
+  ([\#28](https://github.com/phuse-org/uteals/pull/28))
 
 ## Version 0.0.2
 
