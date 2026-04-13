@@ -1,6 +1,6 @@
 # Changelog
 
-## Version 0.0.2.9000
+## Version 0.0.3
 
 - Refactored the `merge_levels_transformator` to handle the predefined
   inputs to the transformator
