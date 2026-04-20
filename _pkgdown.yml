@@ -6,12 +6,8 @@ template:
 
 navbar:
   structure:
-    left: [intro, reference, articles, news, contest]
-  components:
-    contest:
-      text: Hex Contest
-      href: _HEXAGON_DESIGN_CONTEST.html
-
+    left: [intro, reference, articles, news]
+  
 reference:
   - title:
     contents:
