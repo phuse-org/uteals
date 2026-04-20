@@ -2,6 +2,8 @@
 
 ## Version 0.0.3
 
+CRAN release: 2026-04-13
+
 - Refactored the `merge_levels_transformator` to handle the predefined
   inputs to the transformator
   ([\#25](https://github.com/phuse-org/uteals/pull/25)).
