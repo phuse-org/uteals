@@ -1,7 +1,0 @@
-panel_str:
-- access_panel: ADMIN
-- access_panel: Modules
-  access_units:
-  - unit: mod1
-  - unit: mod2
-

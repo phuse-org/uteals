@@ -16,6 +16,7 @@
 Decorator function to update various settings for ggplot plot objects">
 <meta property="og:description" content="
 Decorator function to update various settings for ggplot plot objects">
+<meta property="og:image" content="https://github.com/phuse-org/uteals/logo.png">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -25,7 +26,7 @@ Decorator function to update various settings for ggplot plot objects">
 
     <a class="navbar-brand me-2" href="../index.html">uteals</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,14 +40,17 @@ Decorator function to update various settings for ggplot plot objects">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/module-access-management.html">Module Access Management with `rAccess`</a></li>
+    <li><a class="dropdown-item" href="../articles/title-footer-decorator-excel-structure.html">Excel structure for `title_footer_decorator`</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
+<li class="nav-item"><a class="nav-link" href="../_HEXAGON_DESIGN_CONTEST.html">Hex Contest</a></li>
       <div><li class="nav-item dropdown">
     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-versions">Versions</a>
     <div class="dropdown-menu" aria-labelledby="dropdown-versions">
     <a class="dropdown-item" data-toggle="tooltip" title="" href="https://phuse-org.github.io/uteals/main">main</a>
 <a class="dropdown-item" data-toggle="tooltip" title="" href="https://phuse-org.github.io/uteals/latest-tag">latest-tag</a>
+<a class="dropdown-item" data-toggle="tooltip" title="" href="https://phuse-org.github.io/uteals/v0.0.3">v0.0.3</a>
 <a class="dropdown-item" data-toggle="tooltip" title="" href="https://phuse-org.github.io/uteals/v0.0.1">v0.0.1</a>
 </div>
 </li></div>
@@ -64,10 +68,9 @@ Decorator function to update various settings for ggplot plot objects">
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-
-      <h1>
+      <img src="../logo.png" class="logo" alt=""><h1>
 <code>ggplot</code> decorator</h1>
-      <small class="dont-index">Source: <a href="https://github.com/phuse-org/uteals/blob/v0.0.1/R/ggplot_decorator.R"><code>R/ggplot_decorator.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/phuse-org/uteals/blob/v0.0.3/R/ggplot_decorator.R"><code>R/ggplot_decorator.R</code></a></small>
       <div class="d-none name"><code>ggplot_decorator.Rd</code></div>
     </div>
 
@@ -151,17 +154,37 @@ The entered <code>ggplot</code> options are applied to <code>ggplot</code> plot 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a>
 </h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu">teal</span><span class="fu">::</span><span class="fu"><a href="https://insightsengineering.github.io/teal/latest-tag/reference/init.html" class="external-link">init</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  data <span class="op">=</span> <span class="fu">teal.data</span><span class="fu">::</span><span class="fu"><a href="https://insightsengineering.github.io/teal.data/latest-tag/reference/teal_data.html" class="external-link">teal_data</a></span><span class="op">(</span>IRIS <span class="op">=</span> <span class="va">iris</span>, code <span class="op">=</span> <span class="st">"IRIS &lt;- iris"</span><span class="op">)</span>,</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">teal.data</span><span class="fu">::</span><span class="fu"><a href="https://insightsengineering.github.io/teal.data/latest-tag/reference/teal_data.html" class="external-link">teal_data</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">within</a></span><span class="op">(</span><span class="va">data</span>, <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">ADSL</span> <span class="op">&lt;-</span> <span class="fu">teal.data</span><span class="fu">::</span><span class="va"><a href="https://insightsengineering.github.io/teal.data/latest-tag/reference/random_cdisc_data.html" class="external-link">rADSL</a></span></span></span>
+<span class="r-in"><span><span class="op">}</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">teal.data</span><span class="fu">::</span><span class="fu"><a href="https://insightsengineering.github.io/teal.data/latest-tag/reference/join_keys.html" class="external-link">join_keys</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu">teal.data</span><span class="fu">::</span><span class="va"><a href="https://insightsengineering.github.io/teal.data/latest-tag/reference/default_cdisc_join_keys.html" class="external-link">default_cdisc_join_keys</a></span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># teal.modules.general &gt;= 0.6.0</span></span></span>
+<span class="r-in"><span><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu">teal</span><span class="fu">::</span><span class="fu"><a href="https://insightsengineering.github.io/teal/latest-tag/reference/init.html" class="external-link">init</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data <span class="op">=</span> <span class="va">data</span>,</span></span>
 <span class="r-in"><span>  modules <span class="op">=</span> <span class="fu">teal</span><span class="fu">::</span><span class="fu"><a href="https://insightsengineering.github.io/teal/latest-tag/reference/teal_modules.html" class="external-link">modules</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    <span class="fu">teal.modules.general</span><span class="fu">::</span><span class="fu"><a href="https://insightsengineering.github.io/teal.modules.general/latest-tag/reference/tm_g_scatterplot.html" class="external-link">tm_g_scatterplot</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>      label <span class="op">=</span> <span class="st">"Scatterplot Choices"</span>,</span></span>
 <span class="r-in"><span>      x <span class="op">=</span> <span class="fu">teal.transform</span><span class="fu">::</span><span class="fu"><a href="https://insightsengineering.github.io/teal.transform/latest-tag/reference/data_extract_spec.html" class="external-link">data_extract_spec</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>        dataname <span class="op">=</span> <span class="st">"IRIS"</span>,</span></span>
-<span class="r-in"><span>        select <span class="op">=</span> <span class="fu">teal.transform</span><span class="fu">::</span><span class="fu"><a href="https://insightsengineering.github.io/teal.transform/latest-tag/reference/select_spec.html" class="external-link">select_spec</a></span><span class="op">(</span>choices <span class="op">=</span> <span class="fu">teal.transform</span><span class="fu">::</span><span class="fu"><a href="https://insightsengineering.github.io/teal.transform/latest-tag/reference/variable_choices.html" class="external-link">variable_choices</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>        dataname <span class="op">=</span> <span class="st">"ADSL"</span>,</span></span>
+<span class="r-in"><span>        select <span class="op">=</span> <span class="fu">teal.transform</span><span class="fu">::</span><span class="fu"><a href="https://insightsengineering.github.io/teal.transform/latest-tag/reference/select_spec.html" class="external-link">select_spec</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>          label <span class="op">=</span> <span class="st">"Select variable:"</span>,</span></span>
+<span class="r-in"><span>          choices <span class="op">=</span> <span class="fu">teal.transform</span><span class="fu">::</span><span class="fu"><a href="https://insightsengineering.github.io/teal.transform/latest-tag/reference/variable_choices.html" class="external-link">variable_choices</a></span><span class="op">(</span><span class="va">data</span><span class="op">[[</span><span class="st">"ADSL"</span><span class="op">]</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"AGE"</span>, <span class="st">"BMRKR1"</span>, <span class="st">"BMRKR2"</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>          selected <span class="op">=</span> <span class="st">"AGE"</span>,</span></span>
+<span class="r-in"><span>          multiple <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
+<span class="r-in"><span>          fixed <span class="op">=</span> <span class="cn">FALSE</span></span></span>
+<span class="r-in"><span>        <span class="op">)</span></span></span>
 <span class="r-in"><span>      <span class="op">)</span>,</span></span>
 <span class="r-in"><span>      y <span class="op">=</span> <span class="fu">teal.transform</span><span class="fu">::</span><span class="fu"><a href="https://insightsengineering.github.io/teal.transform/latest-tag/reference/data_extract_spec.html" class="external-link">data_extract_spec</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>        dataname <span class="op">=</span> <span class="st">"IRIS"</span>,</span></span>
-<span class="r-in"><span>        select <span class="op">=</span> <span class="fu">teal.transform</span><span class="fu">::</span><span class="fu"><a href="https://insightsengineering.github.io/teal.transform/latest-tag/reference/select_spec.html" class="external-link">select_spec</a></span><span class="op">(</span>choices <span class="op">=</span> <span class="fu">teal.transform</span><span class="fu">::</span><span class="fu"><a href="https://insightsengineering.github.io/teal.transform/latest-tag/reference/variable_choices.html" class="external-link">variable_choices</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>        dataname <span class="op">=</span> <span class="st">"ADSL"</span>,</span></span>
+<span class="r-in"><span>        select <span class="op">=</span> <span class="fu">teal.transform</span><span class="fu">::</span><span class="fu"><a href="https://insightsengineering.github.io/teal.transform/latest-tag/reference/select_spec.html" class="external-link">select_spec</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>          label <span class="op">=</span> <span class="st">"Select variable:"</span>,</span></span>
+<span class="r-in"><span>          choices <span class="op">=</span> <span class="fu">teal.transform</span><span class="fu">::</span><span class="fu"><a href="https://insightsengineering.github.io/teal.transform/latest-tag/reference/variable_choices.html" class="external-link">variable_choices</a></span><span class="op">(</span><span class="va">data</span><span class="op">[[</span><span class="st">"ADSL"</span><span class="op">]</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"AGE"</span>, <span class="st">"BMRKR1"</span>, <span class="st">"BMRKR2"</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>          selected <span class="op">=</span> <span class="st">"BMRKR1"</span>,</span></span>
+<span class="r-in"><span>          multiple <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
+<span class="r-in"><span>          fixed <span class="op">=</span> <span class="cn">FALSE</span></span></span>
+<span class="r-in"><span>        <span class="op">)</span></span></span>
 <span class="r-in"><span>      <span class="op">)</span>,</span></span>
 <span class="r-in"><span>      decorators <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>        plot <span class="op">=</span> <span class="fu">ggplot_decorator</span><span class="op">(</span></span></span>
@@ -172,8 +195,9 @@ The entered <code>ggplot</code> options are applied to <code>ggplot</code> plot 
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Initializing tm_g_scatterplot</span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="fu">shinyApp</span><span class="op">(</span><span class="va">app</span><span class="op">$</span><span class="va">ui</span>, <span class="va">app</span><span class="op">$</span><span class="va">server</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">shiny</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">app</span><span class="op">$</span><span class="va">ui</span>, <span class="va">app</span><span class="op">$</span><span class="va">server</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
