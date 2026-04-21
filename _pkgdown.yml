@@ -1,5 +1,5 @@
 ---
-url: https://github.com/phuse-org/uteals
+url: https://phuse-org.github.io/uteals/
 
 template:
   bootstrap: 5
@@ -7,6 +7,14 @@ template:
 navbar:
   structure:
     left: [intro, reference, articles, news]
+    right: [versions, github]
+  components:
+    versions:
+      text: Versions
+      menu: []
+
+development:
+  mode: auto
   
 reference:
   - title:
