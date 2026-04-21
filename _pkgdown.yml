@@ -2,7 +2,7 @@
 url: https://phuse-org.github.io/uteals/
 
 template:
-  package: nesttemplate
+  bootstrap: 5
 
 navbar:
   structure:
@@ -19,7 +19,7 @@ navbar:
 
 development:
   mode: auto
-  
+
 reference:
   - title:
     contents:
