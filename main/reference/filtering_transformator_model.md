@@ -1,10 +1,10 @@
-# View model for [`or_filtering_transformator()`](https://github.com/phuse-org/uteals/reference/or_filtering_transformator.md).
+# View model for [`or_filtering_transformator()`](https://phuse-org.github.io/uteals/reference/or_filtering_transformator.md).
 
 View model for
-[`or_filtering_transformator()`](https://github.com/phuse-org/uteals/reference/or_filtering_transformator.md).
+[`or_filtering_transformator()`](https://phuse-org.github.io/uteals/reference/or_filtering_transformator.md).
 
 View model for
-[`or_filtering_transformator()`](https://github.com/phuse-org/uteals/reference/or_filtering_transformator.md).
+[`or_filtering_transformator()`](https://phuse-org.github.io/uteals/reference/or_filtering_transformator.md).
 
 ## Public fields
 

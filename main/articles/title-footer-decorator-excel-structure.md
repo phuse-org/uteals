@@ -1,7 +1,7 @@
 # Excel structure for \`title_footer_decorator\`
 
 This vignette documents the exact structure expected by
-[`title_footer_decorator()`](https://github.com/phuse-org/uteals/reference/title_footer_decorator.md)
+[`title_footer_decorator()`](https://phuse-org.github.io/uteals/reference/title_footer_decorator.md)
 for the Excel specification file. The decorator expects a sheet that
 lists table identifiers and, for each table, a `TITLE` row and zero or
 more `FOOTNOTE` rows.

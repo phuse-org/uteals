@@ -12,17 +12,17 @@ package](https://github.com/insightsengineering/teal) ecosystem. The
 package includes:
 
 - **Decorators**:
-  [`ggplot_decorator()`](https://github.com/phuse-org/uteals/reference/ggplot_decorator.md),
-  [`patchwork_plot_decorator()`](https://github.com/phuse-org/uteals/reference/patchwork_plot_decorator.md),
+  [`ggplot_decorator()`](https://phuse-org.github.io/uteals/reference/ggplot_decorator.md),
+  [`patchwork_plot_decorator()`](https://phuse-org.github.io/uteals/reference/patchwork_plot_decorator.md),
   …
 - **Transformators**:
-  [`merge_levels_transformator()`](https://github.com/phuse-org/uteals/reference/merge_levels_transformator.md),
-  [`or_filtering_transformator()`](https://github.com/phuse-org/uteals/reference/or_filtering_transformator.md),
+  [`merge_levels_transformator()`](https://phuse-org.github.io/uteals/reference/merge_levels_transformator.md),
+  [`or_filtering_transformator()`](https://phuse-org.github.io/uteals/reference/or_filtering_transformator.md),
   …
 - **Module Access Management** wrappers:
-  [`extract_modules_to_yaml()`](https://github.com/phuse-org/uteals/reference/extract_modules_to_yaml.md),
-  [`keep_by_label()`](https://github.com/phuse-org/uteals/reference/keep_by_label.md),
-  [`remove_by_label()`](https://github.com/phuse-org/uteals/reference/remove_by_label.md)
+  [`extract_modules_to_yaml()`](https://phuse-org.github.io/uteals/reference/extract_modules_to_yaml.md),
+  [`keep_by_label()`](https://phuse-org.github.io/uteals/reference/keep_by_label.md),
+  [`remove_by_label()`](https://phuse-org.github.io/uteals/reference/remove_by_label.md)
 
 ## Design Guidelines
 
