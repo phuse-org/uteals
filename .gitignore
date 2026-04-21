@@ -2,4 +2,5 @@
 *.tar.gz
 *.Rproj
 .Rproj.user
-doc/
+docs/
+pkgdown/
