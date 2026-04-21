@@ -61,3 +61,4 @@ Suggests:
   teal.modules.general,
   teal.transform
 VignetteBuilder: knitr
+Config/Needs/website: insightsengineering/nesttemplate

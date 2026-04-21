@@ -2,16 +2,20 @@
 url: https://phuse-org.github.io/uteals/
 
 template:
-  bootstrap: 5
+  package: nesttemplate
 
 navbar:
   structure:
     left: [intro, reference, articles, news]
-    right: [versions, github]
+    right: [search, github]
   components:
-    versions:
-      text: Versions
-      menu: []
+    intro:
+      text: Get started
+      href: index.html
+    github:
+      icon: fa-github
+      aria-label: View on Github
+      href: https://github.com/phuse-org/uteals
 
 development:
   mode: auto
