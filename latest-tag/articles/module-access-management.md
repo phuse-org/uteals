@@ -53,7 +53,7 @@ filtered_mods <- keep_by_label(mods, c("Data Table"))
 ### Step 1: Generate Module Structure
 
 Use the
-[`extract_modules_to_yaml()`](https://github.com/phuse-org/uteals/reference/extract_modules_to_yaml.md)
+[`extract_modules_to_yaml()`](https://phuse-org.github.io/uteals/reference/extract_modules_to_yaml.md)
 function to automatically generate the module structure:
 
 ``` r
@@ -329,11 +329,11 @@ print(sapply(all_modules$children, function(x) x$label))
 The uteals package provides essential utilities for implementing access
 control in teal applications:
 
-- [`extract_modules_to_yaml()`](https://github.com/phuse-org/uteals/reference/extract_modules_to_yaml.md):
+- [`extract_modules_to_yaml()`](https://phuse-org.github.io/uteals/reference/extract_modules_to_yaml.md):
   Automates configuration generation
-- [`keep_by_label()`](https://github.com/phuse-org/uteals/reference/keep_by_label.md):
+- [`keep_by_label()`](https://phuse-org.github.io/uteals/reference/keep_by_label.md):
   Filters modules by user permissions
-- [`remove_by_label()`](https://github.com/phuse-org/uteals/reference/remove_by_label.md):
+- [`remove_by_label()`](https://phuse-org.github.io/uteals/reference/remove_by_label.md):
   Excludes restricted modules
 
 This integration enables secure, role-based access control while

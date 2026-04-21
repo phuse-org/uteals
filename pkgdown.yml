@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   module-access-management: module-access-management.html
   title-footer-decorator-excel-structure: title-footer-decorator-excel-structure.html
-last_built: 2026-04-21T10:55Z
+last_built: 2026-04-21T12:44Z
 urls:
-  reference: https://github.com/phuse-org/uteals/latest-tag/reference
-  article: https://github.com/phuse-org/uteals/latest-tag/articles
+  reference: https://phuse-org.github.io/uteals/latest-tag/reference
+  article: https://phuse-org.github.io/uteals/latest-tag/articles

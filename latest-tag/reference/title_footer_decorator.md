@@ -57,7 +57,7 @@ designated input fields.
 
 For the exact Excel workbook layout expected by this function, see the
 package vignette:
-[`vignette("title-footer-decorator-excel-structure", package = "uteals")`](https://github.com/phuse-org/uteals/articles/title-footer-decorator-excel-structure.md)
+[`vignette("title-footer-decorator-excel-structure", package = "uteals")`](https://phuse-org.github.io/uteals/articles/title-footer-decorator-excel-structure.md)
 
 ## Examples
 
