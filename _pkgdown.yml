@@ -18,7 +18,7 @@ navbar:
       href: https://github.com/phuse-org/uteals
 
 development:
-  mode: auto
+  mode: release
 
 reference:
   - title:
