@@ -8,6 +8,9 @@ functions to enhance the [`teal` package](https://cran.r-project.org/package=tea
 ## Installation
 
 ```r
+# Install from CRAN
+install.packages("uteals")
+
 # Install from GitHub
 install.packages("pak")
 pak::pkg_install("phuse-org/uteals@main")
