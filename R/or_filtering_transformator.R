@@ -219,16 +219,17 @@ or_filtering_transformator <- function(dataname) {
             operator <- input[[paste0("operator_selector_", view_model$alt_id())]]
             value <- input[[paste0("value_input_", view_model$alt_id())]]
 
-            # cond_str <- paste0(variable, " ", operator, " ", value)
-            cond_str <- if (operator == "%in%") {
-              quoted_vals <- paste0(sprintf("'%s'", value), collapse = ", ")
-              sprintf("%s %%in%% c(%s)", variable, quoted_vals)
-            } else if (operator == "!%in%") {
-              quoted_vals <- paste0(sprintf("'%s'", value), collapse = ", ")
-              sprintf("!%s %%in%% c(%s)", variable, quoted_vals)
-            } else {
+            cond_str <- switch(operator,
+              "%in%" = {
+                quoted_vals <- paste0(sprintf("'%s'", value), collapse = ", ")
+                sprintf("%s %%in%% c(%s)", variable, quoted_vals)
+              },
+              "!%in%" = {
+                quoted_vals <- paste0(sprintf("'%s'", value), collapse = ", ")
+                sprintf("!%s %%in%% c(%s)", variable, quoted_vals)
+              },
               sprintf("%s %s %s", variable, operator, value)
-            }
+            )
 
             # Check for duplicates in current block
             existing_conds <- if (is.null(view_model$block_conditions[[as.character(view_model$alt_id())]])) {
@@ -310,7 +311,7 @@ or_filtering_transformator <- function(dataname) {
           })
         })
 
-        #Update choices for values for the new block
+        # Update choices for values for the new block
         shiny::observeEvent(eventExpr = view_model$alt_id(), handlerExpr = {
           current_id <- view_model$alt_id()
           shiny::observeEvent(input[[paste0("column_selector_", current_id)]], {
@@ -319,7 +320,6 @@ or_filtering_transformator <- function(dataname) {
             col_data <- data()[[dataname]][[selected_col]]
 
             if (is.numeric(col_data)) {
-              # shiny::updateSelectInput(session, paste0("value_input_", current_id), choices = c(unique(col_data)))
               output[[paste0("value_input_", current_id)]] <- renderUI({
                 shiny::selectInput(
                   session$ns(paste0("value_input_", current_id)),
@@ -336,11 +336,12 @@ or_filtering_transformator <- function(dataname) {
             } else if (is.character(col_data) || is.factor(col_data)) {
               lvls <- levels(factor(col_data))
 
-              #Observe operator changes to change to single / multi select
+              # Observe operator changes to single / multi select
               shiny::observeEvent(
                 input[[paste0("operator_selector_", current_id)]],
                 {
                   op <- input[[paste0("operator_selector_", current_id)]]
+                  shiny::req(op)
 
                   output[[paste0("value_input_", current_id)]] <- renderUI({
                     if (op %in% c("%in%", "!%in%")) {

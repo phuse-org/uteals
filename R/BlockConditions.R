@@ -46,7 +46,7 @@ setMethod("get_str_expression", "BlockConditions", function(object, dataname, da
     var <- cond$variable
     val <- if (is.numeric(data()[[dataname]][[cond$variable]])) {
       cond$value
-    } else if (isTRUE(cond$operator == "%in%" | cond$operator == "!%in%")) {
+    } else if (isTRUE(cond$operator == "%in%" || cond$operator == "!%in%")) {
       quoted_vals <- paste0(sprintf("'%s'", cond$value), collapse = ", ")
       sprintf("c(%s)", quoted_vals)
     } else {
