@@ -26,7 +26,7 @@ setGeneric("add_condition", function(object, variable, operator, value) standard
 #' @keywords internal
 setMethod("add_condition", "BlockConditions", function(object, variable, operator, value) {
   object@conditions <- c(object@conditions, list(list(variable = variable, operator = operator, value = value)))
-    object
+  object
 })
 
 #' Get condition expression
