@@ -42,21 +42,21 @@ setGeneric("get_str_expression", function(object, dataname, data) standardGeneri
 #' Get condition expression
 #' @keywords internal
 setMethod("get_str_expression", "BlockConditions", function(object, dataname, data) {
-    conds <- lapply(object@conditions, function(cond) {
-      var <- cond$variable
-      val <- if (is.numeric(data()[[dataname]][[cond$variable]])) {
-        cond$value
-      } else if (isTRUE(cond$operator == "%in%" | cond$operator == "!%in%")) {
-        quoted_vals <- paste0("'", cond$value, "'", collapse = ", ")
-        paste0("c(", quoted_vals, ")")
-      } else {
-        paste0("'", cond$value, "'")
-      }
-      if (cond$operator == "!%in%") {
-        paste0("!", var, " ", "%in%", " ", val)
-      } else {
-        paste0(var, " ", cond$operator, " ", val)
-      }
-    })
-    paste0("(", paste(conds, collapse = " & "), ")")
+  conds <- lapply(object@conditions, function(cond) {
+    var <- cond$variable
+    val <- if (is.numeric(data()[[dataname]][[cond$variable]])) {
+      cond$value
+    } else if (isTRUE(cond$operator == "%in%" | cond$operator == "!%in%")) {
+      quoted_vals <- paste0(sprintf("'%s'", cond$value), collapse = ", ")
+      sprintf("c(%s)", quoted_vals)
+    } else {
+      sprintf("'%s'", cond$value)
+    }
+    if (cond$operator == "!%in%") {
+      sprintf("!(%s %%in%% %s)", var, val)
+    } else {
+      sprintf("%s %s %s", var, cond$operator, val)
+    }
+  })
+  sprintf("(%s)", paste(conds, collapse = " & "))
 })

@@ -221,13 +221,13 @@ or_filtering_transformator <- function(dataname) {
 
             # cond_str <- paste0(variable, " ", operator, " ", value)
             cond_str <- if (operator == "%in%") {
-              quoted_vals <- paste0("'", value, "'", collapse = ", ")
-              paste0(variable, " %in% c(", quoted_vals, ")")
+              quoted_vals <- paste0(sprintf("'%s'", value), collapse = ", ")
+              sprintf("%s %%in%% c(%s)", variable, quoted_vals)
             } else if (operator == "!%in%") {
-              quoted_vals <- paste0("'", value, "'", collapse = ", ")
-              paste0("!", variable, " %in% c(", quoted_vals, ")")
+              quoted_vals <- paste0(sprintf("'%s'", value), collapse = ", ")
+              sprintf("!%s %%in%% c(%s)", variable, quoted_vals)
             } else {
-              paste0(variable, " ", operator, " ", value)
+              sprintf("%s %s %s", variable, operator, value)
             }
 
             # Check for duplicates in current block
