@@ -336,33 +336,24 @@ or_filtering_transformator <- function(dataname) {
             } else if (is.character(col_data) || is.factor(col_data)) {
               lvls <- levels(factor(col_data))
 
-              # Observe operator changes to single / multi select
-              shiny::observeEvent(
-                input[[paste0("operator_selector_", current_id)]],
-                {
-                  op <- input[[paste0("operator_selector_", current_id)]]
-                  shiny::req(op)
-
-                  output[[paste0("value_input_", current_id)]] <- renderUI({
-                    if (op %in% c("%in%", "!%in%")) {
-                      shinyWidgets::pickerInput(
-                        session$ns(paste0("value_input_", current_id)),
-                        "Select Values",
-                        choices = lvls,
-                        selected = lvls,
-                        multiple = TRUE
-                      )
-                    } else {
-                      shiny::selectInput(
-                        session$ns(paste0("value_input_", current_id)),
-                        "Select Value",
-                        choices = lvls
-                      )
-                    }
-                  })
-                },
-                ignoreNULL = FALSE
-              )
+              output[[paste0("value_input_", current_id)]] <- renderUI({
+                op <- input[[paste0("operator_selector_", current_id)]]
+                if (!is.null(op) && op %in% c("%in%", "!%in%")) {
+                  shinyWidgets::pickerInput(
+                    session$ns(paste0("value_input_", current_id)),
+                    "Select Values",
+                    choices = lvls,
+                    selected = lvls,
+                    multiple = TRUE
+                  )
+                } else {
+                  shiny::selectInput(
+                    session$ns(paste0("value_input_", current_id)),
+                    "Select Value",
+                    choices = lvls
+                  )
+                }
+              })
 
               shiny::updateSelectInput(
                 session,
@@ -403,7 +394,7 @@ or_filtering_transformator <- function(dataname) {
           within(
             data(),
             {
-              if (filters != "" & filters != "()") {
+              if (filters != "" && filters != "()") {
                 df <- df |> dplyr::filter(!!rlang::parse_expr(filters))
               }
             },
