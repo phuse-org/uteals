@@ -34,7 +34,7 @@ Each module call is independent and manages filters for its specific dataset.
 \item \strong{Supported Data Types & Expressions:}
 \itemize{
 \item Supports filtering on \code{character}, \code{factor}, and \code{numeric} columns.
-\item Conditions can use operators: \code{==}, \code{!=}, \code{<}, \code{>}, \code{<=}, \code{>=}.
+\item Conditions can use operators: \code{==}, \code{!=}, \code{<}, \code{>}, \code{<=}, \code{>=}, \code{\%in\%}, \code{!\%in\%}.
 \item Conditions are specified as simple expressions, e.g.,
 \code{columnA == 'value'}
 \code{columnB != 5}

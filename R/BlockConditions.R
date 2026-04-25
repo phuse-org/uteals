@@ -14,7 +14,7 @@ setClass("BlockConditions", slots = list(conditions = "list"))
 #'
 #' @param object A `BlockConditions` object.
 #' @param variable A character string specifying the variable/column name.
-#' @param operator A character string specifying the operator (e.g., "==", "!=", "<", ">", "<=", ">=").
+#' @param operator A character string specifying the operator (e.g., "==", "!=", "<", ">", "<=", ">=", "%in%", "!%in%").
 #' @param value The value to compare against.
 #'
 #' @return An updated `BlockConditions` object with the new condition added.
@@ -46,10 +46,17 @@ setMethod("get_str_expression", "BlockConditions", function(object, dataname, da
     var <- cond$variable
     val <- if (is.numeric(data()[[dataname]][[cond$variable]])) {
       cond$value
+    } else if (isTRUE(cond$operator == "%in%" || cond$operator == "!%in%")) {
+      quoted_vals <- paste0(sprintf("'%s'", cond$value), collapse = ", ")
+      sprintf("c(%s)", quoted_vals)
     } else {
-      paste0("'", cond$value, "'")
+      sprintf("'%s'", cond$value)
     }
-    paste0(var, " ", cond$operator, " ", val)
+    if (cond$operator == "!%in%") {
+      sprintf("!(%s %%in%% %s)", var, val)
+    } else {
+      sprintf("%s %s %s", var, cond$operator, val)
+    }
   })
-  paste0("(", paste(conds, collapse = " & "), ")")
+  sprintf("(%s)", paste(conds, collapse = " & "))
 })
