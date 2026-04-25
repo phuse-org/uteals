@@ -14,7 +14,7 @@ setClass("BlockConditions", slots = list(conditions = "list"))
 #'
 #' @param object A `BlockConditions` object.
 #' @param variable A character string specifying the variable/column name.
-#' @param operator A character string specifying the operator (e.g., "==", "!=", "<", ">", "<=", ">=").
+#' @param operator A character string specifying the operator (e.g., "==", "!=", "<", ">", "<=", ">=", "%in%", "!%in%").
 #' @param value The value to compare against.
 #'
 #' @return An updated `BlockConditions` object with the new condition added.

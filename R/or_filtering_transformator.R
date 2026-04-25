@@ -18,7 +18,7 @@
 #'
 #' - **Supported Data Types & Expressions:**
 #'   - Supports filtering on \code{character}, \code{factor}, and \code{numeric} columns.
-#'   - Conditions can use operators: \code{==}, \code{!=}, \code{<}, \code{>}, \code{<=}, \code{>=}.
+#'   - Conditions can use operators: \code{==}, \code{!=}, \code{<}, \code{>}, \code{<=}, \code{>=}, \code{%in%}, \code{!%in%}.
 #'   - Conditions are specified as simple expressions, e.g.,
 #'     \code{columnA == 'value'}
 #'     \code{columnB != 5}
