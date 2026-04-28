@@ -1,5 +1,7 @@
 # Version 0.0.4.9000
 
+- Added support for `%in%` and `!%in%` operators to `or_filtering_transformator`. This contribution was authored by [@Siddhesh2097](https://github.com/Siddhesh2097).
+
 # Version 0.0.3
 
 - Refactored the `merge_levels_transformator` to handle the predefined inputs to the transformator ([#25](https://github.com/phuse-org/uteals/pull/25)).
