@@ -11,7 +11,7 @@ add_condition(object, variable, operator, value)
 
 \item{variable}{A character string specifying the variable/column name.}
 
-\item{operator}{A character string specifying the operator (e.g., "==", "!=", "<", ">", "<=", ">=").}
+\item{operator}{A character string specifying the operator (e.g., "==", "!=", "<", ">", "<=", ">=", "\%in\%", "!\%in\%").}
 
 \item{value}{The value to compare against.}
 }
