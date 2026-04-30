@@ -33,6 +33,7 @@ Imports:
   checkmate,
   cowplot,
   dplyr,
+  DT,
   formatters,
   ggplot2,
   ggplotify,

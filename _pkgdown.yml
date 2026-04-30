@@ -38,3 +38,6 @@ reference:
   - title: Utility functions
     contents:
       - g_forest_with_transform
+  - title: Report manager
+    contents:
+      - tm_report_manager
