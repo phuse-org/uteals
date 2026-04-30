@@ -1,4 +1,4 @@
-#' @title ReportManager Object
+#' @title `ReportManager` Object
 #' @description
 #' This can be used to manage state of report, load and save them into file
 #' It will create `shiny::reactiveVal` variables and load report list from `report_path`
@@ -29,14 +29,14 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
     #' Placeholder for Shiny session object
     session = NULL,
 
-    #' Initialize ReportManager
+    #' Initialize `ReportManager`
     #' @description
     #' This can be used to manage state of report, load and save them into file
     #' It will create `shiny::reactiveVal` variables and load report list from `reports_path`
     #' @param reports_path (character) An absolute path to where reports are stored
     #' @param session Session object passed from `moduleServer`
     #'
-    #' @return ReportManager object
+    #' @return `ReportManager` object
     initialize = function(reports_path, session) {
       self$reports_path <- reports_path
       if (!dir.exists(reports_path)) {
@@ -314,7 +314,7 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
     #' Checks if report is locked by another user
     #' @param report_title (character) A title for the saved report.
     #' @param verbose (boolean) Whether to show notification on locked report or not
-    #' @param message_type (character) showNotification's type argument
+    #' @param message_type (character) `shiny::showNotification's` type argument
     #'
     #' @return logical(1) TRUE if locked by another user, FALSE if unlocked or locked by me
     is_locked_by_other = function(report_title, verbose = TRUE, message_type = "error") {
@@ -405,7 +405,7 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
       }
     },
 
-    #' Add observeEvent to invoke auto save on reporter cards change
+    #' Add `observeEvent` to invoke auto save on reporter cards change.
     #'
     #' @param reporter (Reporter) A reporter object passed from `teal::init`
     auto_save_observer = function(reporter) {
@@ -589,7 +589,7 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
       }
     },
 
-    #' Save code from each card as code.rds in the report directory
+    #' Save code from each card as `code.rds` in the report directory.
     save_card_codes = function(reporter, path) {
       cards <- reporter$get_cards()
       code_list <- lapply(cards, function(card) {

@@ -2,7 +2,7 @@
 % Please edit documentation in R/ReportManager.R
 \name{ReportManager}
 \alias{ReportManager}
-\title{ReportManager Object}
+\title{\code{ReportManager} Object}
 \description{
 This can be used to manage state of report, load and save them into file
 It will create \code{shiny::reactiveVal} variables and load report list from \code{report_path}
@@ -27,7 +27,7 @@ An absolute path to a folder where reports are stored}
 \code{reactiveVal} field that indicates if current report is in read-only mode}
 
 \item{\code{session}}{Placeholder for Shiny session object
-Initialize ReportManager}
+Initialize \code{ReportManager}}
 }
 \if{html}{\out{</div>}}
 }
@@ -74,7 +74,7 @@ It will create \code{shiny::reactiveVal} variables and load report list from \co
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-ReportManager object
+\code{ReportManager} object
 List available reports from objects' \code{reports_path}
 }
 }
@@ -245,7 +245,7 @@ Checks if report is locked by another user}
 
 \item{\code{verbose}}{(boolean) Whether to show notification on locked report or not}
 
-\item{\code{message_type}}{(character) showNotification's type argument}
+\item{\code{message_type}}{(character) \verb{shiny::showNotification's} type argument}
 }
 \if{html}{\out{</div>}}
 }
@@ -309,7 +309,7 @@ Create new report with title
 \item{\code{report_title}}{(character) Title for the new report}
 
 \item{\code{reporter}}{(Reporter) A reporter object
-Add observeEvent to invoke auto save on reporter cards change}
+Add \code{observeEvent} to invoke auto save on reporter cards change.}
 }
 \if{html}{\out{</div>}}
 }
@@ -387,7 +387,7 @@ Get metadata file path
 Lock report so that it can't be overwritten by another user
 Unlock report
 Save creator information
-Save code from each card as code.rds in the report directory
+Save code from each card as \code{code.rds} in the report directory.
 Register \code{onSessionEnded} to unlock report when session is closed}
 }
 \if{html}{\out{</div>}}
