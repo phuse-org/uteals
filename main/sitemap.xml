@@ -9,6 +9,7 @@
 <url><loc>https://phuse-org.github.io/uteals/index.html</loc></url>
 <url><loc>https://phuse-org.github.io/uteals/news/index.html</loc></url>
 <url><loc>https://phuse-org.github.io/uteals/reference/BlockConditions-class.html</loc></url>
+<url><loc>https://phuse-org.github.io/uteals/reference/ReportManager.html</loc></url>
 <url><loc>https://phuse-org.github.io/uteals/reference/add_condition-BlockConditions-method.html</loc></url>
 <url><loc>https://phuse-org.github.io/uteals/reference/add_condition.html</loc></url>
 <url><loc>https://phuse-org.github.io/uteals/reference/create_rel_risk_transformator.html</loc></url>
@@ -25,7 +26,10 @@
 <url><loc>https://phuse-org.github.io/uteals/reference/or_filtering_transformator.html</loc></url>
 <url><loc>https://phuse-org.github.io/uteals/reference/patchwork_plot_decorator.html</loc></url>
 <url><loc>https://phuse-org.github.io/uteals/reference/remove_by_label.html</loc></url>
+<url><loc>https://phuse-org.github.io/uteals/reference/report_manager_server.html</loc></url>
+<url><loc>https://phuse-org.github.io/uteals/reference/report_manager_ui.html</loc></url>
 <url><loc>https://phuse-org.github.io/uteals/reference/title_footer_decorator.html</loc></url>
+<url><loc>https://phuse-org.github.io/uteals/reference/tm_report_manager.html</loc></url>
 <url><loc>https://phuse-org.github.io/uteals/reference/uteals-package.html</loc></url>
 <url><loc>https://phuse-org.github.io/uteals/reference/watermark_decorator.html</loc></url>
 </urlset>

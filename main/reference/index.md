@@ -56,3 +56,8 @@
   **\[experimental\]** :
 
   Create a forest plot from an `rtable` with x transform settings
+
+## Report manager
+
+- [`tm_report_manager()`](https://phuse-org.github.io/uteals/reference/tm_report_manager.md)
+  : Report Manager Module
