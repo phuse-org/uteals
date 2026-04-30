@@ -1,6 +1,7 @@
 # Version 0.0.4.9000
 
 - Added support for `%in%` and `!%in%` operators to `or_filtering_transformator`. This contribution was authored by [@Siddhesh2097](https://github.com/Siddhesh2097).
+- Added a new module - `tm_report_manager()` - for comprehensive `teal` report management.
 
 # Version 0.0.3
 
