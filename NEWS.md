@@ -2,6 +2,7 @@
 
 - Added support for `%in%` and `!%in%` operators to `or_filtering_transformator`. This contribution was authored by [@Siddhesh2097](https://github.com/Siddhesh2097).
 - Added a new module - `tm_report_manager()` - for comprehensive `teal` report management.
+- Fixed ID conflict in `or_filtering_transformator` that caused errors when multiple instances were used in the same Shiny app. Removed the hardcoded, un-namespaced `shinyBS::bsModal()` block (dead code — preview is handled by `shiny::showModal()`), resolving duplicate DOM IDs across instances.
 
 # Version 0.0.3
 
