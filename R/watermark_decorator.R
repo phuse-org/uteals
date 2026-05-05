@@ -29,7 +29,7 @@ watermark_decorator <- function(output_name, watermark_text = "", font_size = 90
       ns <- NS(id)
       tagList(
         div(
-          textInput(ns("txtWatermark"), label = "Enter Text", value = watermark_text),
+          textInput(ns("txtWatermark"), label = "Enter Text", value = watermark_text, updateOn = "blur"),
           numericInput(ns("numFontsize"), label = "Enter Font size", value = font_size)
         )
       )

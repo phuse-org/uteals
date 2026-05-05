@@ -20,8 +20,8 @@ patchwork_plot_decorator <- function(output_name, label_text = "decorator") {
     ui = function(id) {
       ns <- shiny::NS(id)
       shiny::tagList(
-        shiny::textInput(inputId = ns("plot_title"), label = "Specify plot title", value = ""),
-        shiny::textInput(inputId = ns("plot_footnote"), label = "Specify plot_footnote", value = ""),
+        shiny::textInput(inputId = ns("plot_title"), label = "Specify plot title", value = "", updateOn = "blur"),
+        shiny::textInput(inputId = ns("plot_footnote"), label = "Specify plot_footnote", value = "", updateOn = "blur"),
       )
     },
     server = function(id, data) {

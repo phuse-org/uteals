@@ -133,8 +133,8 @@ title_footer_decorator <- function(output_name, titles_file, choices = NULL, sel
         output$customInputs <- renderUI({
           if (input$customize) {
             tagList(
-              textInput(session$ns("customTitle"), label = "Custom Title", value = ""),
-              textInput(session$ns("customFooter"), label = "Custom Footer", value = "")
+              textInput(session$ns("customTitle"), label = "Custom Title", value = "", updateOn = "blur"),
+              textInput(session$ns("customFooter"), label = "Custom Footer", value = "", updateOn = "blur")
             )
           }
         })

@@ -138,7 +138,8 @@ ggplot_decorator <- function(output_name,
             shiny::textInput(
               inputId = ns(supported_settings[[supported_setting]]$ns),
               label = supported_settings[[supported_setting]]$label,
-              value = plot_options[[supported_setting]]
+              value = plot_options[[supported_setting]],
+              updateOn = "blur"
             )
           )
         }
