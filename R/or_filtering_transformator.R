@@ -104,8 +104,6 @@ or_filtering_transformator <- function(dataname) {
     },
     server = function(id, data) {
       shiny::moduleServer(id, function(input, output, session) {
-        ns <- shiny::NS(id)
-
         view_model <- filtering_transformator_model$new(data, dataname)
 
         output$dataset <- shiny::renderText({
@@ -361,7 +359,6 @@ or_filtering_transformator <- function(dataname) {
         })
 
         shiny::observeEvent(input$preview, {
-          # Get the filter expression
           filter_expr <- view_model$final_filter_expr()
 
           shiny::showModal(
@@ -388,7 +385,7 @@ or_filtering_transformator <- function(dataname) {
             data(),
             {
               if (filters != "" && filters != "()") {
-                df <- df |> dplyr::filter(!!rlang::parse_expr(filters))
+                df <- df |> dplyr::filter(!!rlang::parse_expr(filters)) # nolint: object_usage_linter
               }
             },
             filters = view_model$final_exp(),
