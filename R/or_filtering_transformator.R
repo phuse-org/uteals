@@ -47,7 +47,6 @@
 #' @importFrom shiny updateSelectInput showNotification showModal modalDialog reactiveValues observe reactive
 #' @importFrom shinyWidgets pickerInput
 #' @importFrom dplyr filter
-#' @importFrom shinyBS bsModal
 #' @importFrom rlang parse_expr
 #' @importFrom methods new
 #' @importFrom shinyjs toggle show hidden hide useShinyjs
@@ -91,13 +90,6 @@ or_filtering_transformator <- function(dataname) {
           class = "btn btn-primary",
           style = "width: -webkit-fill-available;margin: 5px;",
           title = "Click to preview the current filtering expression"
-        ),
-        shinyBS::bsModal(
-          "filterPreview",
-          "Filtering Expression Preview",
-          "preview",
-          size = "large",
-          shiny::htmlOutput("filter_preview")
         ),
         shiny::div(
           shiny::actionButton(
