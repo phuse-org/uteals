@@ -47,7 +47,6 @@
 #' @importFrom shiny updateSelectInput showNotification showModal modalDialog reactiveValues observe reactive
 #' @importFrom shinyWidgets pickerInput
 #' @importFrom dplyr filter
-#' @importFrom shinyBS bsModal
 #' @importFrom rlang parse_expr
 #' @importFrom methods new
 #' @importFrom shinyjs toggle show hidden hide useShinyjs
@@ -92,13 +91,6 @@ or_filtering_transformator <- function(dataname) {
           style = "width: -webkit-fill-available;margin: 5px;",
           title = "Click to preview the current filtering expression"
         ),
-        shinyBS::bsModal(
-          "filterPreview",
-          "Filtering Expression Preview",
-          "preview",
-          size = "large",
-          shiny::htmlOutput("filter_preview")
-        ),
         shiny::div(
           shiny::actionButton(
             ns("add_alternative"),
@@ -112,8 +104,6 @@ or_filtering_transformator <- function(dataname) {
     },
     server = function(id, data) {
       shiny::moduleServer(id, function(input, output, session) {
-        ns <- shiny::NS(id)
-
         view_model <- filtering_transformator_model$new(data, dataname)
 
         output$dataset <- shiny::renderText({
@@ -162,7 +152,7 @@ or_filtering_transformator <- function(dataname) {
             selector = paste0("#", session$ns("add_alternative")),
             where = "beforeBegin",
             ui = shiny::tags$div(
-              id = paste0("alt_block_", view_model$alt_id()),
+              id = session$ns(paste0("alt_block_", view_model$alt_id())),
               style = "background-color: #ededed;margin-top: 7px;padding: 10px;",
               shiny::div(
                 style = "display:flex;",
@@ -369,7 +359,6 @@ or_filtering_transformator <- function(dataname) {
         })
 
         shiny::observeEvent(input$preview, {
-          # Get the filter expression
           filter_expr <- view_model$final_filter_expr()
 
           shiny::showModal(
@@ -396,7 +385,7 @@ or_filtering_transformator <- function(dataname) {
             data(),
             {
               if (filters != "" && filters != "()") {
-                df <- df |> dplyr::filter(!!rlang::parse_expr(filters))
+                df <- df |> dplyr::filter(!!rlang::parse_expr(filters)) # nolint: object_usage_linter
               }
             },
             filters = view_model$final_exp(),
