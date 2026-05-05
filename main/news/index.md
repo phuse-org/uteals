@@ -8,6 +8,12 @@
 - Added a new module -
   [`tm_report_manager()`](https://phuse-org.github.io/uteals/reference/tm_report_manager.md) -
   for comprehensive `teal` report management.
+- Fixed ID conflict in `or_filtering_transformator` that caused errors
+  when multiple instances were used in the same Shiny app. Removed a
+  `shinyBS::bsModal()` block with fixed, non-module-scoped IDs (dead
+  code — preview is handled by
+  [`shiny::showModal()`](https://rdrr.io/pkg/shiny/man/showModal.html)),
+  resolving duplicate element IDs across instances.
 
 ## Version 0.0.3
 
