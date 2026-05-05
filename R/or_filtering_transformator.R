@@ -152,7 +152,7 @@ or_filtering_transformator <- function(dataname) {
             selector = paste0("#", session$ns("add_alternative")),
             where = "beforeBegin",
             ui = shiny::tags$div(
-              id = paste0("alt_block_", view_model$alt_id()),
+              id = session$ns(paste0("alt_block_", view_model$alt_id())),
               style = "background-color: #ededed;margin-top: 7px;padding: 10px;",
               shiny::div(
                 style = "display:flex;",
