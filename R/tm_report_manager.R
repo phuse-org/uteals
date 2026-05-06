@@ -173,7 +173,7 @@ report_manager_server <- function(id, reports_path = "reports", auto_save = TRUE
         showModal(modalDialog(
           title = "Create New Report",
           "You are creating a new report. Please enter a report title:",
-          textInput(ns("new_report_title"), "Report title:", value = ""),
+          textInput(ns("new_report_title"), "Report title:", value = "", updateOn = "blur"),
           footer = tagList(
             modalButton("Cancel"),
             actionButton(ns("create_new_report"), "Create Report")
@@ -214,7 +214,7 @@ report_manager_server <- function(id, reports_path = "reports", auto_save = TRUE
       showModal(modalDialog(
         title = "Create New Report",
         "Enter a title for the new report. Current report will be saved automatically.",
-        textInput(ns("manual_new_report_title"), "Report title:", value = ""),
+        textInput(ns("manual_new_report_title"), "Report title:", value = "", updateOn = "blur"),
         footer = tagList(
           modalButton("Cancel"),
           actionButton(ns("confirm_create_new_report"), "Create Report")
@@ -602,7 +602,7 @@ report_manager_server <- function(id, reports_path = "reports", auto_save = TRUE
             choices = reports_with_content,
             selected = if (!is.null(current) && current %in% reports_with_content) current else NULL
           ),
-          textInput(ns("merged_report_title"), "New merged report title:", value = ""),
+          textInput(ns("merged_report_title"), "New merged report title:", value = "", updateOn = "blur"),
           footer = tagList(
             modalButton("Cancel"),
             actionButton(ns("confirm_merge"), "Merge reports")
@@ -664,7 +664,7 @@ report_manager_server <- function(id, reports_path = "reports", auto_save = TRUE
       edit_candidate(input$edit_row)
       showModal(modalDialog(
         title = "Edit Report Title",
-        textInput(ns("new_report_title"), "New report title:", value = input$edit_row),
+        textInput(ns("new_report_title"), "New report title:", value = input$edit_row, updateOn = "blur"),
         footer = tagList(
           modalButton("Cancel"),
           actionButton(ns("confirm_edit"), "Save")

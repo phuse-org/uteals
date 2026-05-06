@@ -45,7 +45,7 @@ create_rel_risk_transformator <- function(dataname, column_name, control_group, 
       tagList(
         selectInput(inputId = ns("selected_columns"), label = "Selected Variable", choices = NULL, multiple = FALSE),
         selectInput(inputId = ns("sel_cntrl_grp"), label = "Selected Control group", choices = NULL, multiple = FALSE),
-        textInput(inputId = ns("col_label"), label = "Enter the Label", value = label_name)
+        textInput(inputId = ns("col_label"), label = "Enter the Label", value = label_name, updateOn = "blur")
       )
     },
     server = function(id, data) {

@@ -94,7 +94,7 @@ merge_level_transformer_srv <- function(id, data, manager, dataname) {
               choices = names(data()[[dataname]]), selected = var_sel
             ),
             uiOutput(ns(paste0("col_levels_ui_", idx))),
-            textInput(ns(paste0("new_label_", idx)), "New Level Name", value = new_name)
+            textInput(ns(paste0("new_label_", idx)), "New Level Name", value = new_name, updateOn = "blur")
           ),
           ## Javascript for toggle effect
           tags$script(sprintf("

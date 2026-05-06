@@ -43,7 +43,7 @@ Imports:
   patchwork,
   rlang,
   rtables,
-  shiny,
+  shiny (>= 1.11.0),
   shinyWidgets,
   shinyjs,
   teal,
