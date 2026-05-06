@@ -14,6 +14,9 @@
   code — preview is handled by
   [`shiny::showModal()`](https://rdrr.io/pkg/shiny/man/showModal.html)),
   resolving duplicate element IDs across instances.
+- Added `updateOn = "blur"` to all `textInput` controls so that reactive
+  updates are only triggered when the user leaves the field, reducing
+  unnecessary re-renders while typing. Requires `shiny >= 1.11.0`.
 
 ## Version 0.0.3
 
