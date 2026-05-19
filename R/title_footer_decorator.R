@@ -106,7 +106,6 @@ title_footer_decorator <- function(output_name, titles_file, choices = NULL, sel
   checkmate::assert_string(selected, null.ok = TRUE)
 
   titles <- openxlsx::read.xlsx(titles_file, "Sheet1")
-  titles$TABLE.ID[1] <- "blank"
 
   choices <- `if`(is.null(choices), unique(titles$TABLE.ID), intersect(choices, titles$TABLE.ID))
   checkmate::assert(

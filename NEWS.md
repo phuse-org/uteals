@@ -4,6 +4,7 @@
 - Added a new module - `tm_report_manager()` - for comprehensive `teal` report management.
 - Fixed ID conflict in `or_filtering_transformator` that caused errors when multiple instances were used in the same Shiny app. Removed a `shinyBS::bsModal()` block with fixed, non-module-scoped IDs (dead code — preview is handled by `shiny::showModal()`), resolving duplicate element IDs across instances.
 - Added `updateOn = "blur"` to all `textInput` controls so that reactive updates are only triggered when the user leaves the field, reducing unnecessary re-renders while typing. Requires `shiny >= 1.11.0`.
+- Fixed `title_footer_decorator` so it allows for TSFLAB01 title selection 
 
 # Version 0.0.3
 
