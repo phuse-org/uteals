@@ -21,6 +21,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Peyman Eshghi \email{peymaan.es@gmail.com}
   \item Nadia Abraham \email{NAbraha5@ITS.JNJ.com}
   \item Chanchal Bhalla \email{CBhalla@ITS.JNJ.com}
   \item Pranith Gourisetty \email{PGourise@ITS.JNJ.com}
