@@ -106,12 +106,13 @@ title_footer_decorator <- function(output_name, titles_file, choices = NULL, sel
   checkmate::assert_string(selected, null.ok = TRUE)
 
   titles <- openxlsx::read.xlsx(titles_file, "Sheet1")
+  titles <- titles %>% filter(!grepl("delete", TABLE.ID, ignore.case=T))
 
   choices <- `if`(is.null(choices), unique(titles$TABLE.ID), intersect(choices, titles$TABLE.ID))
   checkmate::assert(
     checkmate::check_null(selected),
     if (!is.null(selected)) {
-      checkmate::assert_true(selected %in% choices, .var.name = "selected must be one of the choices")
+      checkmate::assert(checkmate::check_true(selected %in% choices), .var.name = "selected must be one of the choices")
     }
   )
 
