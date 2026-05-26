@@ -21,7 +21,6 @@ filtering_transformator_model <- R6::R6Class("filtering_transformator_model",
     #' Initializes the object
     #' @param data the reactive data object from `teal`.
     #' @param dataname `character(1)` the name of the dataset.
-    #' @keywords internal
     initialize = function(data, dataname) {
       self$block_objects <- shiny::reactiveVal(list())
       self$r_vals <- shiny::reactiveValues(filter_conditions = list())
@@ -46,7 +45,6 @@ filtering_transformator_model <- R6::R6Class("filtering_transformator_model",
     },
     #' Adds an alternative
     #' @return invisibly self.
-    #' @keywords internal
     add_alternative = function() {
       self$alt_id(self$alt_id() + 1)
       new_block <- methods::new("BlockConditions", conditions = list())
@@ -59,7 +57,6 @@ filtering_transformator_model <- R6::R6Class("filtering_transformator_model",
     #' @param cond_str `character(1)` added condition.
     #' @param block_cond_list `character(1)` list of all conditions.
     #' @return `logical(1)` whether the added condition is a duplicate.
-    #' @keywords internal
     is_duplicate_condition = function(cond_str, block_cond_list) {
       cond_str %in% block_cond_list
     }
