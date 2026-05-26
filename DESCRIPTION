@@ -59,6 +59,7 @@ Suggests:
   rmarkdown,
   teal.data,
   teal.modules.general,
+  teal.reporter,
   teal.transform
 VignetteBuilder: knitr
 Config/Needs/website: insightsengineering/nesttemplate
