@@ -112,11 +112,8 @@ title_footer_decorator <- function(output_name, titles_file, choices = NULL, sel
   choices <- `if`(is.null(choices), unique(titles$TABLE.ID), intersect(choices, titles$TABLE.ID))
   checkmate::assert(
     checkmate::check_null(selected),
-    if (!is.null(selected)) {
-      checkmate::assert(checkmate::check_true(selected %in% choices), .var.name = "selected must be one of the choices")
-    }
+    checkmate::check_choice(selected, choices)
   )
-
 
   teal::teal_transform_module(
     label = "Title and footer decorator",
