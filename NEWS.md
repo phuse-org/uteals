@@ -2,6 +2,7 @@
 
 - Added support for `%in%` and `!%in%` operators to `or_filtering_transformator`. This contribution was authored by [@Siddhesh2097](https://github.com/Siddhesh2097).
 - Added a new module - `tm_report_manager()` - for comprehensive `teal` report management.
+- Added vignette for `tm_report_manager()`.
 - Fixed ID conflict in `or_filtering_transformator` that caused errors when multiple instances were used in the same Shiny app. Removed a `shinyBS::bsModal()` block with fixed, non-module-scoped IDs (dead code — preview is handled by `shiny::showModal()`), resolving duplicate element IDs across instances.
 - Added `updateOn = "blur"` to all `textInput` controls so that reactive updates are only triggered when the user leaves the field, reducing unnecessary re-renders while typing. Requires `shiny >= 1.11.0`.
 - Refactored `title_footer_decorator` not to overwrite the first row of the TABLE.ID column in the imported file. This change allows for importing files that have meaningful data in the first row.

@@ -41,3 +41,11 @@ reference:
   - title: Report manager
     contents:
       - tm_report_manager
+
+articles:
+  - title: Vignettes
+    navbar: ~
+    contents:
+      - module-access-management
+      - report-manager
+      - title-footer-decorator-excel-structure
