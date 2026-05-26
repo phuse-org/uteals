@@ -6,13 +6,6 @@
 \description{
 View model for \code{\link[=or_filtering_transformator]{or_filtering_transformator()}}.
 }
-\keyword{Adds}
-\keyword{Checks}
-\keyword{alternative}
-\keyword{an}
-\keyword{conditions}
-\keyword{duplicate}
-\keyword{for}
 \keyword{internal}
 \section{Public fields}{
   \if{html}{\out{<div class="r6-fields">}}
@@ -56,7 +49,8 @@ Initializes the object}
     \if{html}{\out{<div class="arguments">}}
     \describe{
       \item{\code{data}}{the reactive data object from \code{teal}.}
-      \item{\code{dataname}}{\code{character(1)} the name of the dataset.}
+      \item{\code{dataname}}{\code{character(1)} the name of the dataset.
+Adds an alternative}
     }
     \if{html}{\out{</div>}}
   }
@@ -73,6 +67,7 @@ Initializes the object}
   }
   \subsection{Returns}{
     invisibly self.
+Checks for duplicate conditions
   }
 }
 
