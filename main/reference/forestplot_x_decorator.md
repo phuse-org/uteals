@@ -47,6 +47,11 @@ library(teal.modules.clinical)
 #>     %||%
 #> Loading required package: magrittr
 #> 
+#> Attaching package: ‘magrittr’
+#> The following objects are masked from ‘package:testthat’:
+#> 
+#>     equals, is_less_than, not
+#> 
 #> Attaching package: ‘rtables’
 #> The following object is masked from ‘package:utils’:
 #> 

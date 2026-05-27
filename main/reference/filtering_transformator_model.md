@@ -3,9 +3,6 @@
 View model for
 [`or_filtering_transformator()`](https://phuse-org.github.io/uteals/reference/or_filtering_transformator.md).
 
-View model for
-[`or_filtering_transformator()`](https://phuse-org.github.io/uteals/reference/or_filtering_transformator.md).
-
 ## Public fields
 
 - `block_objects`:
@@ -40,7 +37,7 @@ View model for
 
 ### Public methods
 
-- [`filtering_transformator_model$new()`](#method-filtering_transformator_model-new)
+- [`filtering_transformator_model$new()`](#method-filtering_transformator_model-initialize)
 
 - [`filtering_transformator_model$add_alternative()`](#method-filtering_transformator_model-add_alternative)
 
@@ -50,7 +47,7 @@ View model for
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `filtering_transformator_model$new()`
 
 #### Usage
 
@@ -64,11 +61,11 @@ View model for
 
 - `dataname`:
 
-  `character(1)` the name of the dataset.
+  `character(1)` the name of the dataset. Adds an alternative
 
 ------------------------------------------------------------------------
 
-### Method `add_alternative()`
+### `filtering_transformator_model$add_alternative()`
 
 #### Usage
 
@@ -76,11 +73,11 @@ View model for
 
 #### Returns
 
-invisibly self.
+invisibly self. Checks for duplicate conditions
 
 ------------------------------------------------------------------------
 
-### Method `is_duplicate_condition()`
+### `filtering_transformator_model$is_duplicate_condition()`
 
 #### Usage
 
@@ -102,7 +99,7 @@ invisibly self.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `filtering_transformator_model$clone()`
 
 The objects of this class are cloneable with this method.
 

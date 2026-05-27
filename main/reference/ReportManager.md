@@ -41,7 +41,7 @@ variables and load report list from `report_path`
 
 ### Public methods
 
-- [`ReportManager$new()`](#method-ReportManager-new)
+- [`ReportManager$new()`](#method-ReportManager-initialize)
 
 - [`ReportManager$list_reports()`](#method-ReportManager-list_reports)
 
@@ -79,7 +79,7 @@ variables and load report list from `report_path`
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `ReportManager$new()`
 
 This can be used to manage state of report, load and save them into file
 It will create
@@ -107,7 +107,7 @@ variables and load report list from `reports_path`
 
 ------------------------------------------------------------------------
 
-### Method `list_reports()`
+### `ReportManager$list_reports()`
 
 #### Usage
 
@@ -121,7 +121,7 @@ This assigns a value in `current_report_title` field
 
 ------------------------------------------------------------------------
 
-### Method `set_current_report_title()`
+### `ReportManager$set_current_report_title()`
 
 #### Usage
 
@@ -136,7 +136,7 @@ This assigns a value in `current_report_title` field
 
 ------------------------------------------------------------------------
 
-### Method `get_abs_report_path()`
+### `ReportManager$get_abs_report_path()`
 
 #### Usage
 
@@ -158,7 +158,7 @@ specific title exists, it will overwrite it.
 
 ------------------------------------------------------------------------
 
-### Method `save_report_files()`
+### `ReportManager$save_report_files()`
 
 #### Usage
 
@@ -185,7 +185,7 @@ specific title exists, it will overwrite it.
 
 ------------------------------------------------------------------------
 
-### Method `load_report()`
+### `ReportManager$load_report()`
 
 #### Usage
 
@@ -209,7 +209,7 @@ specific title exists, it will overwrite it.
 
 ------------------------------------------------------------------------
 
-### Method `merge_reports()`
+### `ReportManager$merge_reports()`
 
 #### Usage
 
@@ -231,7 +231,7 @@ specific title exists, it will overwrite it.
 
 ------------------------------------------------------------------------
 
-### Method `reset()`
+### `ReportManager$reset()`
 
 #### Usage
 
@@ -243,7 +243,7 @@ the return of `self$list_reports()` Delete report
 
 ------------------------------------------------------------------------
 
-### Method `delete_report()`
+### `ReportManager$delete_report()`
 
 #### Usage
 
@@ -258,7 +258,7 @@ the return of `self$list_reports()` Delete report
 
 ------------------------------------------------------------------------
 
-### Method `is_locked_by_other()`
+### `ReportManager$is_locked_by_other()`
 
 #### Usage
 
@@ -289,7 +289,7 @@ by me Rename report
 
 ------------------------------------------------------------------------
 
-### Method `rename_report()`
+### `ReportManager$rename_report()`
 
 #### Usage
 
@@ -311,7 +311,7 @@ by me Rename report
 
 ------------------------------------------------------------------------
 
-### Method `is_new_report()`
+### `ReportManager$is_new_report()`
 
 #### Usage
 
@@ -329,7 +329,7 @@ logical indicating if this is a new report Create new report with title
 
 ------------------------------------------------------------------------
 
-### Method `create_new_report()`
+### `ReportManager$create_new_report()`
 
 #### Usage
 
@@ -348,7 +348,7 @@ logical indicating if this is a new report Create new report with title
 
 ------------------------------------------------------------------------
 
-### Method `auto_save_observer()`
+### `ReportManager$auto_save_observer()`
 
 #### Usage
 
@@ -364,7 +364,7 @@ logical indicating if this is a new report Create new report with title
 
 ------------------------------------------------------------------------
 
-### Method `unlock_report_public()`
+### `ReportManager$unlock_report_public()`
 
 #### Usage
 
@@ -379,7 +379,7 @@ logical indicating if this is a new report Create new report with title
 
 ------------------------------------------------------------------------
 
-### Method `release_lock()`
+### `ReportManager$release_lock()`
 
 #### Usage
 
@@ -393,7 +393,7 @@ logical indicating if this is a new report Create new report with title
 
 ------------------------------------------------------------------------
 
-### Method `rebuild_report()`
+### `ReportManager$rebuild_report()`
 
 Rebuild reports to include data that has changed. This will replace
 loaded report cards with new cards, that were rebuilt from a code used
@@ -421,7 +421,7 @@ to generate these cards.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `ReportManager$clone()`
 
 The objects of this class are cloneable with this method.
 
