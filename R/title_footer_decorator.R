@@ -35,6 +35,7 @@
 #' @importFrom shiny NS tagList div selectInput checkboxInput uiOutput renderUI textInput moduleServer reactive req
 #' @importFrom grDevices graphics.off
 #' @importFrom dplyr filter
+#' @importFrom rlang .data
 #'
 #' @examples
 #' library(openxlsx)
@@ -107,7 +108,7 @@ title_footer_decorator <- function(output_name, titles_file, choices = NULL, sel
   checkmate::assert_string(selected, null.ok = TRUE)
 
   titles <- openxlsx::read.xlsx(titles_file, "Sheet1")
-  titles <- titles |> dplyr::filter(!grepl("delete", TABLE.ID, ignore.case = TRUE))
+  titles <- titles |> dplyr::filter(!grepl("delete", .data$TABLE.ID, ignore.case = TRUE))
 
   choices <- `if`(is.null(choices), unique(titles$TABLE.ID), intersect(choices, titles$TABLE.ID))
   checkmate::assert(
