@@ -28,14 +28,15 @@ Roxygen: list(markdown = TRUE)
 Depends:
   R (>= 4.1.0)
 Imports:
+  DT,
   R6,
   checkmate,
   cowplot,
   dplyr,
-  DT,
   formatters,
   ggplot2,
   ggplotify,
+  gridify,
   junco,
   methods,
   openxlsx,
@@ -47,10 +48,9 @@ Imports:
   shinyjs,
   teal,
   teal.code,
+  teal.modules.clinical,
   tern,
-  yaml,
-  gridify,
-  teal.modules.clinical
+  yaml
 Suggests:
   forcats,
   knitr,
