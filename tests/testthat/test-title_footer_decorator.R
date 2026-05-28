@@ -1,24 +1,17 @@
-test_that("title_footer_decorator works when choices and selected are NULL", {
-  mock_titles <- data.frame(TABLE.ID = c("TBL01", "TBL02"), IDENTIFIER = "TITLE", TEXT = "Some title")
-  mockery::stub(title_footer_decorator, "openxlsx::read.xlsx", mock_titles)
+titles_file <- testthat::test_path("dps_titles_08042026.xlsx")
 
-  result <- title_footer_decorator("plot", "fake.xlsx", choices = NULL, selected = NULL)
-  expect_s3_class(result, "teal_data_module")
+testthat::test_that("title_footer_decorator works when choices and selected are NULL", {
+  result <- title_footer_decorator("plot", titles_file, choices = NULL, selected = NULL)
+  testthat::expect_s3_class(result, "teal_data_module")
 })
 
-test_that("title_footer_decorator works when selected is in choices", {
-  mock_titles <- data.frame(TABLE.ID = c("TBL01", "TBL02"), IDENTIFIER = "TITLE", TEXT = "Some title")
-  mockery::stub(title_footer_decorator, "openxlsx::read.xlsx", mock_titles)
-
-  result <- title_footer_decorator("plot", "fake.xlsx", choices = c("TBL01", "TBL02"), selected = "TBL01")
-  expect_s3_class(result, "teal_data_module")
+testthat::test_that("title_footer_decorator works when selected is in choices", {
+  result <- title_footer_decorator("plot", titles_file, choices = c("TSFLAB01", "TSFLAB01b"), selected = "TSFLAB01")
+  testthat::expect_s3_class(result, "teal_data_module")
 })
 
-test_that("title_footer_decorator errors when selected is not in choices", {
-  mock_titles <- data.frame(TABLE.ID = c("TBL01", "TBL02"), IDENTIFIER = "TITLE", TEXT = "Some title")
-  mockery::stub(title_footer_decorator, "openxlsx::read.xlsx", mock_titles)
-
-  expect_error(
-    title_footer_decorator("plot", "fake.xlsx", choices = c("TBL01", "TBL02"), selected = "TBL99")
+testthat::test_that("title_footer_decorator errors when selected is not in choices", {
+  testthat::expect_error(
+    title_footer_decorator("plot", titles_file, choices = c("TSFLAB01", "TSFLAB01b"), selected = "TBL99")
   )
 })
