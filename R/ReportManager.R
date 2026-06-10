@@ -484,6 +484,42 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
       }
     },
 
+    #' Export all tables from a saved report as CSV files
+    #' @description
+    #' Loads the report from disk, extracts all table-type content from each card,
+    #' converts each to a `data.frame` and writes it as a CSV file in `output_dir`.
+    #' Returns the vector of written file paths, or an empty character vector when
+    #' no tables are found.
+    #' @param report_title (character) Title of the report to export.
+    #' @param output_dir (character) Directory where CSV files will be written.
+    #' @return character vector of written file paths.
+    export_tables_to_csv = function(report_title, output_dir) {
+      report_dir <- self$get_abs_report_path(report_title)
+      if (!file.exists(file.path(report_dir, "Report.json"))) {
+        return(character(0))
+      }
+
+      reporter <- teal.reporter::Reporter$new()
+      report_id <- jsonlite::read_json(file.path(report_dir, "Report.json"))$id
+      reporter$set_id(as.character(report_id))
+      reporter$from_jsondir(report_dir)
+
+      tables <- private$extract_tables_from_reporter(reporter)
+      if (length(tables) == 0) {
+        return(character(0))
+      }
+
+      if (!dir.exists(output_dir)) dir.create(output_dir, recursive = TRUE)
+
+      written <- character(length(tables))
+      for (i in seq_along(tables)) {
+        file_path <- file.path(output_dir, paste0(names(tables)[[i]], ".csv"))
+        utils::write.table(tables[[i]], file = file_path, sep = ",", col.names = FALSE, row.names = FALSE)
+        written[[i]] <- file_path
+      }
+      written
+    },
+
     #' Re-build reports
     #' @description
     #' Rebuild reports to include data that has changed.
@@ -597,6 +633,62 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
         if (length(idx) > 0) paste(vapply(card[idx], as.character, character(1)), collapse = "\n") else NA_character_
       })
       saveRDS(unname(code_list), file.path(path, "code.rds"))
+    },
+
+    #' Extract all table-type content from a Reporter as a named list of data.frames
+    extract_tables_from_reporter = function(reporter) {
+      cards <- reporter$get_cards()
+      result <- list()
+      for (card_i in seq_along(cards)) {
+        card <- cards[[card_i]]
+        card_name <- names(cards)[[card_i]]
+        card_title <- tryCatch(
+          teal.reporter::metadata(card)$title,
+          error = function(e) NULL
+        )
+        if (is.null(card_title) || !nzchar(card_title)) card_title <- card_name
+        if (is.null(card_title) || !nzchar(card_title)) card_title <- paste0("card_", card_i)
+        safe_title <- gsub("[^[:alnum:]_-]", "_", card_title)
+
+        # Collect content elements: ReportCard R6 uses $get_content(), teal_card S3 is a plain list
+        elements <- if (inherits(card, "ReportCard")) card$get_content() else as.list(card)
+
+        tbl_count <- 0L
+        for (elem in elements) {
+          # Unwrap TableBlock (used by ReportCard$append_table)
+          if (inherits(elem, "TableBlock")) {
+            elem <- tryCatch(elem$get_content(), error = function(e) NULL)
+          }
+          df <- NULL
+          if (inherits(elem, c("TableTree", "ElementaryTable"))) {
+            df <- tryCatch(
+              {
+                as.data.frame(
+                  rtables::matrix_form(elem)$strings,
+                  stringsAsFactors = FALSE
+                )
+              },
+              error = function(e) NULL
+            )
+          } else if (inherits(elem, "chunk_output")) {
+            df <- tryCatch(as.data.frame(elem[[1]]), error = function(e) NULL)
+          } else if (inherits(elem, "listing_df") || is.data.frame(elem)) {
+            df <- as.data.frame(elem)
+          }
+          if (!is.null(df)) {
+            tbl_count <- tbl_count + 1L
+            key <- if (tbl_count == 1L) safe_title else paste0(safe_title, "_", tbl_count)
+            # Deduplicate key across all cards using a numeric suffix
+            if (key %in% names(result)) {
+              n <- 2L
+              while (paste0(key, "_", n) %in% names(result)) n <- n + 1L
+              key <- paste0(key, "_", n)
+            }
+            result[[key]] <- df
+          }
+        }
+      }
+      result
     },
 
     #' Register `onSessionEnded` to unlock report when session is closed
