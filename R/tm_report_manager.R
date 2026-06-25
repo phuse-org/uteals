@@ -91,10 +91,6 @@ report_manager_ui <- function(id) {
       var reportName = $(this).data('report');
       Shiny.setInputValue('", ns("release_lock_click"), "', reportName, {priority: 'event'});
     });
-    $(document).on('click', '.csv-download-btn', function() {
-      var reportName = $(this).data('report');
-      Shiny.setInputValue('", ns("csv_download_click"), "', reportName, {priority: 'event'});
-    });
     Shiny.addCustomMessageHandler('trigger_csv_download', function(msg) {
       var bytes = Uint8Array.from(atob(msg.b64), function(c) { return c.charCodeAt(0); });
       var blob = new Blob([bytes], {type: msg.type});
@@ -117,7 +113,6 @@ report_manager_ui <- function(id) {
 #' @param reporter the object that holds the report. Provided by `teal`.
 #' @import shiny teal
 #' @importFrom DT renderDT
-#' @importFrom jsonlite base64_enc
 #' @importFrom shinyjs toggleState disable enable
 #' @importFrom utils write.csv
 #' @keywords internal
@@ -130,6 +125,7 @@ report_manager_server <- function(id, reports_path = "reports", auto_save = TRUE
 
     # Initialize report manager object
     rm <- ReportManager$new(reports_path = reports_path, session)
+    rm$setup_csv_download(input)
     if (auto_save) {
       rm$auto_save_observer(reporter)
     }
@@ -492,16 +488,8 @@ report_manager_server <- function(id, reports_path = "reports", auto_save = TRUE
           # CSV download button (available for all reports that have saved content)
           report_json <- file.path(rm$get_abs_report_path(report_name), "Report.json")
           has_content <- file.exists(report_json)
-          safe_name <- gsub("'", "\\'", report_name)
           csv_btn <- if (has_content) {
-            sprintf(
-              paste0(
-                '<button type="button" class="btn btn-sm btn-default csv-download-btn" ',
-                'data-report="%s" title="Download tables as CSV" data-toggle="tooltip">',
-                '<i class="fa fa-download"></i></button>'
-              ),
-              safe_name
-            )
+            create_action_button("csv_download_click", report_name, "download", "btn-default", "Download tables as CSV")
           } else {
             paste0(
               '<button type="button" class="btn btn-sm btn-default" ',
@@ -891,41 +879,6 @@ report_manager_server <- function(id, reports_path = "reports", auto_save = TRUE
         )
         incProgress(0.8)
       })
-    })
-
-    # CSV download click -> prepare files, encode as base64, push to browser
-    observeEvent(input$csv_download_click, {
-      report_name <- input$csv_download_click
-      tmp_dir <- file.path(tempdir(), paste0("csv_export_", gsub("[^[:alnum:]]", "_", report_name)))
-      written <- tryCatch(
-        rm$export_tables_to_csv(report_name, tmp_dir),
-        error = function(e) {
-          handle_error("exporting tables", e)
-          character(0)
-        }
-      )
-      if (length(written) == 0) {
-        showNotification("No tables found in this report.", type = "warning")
-        return()
-      }
-      safe_title <- gsub("[^[:alnum:]_-]", "_", report_name)
-      if (length(written) == 1L) {
-        raw_bytes <- readBin(written[[1]], what = "raw", n = file.size(written[[1]]))
-        session$sendCustomMessage("trigger_csv_download", list(
-          b64 = jsonlite::base64_enc(raw_bytes),
-          filename = paste0(safe_title, "_tables.csv"),
-          type = "text/csv"
-        ))
-      } else {
-        zip_path <- file.path(tmp_dir, paste0(safe_title, "_tables.zip"))
-        zip::zip(zipfile = zip_path, files = written, mode = "cherry-pick")
-        raw_bytes <- readBin(zip_path, what = "raw", n = file.size(zip_path))
-        session$sendCustomMessage("trigger_csv_download", list(
-          b64 = jsonlite::base64_enc(raw_bytes),
-          filename = paste0(safe_title, "_tables.zip"),
-          type = "application/zip"
-        ))
-      }
     })
 
     # Insert Refresh button once

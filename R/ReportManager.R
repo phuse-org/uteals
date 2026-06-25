@@ -484,6 +484,49 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
       }
     },
 
+    #' Set up CSV download observer
+    #' @description
+    #' Registers the `observeEvent` that handles CSV download clicks.
+    #' Call once from `moduleServer` after initialisation.
+    #' @param input Shiny input object from `moduleServer`
+    setup_csv_download = function(input) {
+      shiny::observeEvent(input$csv_download_click, {
+        report_name <- input$csv_download_click
+        tmp_dir <- file.path(tempdir(), paste0("csv_export_", gsub("[^[:alnum:]]", "_", report_name)))
+        written <- tryCatch(
+          self$export_tables_to_csv(report_name, tmp_dir),
+          error = function(e) {
+            shiny::showNotification(
+              sprintf("Error exporting tables: %s", conditionMessage(e)), type = "error"
+            )
+            character(0)
+          }
+        )
+        if (length(written) == 0) {
+          shiny::showNotification("No tables found in this report.", type = "warning")
+          return()
+        }
+        safe_title <- gsub("[^[:alnum:]_-]", "_", report_name)
+        if (length(written) == 1L) {
+          raw_bytes <- readBin(written[[1]], what = "raw", n = file.size(written[[1]]))
+          self$session$sendCustomMessage("trigger_csv_download", list(
+            b64 = jsonlite::base64_enc(raw_bytes),
+            filename = paste0(safe_title, "_tables.csv"),
+            type = "text/csv"
+          ))
+        } else {
+          zip_path <- file.path(tmp_dir, paste0(safe_title, "_tables.zip"))
+          zip::zip(zipfile = zip_path, files = written, mode = "cherry-pick")
+          raw_bytes <- readBin(zip_path, what = "raw", n = file.size(zip_path))
+          self$session$sendCustomMessage("trigger_csv_download", list(
+            b64 = jsonlite::base64_enc(raw_bytes),
+            filename = paste0(safe_title, "_tables.zip"),
+            type = "application/zip"
+          ))
+        }
+      })
+    },
+
     #' Export all tables from a saved report as CSV files
     #' @description
     #' Loads the report from disk, extracts all table-type content from each card,
