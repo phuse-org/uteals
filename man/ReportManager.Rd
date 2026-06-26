@@ -50,6 +50,7 @@ Initialize \code{ReportManager}}
     \item \href{#method-ReportManager-auto_save_observer}{\code{ReportManager$auto_save_observer()}}
     \item \href{#method-ReportManager-unlock_report_public}{\code{ReportManager$unlock_report_public()}}
     \item \href{#method-ReportManager-release_lock}{\code{ReportManager$release_lock()}}
+    \item \href{#method-ReportManager-setup_csv_download}{\code{ReportManager$setup_csv_download()}}
     \item \href{#method-ReportManager-export_tables_to_csv}{\code{ReportManager$export_tables_to_csv()}}
     \item \href{#method-ReportManager-rebuild_report}{\code{ReportManager$rebuild_report()}}
     \item \href{#method-ReportManager-clone}{\code{ReportManager$clone()}}
@@ -380,6 +381,27 @@ Release lock on current report (keep report loaded but make it read-only)}
     \if{html}{\out{<div class="arguments">}}
     \describe{
       \item{\code{report_title}}{(character) Title of the report to release lock from
+Set up CSV download observer}
+    }
+    \if{html}{\out{</div>}}
+  }
+}
+
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-ReportManager-setup_csv_download"></a>}}
+\if{latex}{\out{\hypertarget{method-ReportManager-setup_csv_download}{}}}
+\subsection{\code{ReportManager$setup_csv_download()}}{
+  Registers the \code{observeEvent} that handles CSV download clicks.
+Call once from \code{moduleServer} after initialisation.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{ReportManager$setup_csv_download(input)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{input}}{Shiny input object from \code{moduleServer}
 Export all tables from a saved report as CSV files}
     }
     \if{html}{\out{</div>}}
