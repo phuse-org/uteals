@@ -497,7 +497,8 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
           self$export_tables_to_csv(report_name, tmp_dir),
           error = function(e) {
             shiny::showNotification(
-              sprintf("Error exporting tables: %s", conditionMessage(e)), type = "error"
+              sprintf("Error exporting tables: %s", conditionMessage(e)),
+              type = "error"
             )
             character(0)
           }

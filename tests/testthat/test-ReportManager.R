@@ -126,8 +126,10 @@ testthat::test_that("is_locked_by_other returns TRUE when lockfile exists and re
 testthat::test_that("is_locked_by_other returns FALSE when report is locked by me", {
   tmp <- withr::local_tempdir()
   dir.create(file.path(tmp, "report_a"))
-  saveRDS(ifelse(interactive(), Sys.getenv("USER"), self$session$user),
-   file.path(tmp, "report_a", ".lockfile.rds"))
+  saveRDS(
+    ifelse(interactive(), Sys.getenv("USER"), self$session$user),
+    file.path(tmp, "report_a", ".lockfile.rds")
+  )
   rm <- make_rm(tmp)
   rm$my_locked_report <- "report_a"
 
