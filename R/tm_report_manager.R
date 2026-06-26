@@ -25,8 +25,9 @@
 #' }
 #' @export
 tm_report_manager <- function(
-    reports_path = "reports",
-    auto_save = TRUE) {
+  reports_path = "reports",
+  auto_save = TRUE
+) {
   module(
     ui = report_manager_ui,
     server = report_manager_server,
