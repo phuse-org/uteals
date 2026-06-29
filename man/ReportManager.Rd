@@ -50,6 +50,8 @@ Initialize \code{ReportManager}}
     \item \href{#method-ReportManager-auto_save_observer}{\code{ReportManager$auto_save_observer()}}
     \item \href{#method-ReportManager-unlock_report_public}{\code{ReportManager$unlock_report_public()}}
     \item \href{#method-ReportManager-release_lock}{\code{ReportManager$release_lock()}}
+    \item \href{#method-ReportManager-setup_csv_download}{\code{ReportManager$setup_csv_download()}}
+    \item \href{#method-ReportManager-export_tables_to_csv}{\code{ReportManager$export_tables_to_csv()}}
     \item \href{#method-ReportManager-rebuild_report}{\code{ReportManager$rebuild_report()}}
     \item \href{#method-ReportManager-clone}{\code{ReportManager$clone()}}
   }
@@ -379,9 +381,57 @@ Release lock on current report (keep report loaded but make it read-only)}
     \if{html}{\out{<div class="arguments">}}
     \describe{
       \item{\code{report_title}}{(character) Title of the report to release lock from
-Re-build reports}
+Set up CSV download observer}
     }
     \if{html}{\out{</div>}}
+  }
+}
+
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-ReportManager-setup_csv_download"></a>}}
+\if{latex}{\out{\hypertarget{method-ReportManager-setup_csv_download}{}}}
+\subsection{\code{ReportManager$setup_csv_download()}}{
+  Registers the \code{observeEvent} that handles CSV download clicks.
+Call once from \code{moduleServer} after initialization.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{ReportManager$setup_csv_download(input)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{input}}{Shiny input object from \code{moduleServer}
+Export all tables from a saved report as CSV files}
+    }
+    \if{html}{\out{</div>}}
+  }
+}
+
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-ReportManager-export_tables_to_csv"></a>}}
+\if{latex}{\out{\hypertarget{method-ReportManager-export_tables_to_csv}{}}}
+\subsection{\code{ReportManager$export_tables_to_csv()}}{
+  Loads the report from disk, extracts all table-type content from each card,
+converts each to a \code{data.frame} and writes it as a CSV file in \code{output_dir}.
+Returns the vector of written file paths, or an empty character vector when
+no tables are found.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{ReportManager$export_tables_to_csv(report_title, output_dir)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{report_title}}{(character) Title of the report to export.}
+      \item{\code{output_dir}}{(character) Directory where CSV files will be written.}
+    }
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    character vector of written file paths.
+Re-build reports
   }
 }
 
@@ -408,6 +458,7 @@ Lock report so that it can't be overwritten by another user
 Unlock report
 Save creator information
 Save code from each card as \code{code.rds} in the report directory.
+Extract all table-type content from a Reporter as a named list of data.frames
 Register \code{onSessionEnded} to unlock report when session is closed}
     }
     \if{html}{\out{</div>}}

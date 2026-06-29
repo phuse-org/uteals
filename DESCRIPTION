@@ -37,6 +37,7 @@ Imports:
   ggplot2,
   ggplotify,
   gridify,
+  jsonlite,
   junco,
   methods,
   openxlsx,
@@ -49,8 +50,10 @@ Imports:
   teal,
   teal.code,
   teal.modules.clinical,
+  teal.reporter,
   tern,
-  yaml
+  yaml,
+  zip
 Suggests:
   forcats,
   knitr,
@@ -58,7 +61,6 @@ Suggests:
   rmarkdown,
   teal.data,
   teal.modules.general,
-  teal.reporter,
   teal.transform
 VignetteBuilder: knitr
 Config/Needs/website: insightsengineering/nesttemplate

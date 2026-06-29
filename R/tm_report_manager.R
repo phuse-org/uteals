@@ -92,6 +92,17 @@ report_manager_ui <- function(id) {
       var reportName = $(this).data('report');
       Shiny.setInputValue('", ns("release_lock_click"), "', reportName, {priority: 'event'});
     });
+    Shiny.addCustomMessageHandler('trigger_csv_download', function(msg) {
+      var bytes = Uint8Array.from(atob(msg.b64), function(c) { return c.charCodeAt(0); });
+      var blob = new Blob([bytes], {type: msg.type});
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = msg.filename;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function() { document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
+    });
   ")))
   )
 }
@@ -104,6 +115,7 @@ report_manager_ui <- function(id) {
 #' @import shiny teal
 #' @importFrom DT renderDT
 #' @importFrom shinyjs toggleState disable enable
+#' @importFrom utils write.csv
 #' @keywords internal
 report_manager_server <- function(id, reports_path = "reports", auto_save = TRUE, reporter) {
   moduleServer(id, function(input, output, session) {
@@ -114,6 +126,7 @@ report_manager_server <- function(id, reports_path = "reports", auto_save = TRUE
 
     # Initialize report manager object
     rm <- ReportManager$new(reports_path = reports_path, session)
+    rm$setup_csv_download(input)
     if (auto_save) {
       rm$auto_save_observer(reporter)
     }
@@ -473,6 +486,19 @@ report_manager_server <- function(id, reports_path = "reports", auto_save = TRUE
             lock_icon <- '<i class="fa fa-unlock" style="color: green; margin-right: 8px;" title="Unlocked"></i>'
           }
 
+          # CSV download button (available for all reports that have saved content)
+          report_json <- file.path(rm$get_abs_report_path(report_name), "Report.json")
+          has_content <- file.exists(report_json)
+          csv_btn <- if (has_content) {
+            create_action_button("csv_download_click", report_name, "download", "btn-default", "Download tables as CSV")
+          } else {
+            paste0(
+              '<button type="button" class="btn btn-sm btn-default" ',
+              'disabled title="No content to export" data-toggle="tooltip">',
+              '<i class="fa fa-download"></i></button>'
+            )
+          }
+
           # Action buttons based on state
           if (is_active) {
             # Active report: can edit title, cannot delete, can rebuild
@@ -535,7 +561,7 @@ report_manager_server <- function(id, reports_path = "reports", auto_save = TRUE
           }
 
           # Combine all elements with spacing
-          paste(lock_icon, edit_btn, load_btn, rebuild_btn, delete_btn, sep = " ")
+          paste(lock_icon, edit_btn, load_btn, rebuild_btn, delete_btn, csv_btn, sep = " ")
         }, character(1))
       } else {
         df$actions <- character(0)
