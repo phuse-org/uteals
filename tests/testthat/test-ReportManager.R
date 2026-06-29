@@ -168,8 +168,9 @@ testthat::test_that("rename_report renames the directory on disk", {
   dir.create(file.path(tmp, "old_name"))
   rm <- make_rm(tmp)
 
-  shiny::isolate(rm$rename_report("old_name", "new_name", 
-  reporter = list(set_id = function(...) NULL, to_jsondir = function(...) NULL)))
+  shiny::isolate(rm$rename_report("old_name", "new_name",
+    reporter = list(set_id = function(...) NULL, to_jsondir = function(...) NULL)
+  ))
 
   testthat::expect_false(dir.exists(file.path(tmp, "old_name")))
   testthat::expect_true(dir.exists(file.path(tmp, "new_name")))
