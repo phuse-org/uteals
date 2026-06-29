@@ -73,6 +73,10 @@ variables and load report list from `report_path`
 
 - [`ReportManager$release_lock()`](#method-ReportManager-release_lock)
 
+- [`ReportManager$setup_csv_download()`](#method-ReportManager-setup_csv_download)
+
+- [`ReportManager$export_tables_to_csv()`](#method-ReportManager-export_tables_to_csv)
+
 - [`ReportManager$rebuild_report()`](#method-ReportManager-rebuild_report)
 
 - [`ReportManager$clone()`](#method-ReportManager-clone)
@@ -389,7 +393,53 @@ logical indicating if this is a new report Create new report with title
 
 - `report_title`:
 
-  (character) Title of the report to release lock from Re-build reports
+  (character) Title of the report to release lock from Set up CSV
+  download observer
+
+------------------------------------------------------------------------
+
+### `ReportManager$setup_csv_download()`
+
+Registers the `observeEvent` that handles CSV download clicks. Call once
+from `moduleServer` after initialization.
+
+#### Usage
+
+    ReportManager$setup_csv_download(input)
+
+#### Arguments
+
+- `input`:
+
+  Shiny input object from `moduleServer` Export all tables from a saved
+  report as CSV files
+
+------------------------------------------------------------------------
+
+### `ReportManager$export_tables_to_csv()`
+
+Loads the report from disk, extracts all table-type content from each
+card, converts each to a `data.frame` and writes it as a CSV file in
+`output_dir`. Returns the vector of written file paths, or an empty
+character vector when no tables are found.
+
+#### Usage
+
+    ReportManager$export_tables_to_csv(report_title, output_dir)
+
+#### Arguments
+
+- `report_title`:
+
+  (character) Title of the report to export.
+
+- `output_dir`:
+
+  (character) Directory where CSV files will be written.
+
+#### Returns
+
+character vector of written file paths. Re-build reports
 
 ------------------------------------------------------------------------
 
@@ -416,8 +466,9 @@ to generate these cards.
   Get current user name Get metadata file path Lock report so that it
   can't be overwritten by another user Unlock report Save creator
   information Save code from each card as `code.rds` in the report
-  directory. Register `onSessionEnded` to unlock report when session is
-  closed
+  directory. Extract all table-type content from a Reporter as a named
+  list of data.frames Register `onSessionEnded` to unlock report when
+  session is closed
 
 ------------------------------------------------------------------------
 
