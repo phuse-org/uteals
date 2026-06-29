@@ -392,7 +392,7 @@ Set up CSV download observer}
 \if{latex}{\out{\hypertarget{method-ReportManager-setup_csv_download}{}}}
 \subsection{\code{ReportManager$setup_csv_download()}}{
   Registers the \code{observeEvent} that handles CSV download clicks.
-Call once from \code{moduleServer} after initialisation.
+Call once from \code{moduleServer} after initialization.
   \subsection{Usage}{
     \if{html}{\out{<div class="r">}}
     \preformatted{ReportManager$setup_csv_download(input)}
