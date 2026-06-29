@@ -487,7 +487,7 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
     #' Set up CSV download observer
     #' @description
     #' Registers the `observeEvent` that handles CSV download clicks.
-    #' Call once from `moduleServer` after initialisation.
+    #' Call once from `moduleServer` after initialization.
     #' @param input Shiny input object from `moduleServer`
     setup_csv_download = function(input) {
       shiny::observeEvent(input$csv_download_click, {
