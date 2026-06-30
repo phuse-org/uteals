@@ -7,6 +7,7 @@
 - Added `updateOn = "blur"` to all `textInput` controls so that reactive updates are only triggered when the user leaves the field, reducing unnecessary re-renders while typing. Requires `shiny >= 1.11.0`.
 - Refactored `title_footer_decorator` not to overwrite the first row of the TABLE.ID column in the imported file. This change allows for importing files that have meaningful data in the first row.
 - Allowed to deselect the title in `title_footer_decorator`.
+- Added a button for CSV download for `tm_report_manager` module. #46
 
 # Version 0.0.3
 
