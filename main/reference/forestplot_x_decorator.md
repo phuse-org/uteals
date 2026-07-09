@@ -30,7 +30,7 @@ library(teal.modules.clinical)
 #> Loading required package: teal.code
 #> Loading required package: teal.slice
 #> 
-#> You are using teal version 1.1.0
+#> You are using teal version 1.2.0
 #> 
 #> Attaching package: ‘teal’
 #> The following objects are masked from ‘package:teal.slice’:
