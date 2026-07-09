@@ -126,8 +126,10 @@ testthat::test_that("is_locked_by_other returns TRUE when lockfile exists and re
 testthat::test_that("is_locked_by_other returns FALSE when report is locked by me", {
   tmp <- withr::local_tempdir()
   dir.create(file.path(tmp, "report_a"))
+  user <- ifelse(interactive(), Sys.getenv("USER"), "")
+  if (is.null(user) || user == "") user <- "Current User"
   saveRDS(
-    ifelse(interactive(), Sys.getenv("USER"), self$session$user),
+    user,
     file.path(tmp, "report_a", ".lockfile.rds")
   )
   rm <- make_rm(tmp)
@@ -141,6 +143,7 @@ testthat::test_that("is_locked_by_other returns FALSE when report is locked by m
 # delete_report ---------------------------------------------------------
 
 testthat::test_that("delete_report removes the report directory", {
+  testthat::local_mocked_bindings(showNotification = function(...) NULL)
   tmp <- withr::local_tempdir()
   dir.create(file.path(tmp, "to_delete"))
   rm <- make_rm(tmp)
@@ -151,6 +154,7 @@ testthat::test_that("delete_report removes the report directory", {
 })
 
 testthat::test_that("delete_report does not remove a report locked by another user", {
+  testthat::local_mocked_bindings(showNotification = function(...) NULL)
   tmp <- withr::local_tempdir()
   dir.create(file.path(tmp, "locked"))
   saveRDS("other_user", file.path(tmp, "locked", ".lockfile.rds"))
@@ -212,6 +216,7 @@ testthat::test_that("reset sets read_only_mode to FALSE", {
 # release_lock ----------------------------------------------------------
 
 testthat::test_that("release_lock removes the lockfile", {
+  testthat::local_mocked_bindings(showNotification = function(...) NULL)
   tmp <- withr::local_tempdir()
   dir.create(file.path(tmp, "report_a"))
   saveRDS("me", file.path(tmp, "report_a", ".lockfile.rds"))
@@ -224,6 +229,7 @@ testthat::test_that("release_lock removes the lockfile", {
 })
 
 testthat::test_that("release_lock sets my_locked_report to NULL", {
+  testthat::local_mocked_bindings(showNotification = function(...) NULL)
   tmp <- withr::local_tempdir()
   dir.create(file.path(tmp, "report_a"))
   saveRDS("me", file.path(tmp, "report_a", ".lockfile.rds"))
