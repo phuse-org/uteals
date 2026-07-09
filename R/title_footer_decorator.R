@@ -110,7 +110,9 @@ title_footer_decorator <- function(output_name, titles_file, choices = NULL, sel
   titles <- openxlsx::read.xlsx(titles_file, "Sheet1")
   titles <- titles |> dplyr::filter(!grepl("delete", .data$TABLE.ID, ignore.case = TRUE))
 
+  selected <- `if`(is.null(selected), "", selected)
   choices <- `if`(is.null(choices), unique(titles$TABLE.ID), intersect(choices, titles$TABLE.ID))
+  choices <- c(choices, "")
   checkmate::assert(
     checkmate::check_null(selected),
     checkmate::check_choice(selected, choices)
@@ -122,7 +124,17 @@ title_footer_decorator <- function(output_name, titles_file, choices = NULL, sel
       ns <- NS(id)
       tagList(
         div(
-          selectInput(ns("selectTitle"), label = "Select Title", choices = choices, selected = selected),
+          selectizeInput(
+            ns("selectTitle"),
+            label = "Select Title",
+            choices = choices,
+            selected = selected,
+            options = list(
+              allowEmptyOption = TRUE,
+              placeholder = "Select a value...",
+              plugins = list("clear_button")
+            )
+          ),
           checkboxInput(ns("customize"), label = "Customize Title and Footer", value = FALSE),
           uiOutput(ns("customInputs"))
         )
@@ -174,7 +186,7 @@ title_footer_decorator <- function(output_name, titles_file, choices = NULL, sel
               customTitle = input$customTitle,
               customFooter = input$customFooter
             )
-          } else if (input$selectTitle != "blank") {
+          } else if (input$selectTitle != "blank" && !is.null(input$selectTitle) && input$selectTitle != "") {
             res <- within(
               res,
               {
