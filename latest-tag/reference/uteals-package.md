@@ -14,6 +14,8 @@ Useful links:
 
 Authors:
 
+- Peyman Eshghi <peymaan.es@gmail.com>
+
 - Nadia Abraham <NAbraha5@ITS.JNJ.com>
 
 - Chanchal Bhalla <CBhalla@ITS.JNJ.com>

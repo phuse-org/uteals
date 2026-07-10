@@ -21,7 +21,7 @@ add_condition(object, variable, operator, value)
 - operator:
 
   A character string specifying the operator (e.g., "==", "!=", "\<",
-  "\>", "\<=", "\>=").
+  "\>", "\<=", "\>=", "%in%", "!%in%").
 
 - value:
 

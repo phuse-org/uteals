@@ -8,14 +8,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>View model for or_filtering_transformator(). — filtering_transformator_model • uteals</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="View model for or_filtering_transformator(). — filtering_transformator_model">
-<meta name="description" content="View model for or_filtering_transformator().
-View model for or_filtering_transformator().">
-<meta property="og:description" content="View model for or_filtering_transformator().
-View model for or_filtering_transformator().">
+<meta name="description" content="View model for or_filtering_transformator().">
+<meta property="og:description" content="View model for or_filtering_transformator().">
 <meta property="og:image" content="https://phuse-org.github.io/uteals/logo.png">
 </head>
 <body>
@@ -26,7 +24,7 @@ View model for or_filtering_transformator().">
 
     <a class="navbar-brand me-2" href="../index.html">uteals</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.0.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.0.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,6 +39,7 @@ View model for or_filtering_transformator().">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/module-access-management.html">Module Access Management with `rAccess`</a></li>
+    <li><a class="dropdown-item" href="../articles/report-manager.html">Collaborative Report Management with `tm_report_manager`</a></li>
     <li><a class="dropdown-item" href="../articles/title-footer-decorator-excel-structure.html">Excel structure for `title_footer_decorator`</a></li>
   </ul>
 </li>
@@ -50,6 +49,7 @@ View model for or_filtering_transformator().">
     <div class="dropdown-menu" aria-labelledby="dropdown-versions">
     <a class="dropdown-item" data-toggle="tooltip" title="" href="https://phuse-org.github.io/uteals/main">main</a>
 <a class="dropdown-item" data-toggle="tooltip" title="" href="https://phuse-org.github.io/uteals/latest-tag">latest-tag</a>
+<a class="dropdown-item" data-toggle="tooltip" title="" href="https://phuse-org.github.io/uteals/v0.0.5">v0.0.5</a>
 <a class="dropdown-item" data-toggle="tooltip" title="" href="https://phuse-org.github.io/uteals/v0.0.4">v0.0.4</a>
 <a class="dropdown-item" data-toggle="tooltip" title="" href="https://phuse-org.github.io/uteals/v0.0.3">v0.0.3</a>
 <a class="dropdown-item" data-toggle="tooltip" title="" href="https://phuse-org.github.io/uteals/v0.0.2">v0.0.2</a>
@@ -71,13 +71,12 @@ View model for or_filtering_transformator().">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>View model for <code><a href="or_filtering_transformator.html">or_filtering_transformator()</a></code>.</h1>
-      <small class="dont-index">Source: <a href="https://github.com/phuse-org/uteals/blob/v0.0.4/R/or_filtering_transformator_view_model.R" class="external-link"><code>R/or_filtering_transformator_view_model.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/phuse-org/uteals/blob/v0.0.5/R/or_filtering_transformator_view_model.R" class="external-link"><code>R/or_filtering_transformator_view_model.R</code></a></small>
       <div class="d-none name"><code>filtering_transformator_model.Rd</code></div>
     </div>
 
     <div class="ref-description section level2">
     <p>View model for <code><a href="or_filtering_transformator.html">or_filtering_transformator()</a></code>.</p>
-<p>View model for <code><a href="or_filtering_transformator.html">or_filtering_transformator()</a></code>.</p>
     </div>
 
 
@@ -91,27 +90,27 @@ View model for or_filtering_transformator().">
 <dd><p>Block objects.</p></dd>
 
 
-<dt><code>r_vals</code></dt>
+    <dt><code>r_vals</code></dt>
 <dd><p>Reactive values.</p></dd>
 
 
-<dt><code>alt_id</code></dt>
+    <dt><code>alt_id</code></dt>
 <dd><p>The id of the last alternative.</p></dd>
 
 
-<dt><code>block_conditions</code></dt>
+    <dt><code>block_conditions</code></dt>
 <dd><p>Conditions as strings.</p></dd>
 
 
-<dt><code>choices_for_columns</code></dt>
+    <dt><code>choices_for_columns</code></dt>
 <dd><p>Choices for the columns.</p></dd>
 
 
-<dt><code>final_filter_expr</code></dt>
+    <dt><code>final_filter_expr</code></dt>
 <dd><p>Final filtering expression.</p></dd>
 
 
-<dt><code>final_exp</code></dt>
+    <dt><code>final_exp</code></dt>
 <dd><p>Final expression for <code>teal.data</code>.
 Initializes the object</p></dd>
 
@@ -127,9 +126,9 @@ Initializes the object</p></dd>
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a>
 </h3>
-
+<p></p>
 <ul>
-<li><p><a href="#method-filtering_transformator_model-new"><code>filtering_transformator_model$new()</code></a></p></li>
+<li><p><a href="#method-filtering_transformator_model-initialize"><code>filtering_transformator_model$new()</code></a></p></li>
 <li><p><a href="#method-filtering_transformator_model-add_alternative"><code>filtering_transformator_model$add_alternative()</code></a></p></li>
 <li><p><a href="#method-filtering_transformator_model-is_duplicate_condition"><code>filtering_transformator_model$is_duplicate_condition()</code></a></p></li>
 <li><p><a href="#method-filtering_transformator_model-clone"><code>filtering_transformator_model$clone()</code></a></p></li>
@@ -137,10 +136,11 @@ Initializes the object</p></dd>
 </div>
 <p></p>
 <hr>
-<a id="method-filtering_transformator_model-new"></a><div class="section">
-<h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a>
+<a id="method-filtering_transformator_model-initialize"></a><div class="section">
+<h3 id="filtering-transformator-model-new-">
+<code>filtering_transformator_model$new()</code><a class="anchor" aria-label="anchor" href="#filtering-transformator-model-new-"></a>
 </h3>
-
+<p></p>
 <div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h4>
@@ -150,7 +150,7 @@ Initializes the object</p></dd>
 <p></p>
 </div>
 </div>
-
+<p></p>
 <div class="section">
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a>
 </h4>
@@ -160,9 +160,9 @@ Initializes the object</p></dd>
 <dt><code>data</code></dt>
 <dd><p>the reactive data object from <code>teal</code>.</p></dd>
 
-
-<dt><code>dataname</code></dt>
-<dd><p><code>character(1)</code> the name of the dataset.</p></dd>
+      <dt><code>dataname</code></dt>
+<dd><p><code>character(1)</code> the name of the dataset.
+Adds an alternative</p></dd>
 
 
 </dl>
@@ -171,12 +171,14 @@ Initializes the object</p></dd>
 </div>
 
 </div>
+
 <p></p>
 <hr>
 <a id="method-filtering_transformator_model-add_alternative"></a><div class="section">
-<h3 id="method-add-alternative-">Method <code>add_alternative()</code><a class="anchor" aria-label="anchor" href="#method-add-alternative-"></a>
+<h3 id="filtering-transformator-model-add-alternative-">
+<code>filtering_transformator_model$add_alternative()</code><a class="anchor" aria-label="anchor" href="#filtering-transformator-model-add-alternative-"></a>
 </h3>
-
+<p></p>
 <div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a>
 </h4>
@@ -186,20 +188,23 @@ Initializes the object</p></dd>
 <p></p>
 </div>
 </div>
-
+<p></p>
 <div class="section">
 <h4 id="returns">Returns<a class="anchor" aria-label="anchor" href="#returns"></a>
 </h4>
-<p>invisibly self.</p>
+<p>invisibly self.
+Checks for duplicate conditions</p>
 </div>
 
 </div>
+
 <p></p>
 <hr>
 <a id="method-filtering_transformator_model-is_duplicate_condition"></a><div class="section">
-<h3 id="method-is-duplicate-condition-">Method <code>is_duplicate_condition()</code><a class="anchor" aria-label="anchor" href="#method-is-duplicate-condition-"></a>
+<h3 id="filtering-transformator-model-is-duplicate-condition-">
+<code>filtering_transformator_model$is_duplicate_condition()</code><a class="anchor" aria-label="anchor" href="#filtering-transformator-model-is-duplicate-condition-"></a>
 </h3>
-
+<p></p>
 <div class="section">
 <h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a>
 </h4>
@@ -209,7 +214,7 @@ Initializes the object</p></dd>
 <p></p>
 </div>
 </div>
-
+<p></p>
 <div class="section">
 <h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a>
 </h4>
@@ -219,8 +224,7 @@ Initializes the object</p></dd>
 <dt><code>cond_str</code></dt>
 <dd><p><code>character(1)</code> added condition.</p></dd>
 
-
-<dt><code>block_cond_list</code></dt>
+      <dt><code>block_cond_list</code></dt>
 <dd><p><code>character(1)</code> list of all conditions.</p></dd>
 
 
@@ -228,6 +232,7 @@ Initializes the object</p></dd>
 <p></p>
 </div>
 </div>
+<p></p>
 <div class="section">
 <h4 id="returns-1">Returns<a class="anchor" aria-label="anchor" href="#returns-1"></a>
 </h4>
@@ -235,10 +240,12 @@ Initializes the object</p></dd>
 </div>
 
 </div>
+
 <p></p>
 <hr>
 <a id="method-filtering_transformator_model-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a>
+<h3 id="filtering-transformator-model-clone-">
+<code>filtering_transformator_model$clone()</code><a class="anchor" aria-label="anchor" href="#filtering-transformator-model-clone-"></a>
 </h3>
 <p>The objects of this class are cloneable with this method.</p>
 <div class="section">
@@ -250,7 +257,7 @@ Initializes the object</p></dd>
 <p></p>
 </div>
 </div>
-
+<p></p>
 <div class="section">
 <h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a>
 </h4>
@@ -267,6 +274,7 @@ Initializes the object</p></dd>
 </div>
 
 </div>
+
 
     </div>
 

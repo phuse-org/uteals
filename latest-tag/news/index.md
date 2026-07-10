@@ -1,6 +1,32 @@
 # Changelog
 
-## Version 0.0.3.9000
+## Version 0.0.5
+
+CRAN release: 2026-07-09
+
+- Added support for `%in%` and `!%in%` operators to
+  `or_filtering_transformator`. This contribution was authored by
+  [@Siddhesh2097](https://github.com/Siddhesh2097).
+- Added a new module -
+  [`tm_report_manager()`](https://phuse-org.github.io/uteals/reference/tm_report_manager.md) -
+  for comprehensive `teal` report management.
+- Added vignette for
+  [`tm_report_manager()`](https://phuse-org.github.io/uteals/reference/tm_report_manager.md).
+- Fixed ID conflict in `or_filtering_transformator` that caused errors
+  when multiple instances were used in the same Shiny app. Removed a
+  `shinyBS::bsModal()` block with fixed, non-module-scoped IDs (dead
+  code — preview is handled by
+  [`shiny::showModal()`](https://rdrr.io/pkg/shiny/man/showModal.html)),
+  resolving duplicate element IDs across instances.
+- Added `updateOn = "blur"` to all `textInput` controls so that reactive
+  updates are only triggered when the user leaves the field, reducing
+  unnecessary re-renders while typing. Requires `shiny >= 1.11.0`.
+- Refactored `title_footer_decorator` not to overwrite the first row of
+  the TABLE.ID column in the imported file. This change allows for
+  importing files that have meaningful data in the first row.
+- Allowed to deselect the title in `title_footer_decorator`.
+- Added a button for CSV download for `tm_report_manager` module.
+  [\#46](https://github.com/phuse-org/uteals/issues/46)
 
 ## Version 0.0.3
 
@@ -8,14 +34,14 @@ CRAN release: 2026-04-13
 
 - Refactored the `merge_levels_transformator` to handle the predefined
   inputs to the transformator
-  ([\#25](https://github.com/phuse-org/uteals/pull/25)).
+  ([\#25](https://github.com/phuse-org/uteals/issues/25)).
 - Added new `watermark_decorator`
-  ([\#23](https://github.com/phuse-org/uteals/pull/23)).
+  ([\#23](https://github.com/phuse-org/uteals/issues/23)).
 - Changed the example to a working one in
   `create_rel_risk_transformator`
-  ([\#27](https://github.com/phuse-org/uteals/pull/27))
+  ([\#27](https://github.com/phuse-org/uteals/issues/27))
 - Changed the example to a working one in `ggplot_decorator`
-  ([\#28](https://github.com/phuse-org/uteals/pull/28))
+  ([\#28](https://github.com/phuse-org/uteals/issues/28))
 
 ## Version 0.0.2
 

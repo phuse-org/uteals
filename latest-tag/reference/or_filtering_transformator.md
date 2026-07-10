@@ -23,7 +23,8 @@ specific dataset.
 
   - Supports filtering on `character`, `factor`, and `numeric` columns.
 
-  - Conditions can use operators: `==`, `!=`, `<`, `>`, `<=`, `>=`.
+  - Conditions can use operators: `==`, `!=`, `<`, `>`, `<=`, `>=`,
+    `%in%`, `!%in%`.
 
   - Conditions are specified as simple expressions, e.g.,
     `columnA == 'value'` `columnB != 5` `columnC >= 10`
