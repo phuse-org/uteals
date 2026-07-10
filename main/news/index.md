@@ -1,6 +1,10 @@
 # Changelog
 
-## Version 0.0.4.9000
+## Version 0.0.5.9000
+
+## Version 0.0.5
+
+CRAN release: 2026-07-09
 
 - Added support for `%in%` and `!%in%` operators to
   `or_filtering_transformator`. This contribution was authored by
