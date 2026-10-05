@@ -9,22 +9,6 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
     #' An absolute path to a folder where reports are stored
     reports_path = "reports",
 
-    #' @field current_report_title (`character(1)`)\cr
-    #' `reactiveVal` field that stores current report title
-    current_report_title = NULL,
-
-    #' @field available_reports (`list()`)\cr
-    #' `reactiveVal` field that stores a list of available reports
-    available_reports = list(),
-
-    #' @field my_locked_report (`character(1)`)\cr
-    #' `reactiveVal` field that stores currently locked report title
-    my_locked_report = NULL,
-
-    #' @field read_only_mode (`logical(1)`)\cr
-    #' `reactiveVal` field that indicates if current report is in read-only mode
-    read_only_mode = NULL,
-
     #' @field session
     #' Placeholder for Shiny session object
     session = NULL,
@@ -43,15 +27,39 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
         dir.create(reports_path)
       }
       self$session <- session
-      self$available_reports <- shiny::reactiveVal(list())
-      self$current_report_title <- shiny::reactiveVal(NULL)
-      self$read_only_mode <- shiny::reactiveVal(FALSE)
+      private$current_report_title <- shiny::reactiveVal(NULL)
+      private$available_reports <- shiny::reactiveVal(list())
+      private$read_only_mode <- shiny::reactiveVal(FALSE)
       self$list_reports()
 
       # Register cleanup if session is provided
       if (!is.null(session)) {
         private$register_cleanup()
       }
+    },
+
+    #' Get current report title
+    #' @return `reactiveVal` storing the current report title
+    get_current_report_title = function() {
+      private$current_report_title
+    },
+
+    #' Get available reports
+    #' @return `reactiveVal` storing the available reports data frame
+    get_available_reports = function() {
+      private$available_reports
+    },
+
+    #' Get my locked report
+    #' @return `character(1)` title of the report locked by this session
+    get_my_locked_report = function() {
+      private$my_locked_report
+    },
+
+    #' Get read only mode
+    #' @return `reactiveVal` storing the read-only mode flag
+    get_read_only_mode = function() {
+      private$read_only_mode
     },
 
     #' List available reports from objects' `reports_path`
@@ -108,7 +116,7 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
         )
       }
 
-      self$available_reports(reports_df)
+      private$available_reports(reports_df)
 
       reports_df
     },
@@ -119,9 +127,9 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
     #' @param title_or_index (character/numeric) Title of report or an index from objects' `available_reports`
     set_current_report_title = function(title_or_index) {
       if (is.character(title_or_index)) {
-        self$current_report_title(title_or_index)
+        private$current_report_title(title_or_index)
       } else {
-        self$current_report_title(self$available_reports()[title_or_index])
+        private$current_report_title(private$available_reports()[title_or_index])
       }
     },
 
@@ -166,10 +174,10 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
         }
 
         # Always update lock and current title
-        self$current_report_title(report_title)
-        if (!is.null(self$my_locked_report)) private$unlock_report(self$my_locked_report)
+        private$current_report_title(report_title)
+        if (!is.null(private$my_locked_report)) private$unlock_report(private$my_locked_report)
         private$lock_report(report_title)
-        self$available_reports(self$list_reports())
+        private$available_reports(self$list_reports())
       }
       NULL
     },
@@ -185,7 +193,7 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
         is.character(selected_title) | is.numeric(selected_title)
       )
       report_title <- ifelse(
-        is.numeric(selected_title), self$available_reports()[selected_title, ][[1]], selected_title
+        is.numeric(selected_title), private$available_reports()[selected_title, ][[1]], selected_title
       )
       report_dir <- self$get_abs_report_path(report_title)
 
@@ -199,19 +207,19 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
 
           # Only update state if loading succeeded
           if (!skip_lock) {
-            if (!is.null(self$my_locked_report)) private$unlock_report(self$my_locked_report)
+            if (!is.null(private$my_locked_report)) private$unlock_report(private$my_locked_report)
 
             if (!self$is_locked_by_other(report_title, message_type = "warning")) {
               private$lock_report(report_title)
-              self$read_only_mode(FALSE) # Full access
+              private$read_only_mode(FALSE) # Full access
             } else {
-              self$read_only_mode(TRUE) # Read-only access
+              private$read_only_mode(TRUE) # Read-only access
             }
-            self$current_report_title(report_title)
+            private$current_report_title(report_title)
           } else {
             # Skip lock mode is read-only
-            self$read_only_mode(TRUE)
-            self$current_report_title(report_title)
+            private$read_only_mode(TRUE)
+            private$current_report_title(report_title)
           }
         },
         error = function(e) {
@@ -251,11 +259,11 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
     #'
     #' @return the return of `self$list_reports()`
     reset = function() {
-      if (!is.null(self$current_report_title()) & !is.null(self$my_locked_report)) {
-        private$unlock_report(self$my_locked_report)
+      if (!is.null(private$current_report_title()) & !is.null(private$my_locked_report)) {
+        private$unlock_report(private$my_locked_report)
       }
-      self$current_report_title(NULL)
-      self$read_only_mode(FALSE)
+      private$current_report_title(NULL)
+      private$read_only_mode(FALSE)
       self$list_reports()
     },
 
@@ -267,7 +275,7 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
       )
 
       if (is.numeric(selected_title)) {
-        avail_reports <- self$available_reports()
+        avail_reports <- private$available_reports()
         if (nrow(avail_reports) >= selected_title) {
           report_title <- as.character(avail_reports$reports[selected_title])
         } else {
@@ -299,7 +307,7 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
         )
 
         if (success) {
-          if (identical(self$current_report_title(), report_title)) {
+          if (identical(private$current_report_title(), report_title)) {
             self$reset()
           }
           showNotification(paste("Successfully deleted report:", report_title), type = "message")
@@ -318,7 +326,7 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
     #'
     #' @return logical(1) TRUE if locked by another user, FALSE if unlocked or locked by me
     is_locked_by_other = function(report_title, verbose = TRUE, message_type = "error") {
-      if (!is.null(self$my_locked_report) && self$my_locked_report == report_title) {
+      if (!is.null(private$my_locked_report) && private$my_locked_report == report_title) {
         return(FALSE)
       }
       if (file.exists(private$get_metadata_path(report_title, ".lockfile.rds"))) {
@@ -354,8 +362,8 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
       file.rename(old_path, new_path)
 
       # Update current title if this is the active report
-      if (identical(self$current_report_title(), old_title)) {
-        self$current_report_title(new_title)
+      if (identical(private$current_report_title(), old_title)) {
+        private$current_report_title(new_title)
         # Update reporter ID
         reporter$set_id(new_title)
         # Save updated ID to JSON
@@ -369,7 +377,7 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
     #' @param reporter (Reporter) A reporter object
     #' @return logical indicating if this is a new report
     is_new_report = function(reporter) {
-      current_title <- self$current_report_title()
+      current_title <- private$current_report_title()
       has_cards <- length(reporter$get_cards()) > 0
       is.null(current_title) && has_cards
     },
@@ -383,8 +391,8 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
       }
 
       # Set the current report title and full access mode
-      self$current_report_title(report_title)
-      self$read_only_mode(FALSE)
+      private$current_report_title(report_title)
+      private$read_only_mode(FALSE)
 
       # Create report directory if it doesn't exist
       if (!dir.exists(self$get_abs_report_path(report_title))) {
@@ -399,9 +407,9 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
         self$save_report_files(report_title, reporter)
       } else {
         # Even without cards, lock the report for the user
-        if (!is.null(self$my_locked_report)) private$unlock_report(self$my_locked_report)
+        if (!is.null(private$my_locked_report)) private$unlock_report(private$my_locked_report)
         private$lock_report(report_title)
-        self$available_reports(self$list_reports())
+        private$available_reports(self$list_reports())
       }
     },
 
@@ -412,8 +420,8 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
       shiny::observeEvent(reporter$get_cards(),
         {
           cards_count <- length(reporter$get_cards())
-          current_title <- self$current_report_title()
-          is_read_only <- self$read_only_mode()
+          current_title <- private$current_report_title()
+          is_read_only <- private$read_only_mode()
 
           # If no current title but cards exist, trigger new report modal
           if (is.null(current_title) && cards_count > 0) {
@@ -471,11 +479,11 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
     #' @param report_title (character) Title of the report to release lock from
     release_lock = function(report_title = NULL) {
       if (is.null(report_title)) {
-        report_title <- self$current_report_title()
+        report_title <- private$current_report_title()
       }
 
-      if (!is.null(report_title) && !is.null(self$my_locked_report) &&
-        self$my_locked_report == report_title) {
+      if (!is.null(report_title) && !is.null(private$my_locked_report) &&
+        private$my_locked_report == report_title) {
         private$unlock_report(report_title)
         self$list_reports()
         showNotification(paste("Released lock on report:", report_title, "(now read-only)"), type = "message")
@@ -621,7 +629,7 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
       saveRDS(Sys.time(), private$get_metadata_path(report_title, ".rebuild_time.rds"))
 
       # Reload rebuilt report if it's the same as the one loaded.
-      if (!is.null(self$current_report_title()) && report_title == self$current_report_title()) {
+      if (!is.null(private$current_report_title()) && report_title == private$current_report_title()) {
         self$load_report(report_title, rp)
         print("Current report loaded")
       }
@@ -645,7 +653,7 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
     #' Lock report so that it can't be overwritten by another user
     lock_report = function(report_title) {
       if (!self$is_locked_by_other(report_title)) {
-        self$my_locked_report <- report_title
+        private$my_locked_report <- report_title
         saveRDS(
           object = private$get_user_name(),
           file = private$get_metadata_path(report_title, ".lockfile.rds")
@@ -657,7 +665,7 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
     unlock_report = function(report_title) {
       if (!is.null(report_title) & dir.exists(self$get_abs_report_path(report_title))) {
         file.remove(private$get_metadata_path(report_title, ".lockfile.rds"))
-        self$my_locked_report <- NULL
+        private$my_locked_report <- NULL
       }
     },
 
@@ -736,10 +744,15 @@ ReportManager <- R6::R6Class("ReportManager", # nolint: object_name_linter
     },
 
     #' Register `onSessionEnded` to unlock report when session is closed
+    my_locked_report = NULL,
+    current_report_title = NULL,
+    available_reports = NULL,
+    read_only_mode = NULL,
+
     register_cleanup = function() {
       if (!is.null(self$session)) {
         self$session$onSessionEnded(function() {
-          private$unlock_report(self$my_locked_report)
+          private$unlock_report(private$my_locked_report)
         })
       }
     }

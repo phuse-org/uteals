@@ -1,5 +1,7 @@
 # Version 0.0.5.9000
 
+- Encapsulated `current_report_title`, `available_reports`, `my_locked_report`, and `read_only_mode` fields as private in `ReportManager`, exposing them via `get_current_report_title()`, `get_available_reports()`, `get_my_locked_report()`, and `get_read_only_mode()` public methods.
+
 # Version 0.0.5
 
 - Added support for `%in%` and `!%in%` operators to `or_filtering_transformator`. This contribution was authored by [@Siddhesh2097](https://github.com/Siddhesh2097).

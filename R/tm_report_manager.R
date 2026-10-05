@@ -147,7 +147,7 @@ report_manager_server <- function(id, reports_path = "reports", auto_save = TRUE
 
     refresh_ui <- function() {
       refresh_trigger(Sys.time())
-      shinyjs::toggleState("merge_reports", condition = !is.null(rm$current_report_title()))
+      shinyjs::toggleState("merge_reports", condition = !is.null(rm$get_current_report_title()()))
     }
 
     handle_error <- function(action, err) {
@@ -178,7 +178,7 @@ report_manager_server <- function(id, reports_path = "reports", auto_save = TRUE
     # Monitor reporter cards for new report creation
     observe({
       cards_count <- length(reporter$get_cards())
-      current_title <- rm$current_report_title()
+      current_title <- rm$get_current_report_title()()
 
       # If cards exist but no current report and modal not shown, show modal
       if (is.null(current_title) && cards_count > 0 && !modal_shown()) {
@@ -382,12 +382,12 @@ report_manager_server <- function(id, reports_path = "reports", auto_save = TRUE
     output$report_list <- DT::renderDT({
       # Depend on refresh trigger and the current report title to ensure updates
       refresh_trigger()
-      current_title <- rm$current_report_title()
+      current_title <- rm$get_current_report_title()()
 
       # Also depend on the reporter cards to trigger refresh when new cards are added
       reporter$get_cards()
 
-      df <- rm$available_reports()
+      df <- rm$get_available_reports()()
       if (is.null(df) || nrow(df) == 0) {
         df <- data.frame(
           reports = character(0),
@@ -413,8 +413,8 @@ report_manager_server <- function(id, reports_path = "reports", auto_save = TRUE
           user_name <- ifelse(interactive(), Sys.getenv("USER"), session$user)
           if (is.null(user_name) || user_name == "") user_name <- "Current User"
 
-          current_locked_by <- if (!is.null(rm$my_locked_report) &&
-            rm$my_locked_report == as.character(current_title)) {
+          current_locked_by <- if (!is.null(rm$get_my_locked_report()) &&
+            rm$get_my_locked_report() == as.character(current_title)) {
             user_name
           } else {
             ""
@@ -464,7 +464,7 @@ report_manager_server <- function(id, reports_path = "reports", auto_save = TRUE
           is_active <- !is.null(current_title) && identical(report_name, as.character(current_title))
 
           # Lock status icon (first in actions)
-          is_my_lock <- !is.null(rm$my_locked_report) && rm$my_locked_report == report_name
+          is_my_lock <- !is.null(rm$get_my_locked_report()) && rm$get_my_locked_report() == report_name
           if (is_locked) {
             if (is_my_lock) {
               # Clickable lock for user's own locks
@@ -602,8 +602,8 @@ report_manager_server <- function(id, reports_path = "reports", auto_save = TRUE
 
     # Merge reports button handler
     observeEvent(input$merge_reports, {
-      avail_reports <- rm$available_reports()
-      current <- rm$current_report_title()
+      avail_reports <- rm$get_available_reports()()
+      current <- rm$get_current_report_title()()
 
       # Filter reports that have Report.json (have content)
       reports_with_content <- character(0)
@@ -747,7 +747,7 @@ report_manager_server <- function(id, reports_path = "reports", auto_save = TRUE
         return()
       }
 
-      current_title <- rm$current_report_title()
+      current_title <- rm$get_current_report_title()()
       if (!is.null(current_title) && identical(as.character(report_name), as.character(current_title))) {
         showNotification("Cannot delete the currently active report.", type = "error")
         return()
@@ -810,11 +810,11 @@ report_manager_server <- function(id, reports_path = "reports", auto_save = TRUE
       report_name <- input$load_row
 
       # Check if this is a locked report by someone else or unlocked
-      avail_reports <- rm$available_reports()
+      avail_reports <- rm$get_available_reports()()
       report_row <- avail_reports[avail_reports$reports == report_name, ]
       locked_by_val <- if (nrow(report_row) > 0) report_row$locked_by else ""
       is_locked <- !is.na(locked_by_val) && nzchar(locked_by_val)
-      is_my_lock <- !is.null(rm$my_locked_report) && rm$my_locked_report == report_name
+      is_my_lock <- !is.null(rm$get_my_locked_report()) && rm$get_my_locked_report() == report_name
 
       if (is_locked && !is_my_lock) {
         # Others' locked report - view only
