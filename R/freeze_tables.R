@@ -18,7 +18,7 @@
 #'
 #' @details
 #' `rtables` renders tables without a `<thead>` element, so the header rows cannot be selected
-#' with CSS alone. The JavaScript observes the DOM and moves the leading rows containing `<th>`
+#' with CSS alone. The JavaScript watches the page for new tables and moves the leading rows containing `<th>`
 #' cells into a `<thead>` element of every matching table. Once
 #' <https://github.com/pharmaverse/rtables/issues/1123> is resolved, this can be simplified.
 #'

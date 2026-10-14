@@ -35,7 +35,7 @@ app UI, e.g. in the \code{header} argument of \code{\link[teal:init]{teal::init(
 }
 \details{
 \code{rtables} renders tables without a \verb{<thead>} element, so the header rows cannot be selected
-with CSS alone. The JavaScript observes the DOM and moves the leading rows containing \verb{<th>}
+with CSS alone. The JavaScript watches the page for new tables and moves the leading rows containing \verb{<th>}
 cells into a \verb{<thead>} element of every matching table. Once
 \url{https://github.com/pharmaverse/rtables/issues/1123} is resolved, this can be simplified.
 }
