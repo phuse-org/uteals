@@ -16,12 +16,10 @@ multi-user report management. It allows users to:
 
 ## Library Calls
 
-``` r
-
-library(uteals)
-library(teal)
-library(teal.data)
-```
+\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`uteals`](https://github.com/phuse-org/uteals)`)`\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`teal`](https://insightsengineering.github.io/teal/)`)`\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`teal.data`](https://insightsengineering.github.io/teal.data/)`)`
 
 ## Quick Start
 
@@ -31,20 +29,18 @@ to your
 [`teal::modules()`](https://insightsengineering.github.io/teal/latest-tag/reference/teal_modules.html)
 call:
 
-``` r
-
-app <- teal::init(
-  data = teal.data::teal_data(IRIS = iris),
-  modules = teal::modules(
-    teal::example_module(),
-    tm_report_manager()
-  )
-)
-
-if (interactive()) {
-  shinyApp(app$ui, app$server)
-}
-```
+\
+`app`` ``<-`` ``teal``::`[`init`](https://insightsengineering.github.io/teal/latest-tag/reference/init.html)`(`\
+`  data ``=`` ``teal.data``::`[`teal_data`](https://insightsengineering.github.io/teal.data/latest-tag/reference/teal_data.html)`(``IRIS ``=`` ``iris``)``,`\
+`  modules ``=`` ``teal``::`[`modules`](https://insightsengineering.github.io/teal/latest-tag/reference/teal_modules.html)`(`\
+`    ``teal``::`[`example_module`](https://insightsengineering.github.io/teal/latest-tag/reference/example_module.html)`(``)``,`\
+`    `[`tm_report_manager`](https://phuse-org.github.io/uteals/reference/tm_report_manager.md)`(``)`\
+`  ``)`\
+`)`\
+\
+`if`` ``(`[`interactive`](https://rdrr.io/r/base/interactive.html)`(``)``)`` ``{`\
+`  `[`shinyApp`](https://rdrr.io/pkg/shiny/man/shinyApp.html)`(``app``$``ui``, ``app``$``server``)`\
+`}`
 
 Reports are stored in a `reports/` folder relative to the working
 directory by default.
@@ -59,13 +55,11 @@ accepts two arguments:
 | `reports_path` | `"reports"` | Absolute or relative path where reports are stored |
 | `auto_save` | `TRUE` | Whether to auto-save the active report on every card change |
 
-``` r
-
-tm_report_manager(
-  reports_path = "/shared/network/drive/reports",
-  auto_save = TRUE
-)
-```
+\
+[`tm_report_manager`](https://phuse-org.github.io/uteals/reference/tm_report_manager.md)`(`\
+`  reports_path ``=`` ``"/shared/network/drive/reports"``,`\
+`  auto_save ``=`` ``TRUE`\
+`)`
 
 Use an absolute path pointing to a shared network location to enable
 multi-user collaboration.
@@ -138,26 +132,24 @@ candidates.
 
 ## Complete Example
 
-``` r
-
-app <- teal::init(
-  data = teal.data::teal_data(
-    ADSL = teal.data::rADSL,
-    code = "ADSL <- teal.data::rADSL"
-  ),
-  modules = teal::modules(
-    teal::example_module(label = "Summary"),
-    tm_report_manager(
-      reports_path = "reports",
-      auto_save = TRUE
-    )
-  )
-)
-
-if (interactive()) {
-  shinyApp(app$ui, app$server)
-}
-```
+\
+`app`` ``<-`` ``teal``::`[`init`](https://insightsengineering.github.io/teal/latest-tag/reference/init.html)`(`\
+`  data ``=`` ``teal.data``::`[`teal_data`](https://insightsengineering.github.io/teal.data/latest-tag/reference/teal_data.html)`(`\
+`    ADSL ``=`` ``teal.data``::`[`rADSL`](https://insightsengineering.github.io/teal.data/latest-tag/reference/random_cdisc_data.html)`,`\
+`    code ``=`` ``"ADSL <- teal.data::rADSL"`\
+`  ``)``,`\
+`  modules ``=`` ``teal``::`[`modules`](https://insightsengineering.github.io/teal/latest-tag/reference/teal_modules.html)`(`\
+`    ``teal``::`[`example_module`](https://insightsengineering.github.io/teal/latest-tag/reference/example_module.html)`(``label ``=`` ``"Summary"``)``,`\
+`    `[`tm_report_manager`](https://phuse-org.github.io/uteals/reference/tm_report_manager.md)`(`\
+`      reports_path ``=`` ``"reports"``,`\
+`      auto_save ``=`` ``TRUE`\
+`    ``)`\
+`  ``)`\
+`)`\
+\
+`if`` ``(`[`interactive`](https://rdrr.io/r/base/interactive.html)`(``)``)`` ``{`\
+`  `[`shinyApp`](https://rdrr.io/pkg/shiny/man/shinyApp.html)`(``app``$``ui``, ``app``$``server``)`\
+`}`
 
 ## Permissions Summary
 

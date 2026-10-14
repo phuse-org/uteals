@@ -28,7 +28,7 @@ for the forest plot x axis.">
 
     <a class="navbar-brand me-2" href="../index.html">uteals</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.0.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.0.6</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,6 +53,7 @@ for the forest plot x axis.">
     <div class="dropdown-menu" aria-labelledby="dropdown-versions">
     <a class="dropdown-item" data-toggle="tooltip" title="" href="https://phuse-org.github.io/uteals/main">main</a>
 <a class="dropdown-item" data-toggle="tooltip" title="" href="https://phuse-org.github.io/uteals/latest-tag">latest-tag</a>
+<a class="dropdown-item" data-toggle="tooltip" title="" href="https://phuse-org.github.io/uteals/v0.0.6">v0.0.6</a>
 <a class="dropdown-item" data-toggle="tooltip" title="" href="https://phuse-org.github.io/uteals/v0.0.5">v0.0.5</a>
 <a class="dropdown-item" data-toggle="tooltip" title="" href="https://phuse-org.github.io/uteals/v0.0.4">v0.0.4</a>
 <a class="dropdown-item" data-toggle="tooltip" title="" href="https://phuse-org.github.io/uteals/v0.0.3">v0.0.3</a>
@@ -75,7 +76,7 @@ for the forest plot x axis.">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Change X-axis scaling decorator for <code><a href="https://insightsengineering.github.io/teal.modules.clinical/latest-tag/reference/tm_g_forest_rsp.html" class="external-link">teal.modules.clinical::tm_g_forest_rsp</a></code>.</h1>
-      <small class="dont-index">Source: <a href="https://github.com/phuse-org/uteals/blob/v0.0.5/R/forest_plot_decorator.R" class="external-link"><code>R/forest_plot_decorator.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/phuse-org/uteals/blob/v0.0.6/R/forest_plot_decorator.R" class="external-link"><code>R/forest_plot_decorator.R</code></a></small>
       <div class="d-none name"><code>forestplot_x_decorator.Rd</code></div>
     </div>
 
@@ -114,12 +115,13 @@ plot's axis and annotations accordingly.</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: teal.code</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: teal.slice</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> You are using teal version 1.2.0</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> You are using teal version 1.2.1</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: ‘teal’</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from ‘package:teal.slice’:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     as.teal_slices, teal_slices</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: teal.picks</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: teal.transform</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: tern</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: rtables</span>
@@ -129,12 +131,6 @@ plot's axis and annotations accordingly.</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> The following object is masked from ‘package:base’:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     %||%</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: magrittr</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: ‘magrittr’</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from ‘package:testthat’:</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     equals, is_less_than, not</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: ‘rtables’</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> The following object is masked from ‘package:utils’:</span>
@@ -144,8 +140,8 @@ plot's axis and annotations accordingly.</p>
 <span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">within</a></span><span class="op">(</span><span class="va">data</span>, <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="va">ADSL</span> <span class="op">&lt;-</span> <span class="fu">teal.modules.clinical</span><span class="fu">::</span><span class="va"><a href="https://insightsengineering.github.io/teal.modules.clinical/latest-tag/reference/ex_data.html" class="external-link">tmc_ex_adsl</a></span></span></span>
 <span class="r-in"><span>  <span class="va">ADRS</span> <span class="op">&lt;-</span> <span class="fu">teal.modules.clinical</span><span class="fu">::</span><span class="va"><a href="https://insightsengineering.github.io/teal.modules.clinical/latest-tag/reference/ex_data.html" class="external-link">tmc_ex_adrs</a></span> <span class="op">|&gt;</span></span></span>
-<span class="r-in"><span>    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>AVALC <span class="op">=</span> <span class="fu">tern</span><span class="fu">::</span><span class="fu"><a href="https://insightsengineering.github.io/tern/latest-tag/reference/d_onco_rsp_label.html" class="external-link">d_onco_rsp_label</a></span><span class="op">(</span><span class="va">AVALC</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
-<span class="r-in"><span>      <span class="fu">formatters</span><span class="fu">::</span><span class="fu"><a href="https://insightsengineering.github.io/formatters/latest-tag/reference/with_label.html" class="external-link">with_label</a></span><span class="op">(</span><span class="st">"Character Result/Finding"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>AVALC <span class="op">=</span> <span class="fu">tern</span><span class="fu">::</span><span class="fu"><a href="https://pharmaverse.github.io/tern/latest-tag/reference/d_onco_rsp_label.html" class="external-link">d_onco_rsp_label</a></span><span class="op">(</span><span class="va">AVALC</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>      <span class="fu">formatters</span><span class="fu">::</span><span class="fu"><a href="https://pharmaverse.github.io/formatters/latest-tag/reference/with_label.html" class="external-link">with_label</a></span><span class="op">(</span><span class="st">"Character Result/Finding"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">PARAMCD</span> <span class="op">!=</span> <span class="st">"OVRINV"</span> <span class="op">|</span> <span class="va">AVISIT</span> <span class="op">==</span> <span class="st">"FOLLOW UP"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">teal.data</span><span class="fu">::</span><span class="fu"><a href="https://insightsengineering.github.io/teal.data/latest-tag/reference/join_keys.html" class="external-link">join_keys</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu">teal.data</span><span class="fu">::</span><span class="va"><a href="https://insightsengineering.github.io/teal.data/latest-tag/reference/default_cdisc_join_keys.html" class="external-link">default_cdisc_join_keys</a></span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">]</span></span></span>
@@ -215,6 +211,33 @@ plot's axis and annotations accordingly.</p>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Initializing tm_g_forest_rsp</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`arm_var` was deprecated in teal.modules.clinical 0.13.0.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Pass `teal.picks::variables()` (or a full `teal.picks::picks()` chain).</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   Support for legacy `teal.transform::choices_selected()`, `filter_spec`, and</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   `select_spec` is deprecated.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">teal.modules.clinical</span> package.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   Please report the issue at</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/insightsengineering/teal.modules.clinical/issues&gt;</span>.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`paramcd` was deprecated in teal.modules.clinical 0.13.0.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Pass `teal.picks::values()`. Support for legacy</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   `teal.transform::choices_selected()` is deprecated.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">teal.modules.clinical</span> package.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   Please report the issue at</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/insightsengineering/teal.modules.clinical/issues&gt;</span>.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`subgroup_var` was deprecated in teal.modules.clinical 0.13.0.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Pass `teal.picks::variables()` (or a full `teal.picks::picks()` chain).</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   Support for legacy `teal.transform::choices_selected()`, `filter_spec`, and</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   `select_spec` is deprecated.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">teal.modules.clinical</span> package.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   Please report the issue at</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/insightsengineering/teal.modules.clinical/issues&gt;</span>.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`strata_var` was deprecated in teal.modules.clinical 0.13.0.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Pass `teal.picks::variables()` (or a full `teal.picks::picks()` chain).</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   Support for legacy `teal.transform::choices_selected()`, `filter_spec`, and</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   `select_spec` is deprecated.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">teal.modules.clinical</span> package.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   Please report the issue at</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/insightsengineering/teal.modules.clinical/issues&gt;</span>.</span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="fu">shinyApp</span><span class="op">(</span><span class="va">app</span><span class="op">$</span><span class="va">ui</span>, <span class="va">app</span><span class="op">$</span><span class="va">server</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
@@ -231,7 +254,7 @@ plot's axis and annotations accordingly.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

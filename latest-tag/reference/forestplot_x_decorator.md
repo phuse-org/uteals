@@ -30,12 +30,13 @@ library(teal.modules.clinical)
 #> Loading required package: teal.code
 #> Loading required package: teal.slice
 #> 
-#> You are using teal version 1.2.0
+#> You are using teal version 1.2.1
 #> 
 #> Attaching package: ‘teal’
 #> The following objects are masked from ‘package:teal.slice’:
 #> 
 #>     as.teal_slices, teal_slices
+#> Loading required package: teal.picks
 #> Loading required package: teal.transform
 #> Loading required package: tern
 #> Loading required package: rtables
@@ -45,12 +46,6 @@ library(teal.modules.clinical)
 #> The following object is masked from ‘package:base’:
 #> 
 #>     %||%
-#> Loading required package: magrittr
-#> 
-#> Attaching package: ‘magrittr’
-#> The following objects are masked from ‘package:testthat’:
-#> 
-#>     equals, is_less_than, not
 #> 
 #> Attaching package: ‘rtables’
 #> The following object is masked from ‘package:utils’:
@@ -131,6 +126,33 @@ app <- teal::init(
   )
 )
 #> Initializing tm_g_forest_rsp
+#> Warning: `arm_var` was deprecated in teal.modules.clinical 0.13.0.
+#> ℹ Pass `teal.picks::variables()` (or a full `teal.picks::picks()` chain).
+#>   Support for legacy `teal.transform::choices_selected()`, `filter_spec`, and
+#>   `select_spec` is deprecated.
+#> ℹ The deprecated feature was likely used in the teal.modules.clinical package.
+#>   Please report the issue at
+#>   <https://github.com/insightsengineering/teal.modules.clinical/issues>.
+#> Warning: `paramcd` was deprecated in teal.modules.clinical 0.13.0.
+#> ℹ Pass `teal.picks::values()`. Support for legacy
+#>   `teal.transform::choices_selected()` is deprecated.
+#> ℹ The deprecated feature was likely used in the teal.modules.clinical package.
+#>   Please report the issue at
+#>   <https://github.com/insightsengineering/teal.modules.clinical/issues>.
+#> Warning: `subgroup_var` was deprecated in teal.modules.clinical 0.13.0.
+#> ℹ Pass `teal.picks::variables()` (or a full `teal.picks::picks()` chain).
+#>   Support for legacy `teal.transform::choices_selected()`, `filter_spec`, and
+#>   `select_spec` is deprecated.
+#> ℹ The deprecated feature was likely used in the teal.modules.clinical package.
+#>   Please report the issue at
+#>   <https://github.com/insightsengineering/teal.modules.clinical/issues>.
+#> Warning: `strata_var` was deprecated in teal.modules.clinical 0.13.0.
+#> ℹ Pass `teal.picks::variables()` (or a full `teal.picks::picks()` chain).
+#>   Support for legacy `teal.transform::choices_selected()`, `filter_spec`, and
+#>   `select_spec` is deprecated.
+#> ℹ The deprecated feature was likely used in the teal.modules.clinical package.
+#>   Please report the issue at
+#>   <https://github.com/insightsengineering/teal.modules.clinical/issues>.
 if (interactive()) {
   shinyApp(app$ui, app$server)
 }
