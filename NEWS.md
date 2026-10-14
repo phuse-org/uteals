@@ -1,5 +1,7 @@
 # Version 0.0.5.9000
 
+- Added `use_freeze_tables()` to freeze the header rows and the first column of tables in `teal` apps (#30).
+
 # Version 0.0.5
 
 - Added support for `%in%` and `!%in%` operators to `or_filtering_transformator`. This contribution was authored by [@Siddhesh2097](https://github.com/Siddhesh2097).

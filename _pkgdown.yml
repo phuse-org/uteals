@@ -38,6 +38,7 @@ reference:
   - title: Utility functions
     contents:
       - g_forest_with_transform
+      - use_freeze_tables
   - title: Report manager
     contents:
       - tm_report_manager
