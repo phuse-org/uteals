@@ -1,4 +1,4 @@
-# Version 0.0.5.9000
+# Version 0.0.6
 
 - Added `use_freeze_tables()` to freeze the header rows and the first column of tables in `teal` apps (#30).
 
