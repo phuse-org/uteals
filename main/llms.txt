@@ -8,15 +8,13 @@ package](https://cran.r-project.org/package=teal) ecosystem.
 
 ## Installation
 
-``` r
-
-# Install from CRAN
-install.packages("uteals")
-
-# Install from GitHub
-install.packages("pak")
-pak::pkg_install("phuse-org/uteals@main")
-```
+\
+`# Install from CRAN`\
+[`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(``"uteals"``)`\
+\
+`# Install from GitHub`\
+[`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(``"pak"``)`\
+`pak``::`[`pkg_install`](https://pak.r-lib.org/reference/pkg_install.html)`(``"phuse-org/uteals@main"``)`
 
 ## Development Status
 
@@ -102,6 +100,9 @@ contribute to the development of `uteals`.
   **\[experimental\]** :
 
   Create a forest plot from an `rtable` with x transform settings
+
+- [`use_freeze_tables()`](https://phuse-org.github.io/uteals/reference/use_freeze_tables.md)
+  **\[experimental\]** : Freeze table headers and first columns
 
 ## Report manager
 

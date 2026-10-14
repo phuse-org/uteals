@@ -14,32 +14,30 @@ Below is an example of a table that would work for the decorator. The
 `DO_NOT_DELETE` values in the first row are intentional and have to be
 part of the file.
 
-``` r
-
-example_excel <- data.frame(
-  `TABLE ID` = c(
-    "DO_NOT_DELETE",
-    "TSFAE01A", "TSFAE01A", "TSFAE01A", "TSFAE01A", "TSFAE01A", "TSFAE01A", "TSFAE01A",
-    "TSFAE01B", "TSFAE01B", "TSFAE01B", "TSFAE01B", "TSFAE01B", "TSFAE01B", "TSFAE01B"
-  ),
-  IDENTIFIER = c(
-    "DO_NOT_DELETE",
-    "TITLE", "FOOTNOTE1", "FOOTNOTE2", "FOOTNOTE3", "FOOTNOTE4", "FOOTNOTE5", "FOOTNOTE6",
-    "TITLE", "FOOTNOTE1", "FOOTNOTE2", "FOOTNOTE3", "FOOTNOTE4", "FOOTNOTE5", "FOOTNOTE6"
-  ),
-  TEXT = c(
-    "DO_NOT_DELETE",
-    "Some title", "First part of footnote", "Another part of footnote", "Another part of footnote",
-    "Another part of footnote", "Another part of footnote", "Another part of footnote",
-    "Some title", "First part of footnote", "Another part of footnote", "Another part of footnote",
-    "Another part of footnote", "Another part of footnote", "Another part of footnote"
-  ),
-  stringsAsFactors = FALSE,
-  check.names = FALSE
-)
-
-knitr::kable(example_excel)
-```
+\
+`example_excel`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+``   `TABLE ID`  ```=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"DO_NOT_DELETE"``,`\
+`    ``"TSFAE01A"``, ``"TSFAE01A"``, ``"TSFAE01A"``, ``"TSFAE01A"``, ``"TSFAE01A"``, ``"TSFAE01A"``, ``"TSFAE01A"``,`\
+`    ``"TSFAE01B"``, ``"TSFAE01B"``, ``"TSFAE01B"``, ``"TSFAE01B"``, ``"TSFAE01B"``, ``"TSFAE01B"``, ``"TSFAE01B"`\
+`  ``)``,`\
+`  IDENTIFIER ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"DO_NOT_DELETE"``,`\
+`    ``"TITLE"``, ``"FOOTNOTE1"``, ``"FOOTNOTE2"``, ``"FOOTNOTE3"``, ``"FOOTNOTE4"``, ``"FOOTNOTE5"``, ``"FOOTNOTE6"``,`\
+`    ``"TITLE"``, ``"FOOTNOTE1"``, ``"FOOTNOTE2"``, ``"FOOTNOTE3"``, ``"FOOTNOTE4"``, ``"FOOTNOTE5"``, ``"FOOTNOTE6"`\
+`  ``)``,`\
+`  TEXT ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"DO_NOT_DELETE"``,`\
+`    ``"Some title"``, ``"First part of footnote"``, ``"Another part of footnote"``, ``"Another part of footnote"``,`\
+`    ``"Another part of footnote"``, ``"Another part of footnote"``, ``"Another part of footnote"``,`\
+`    ``"Some title"``, ``"First part of footnote"``, ``"Another part of footnote"``, ``"Another part of footnote"``,`\
+`    ``"Another part of footnote"``, ``"Another part of footnote"``, ``"Another part of footnote"`\
+`  ``)``,`\
+`  stringsAsFactors ``=`` ``FALSE``,`\
+`  check.names ``=`` ``FALSE`\
+`)`\
+\
+`knitr``::`[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``example_excel``)`
 
 | TABLE ID      | IDENTIFIER    | TEXT                     |
 |:--------------|:--------------|:-------------------------|

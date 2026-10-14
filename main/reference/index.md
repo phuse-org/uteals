@@ -57,6 +57,9 @@
 
   Create a forest plot from an `rtable` with x transform settings
 
+- [`use_freeze_tables()`](https://phuse-org.github.io/uteals/reference/use_freeze_tables.md)
+  **\[experimental\]** : Freeze table headers and first columns
+
 ## Report manager
 
 - [`tm_report_manager()`](https://phuse-org.github.io/uteals/reference/tm_report_manager.md)

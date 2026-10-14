@@ -1,6 +1,13 @@
 # Changelog
 
-## Version 0.0.5.9000
+## Version 0.0.6.9000
+
+## Version 0.0.6
+
+- Added
+  [`use_freeze_tables()`](https://phuse-org.github.io/uteals/reference/use_freeze_tables.md)
+  to freeze the header rows and the first column of tables in `teal`
+  apps ([\#30](https://github.com/phuse-org/uteals/issues/30)).
 
 ## Version 0.0.5
 
