@@ -69,7 +69,6 @@ ADLB <- data[["ADLB"]]
 app <- teal::init(
   data = data,
   modules = teal::modules(
-
     # ── Adverse events by term: no inputs hidden, full toggle panel ────────
     tm_t_events(
       label = "Adverse Event Table",

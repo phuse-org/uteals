@@ -72,8 +72,9 @@ input_visibility_transformator <- function(label = "Toggle Input Visibility",
           result <- if (is.data.frame(raw)) {
             lapply(seq_len(nrow(raw)), function(i) {
               item <- list(key = raw$key[i], label = raw$label[i])
-              if (!is.null(raw$parentKey) && !is.na(raw$parentKey[i]) && nzchar(raw$parentKey[i]))
+              if (!is.null(raw$parentKey) && !is.na(raw$parentKey[i]) && nzchar(raw$parentKey[i])) {
                 item$parentKey <- raw$parentKey[i]
+              }
               item
             })
           } else if (is.list(raw) && length(raw) > 0 && is.list(raw[[1]])) {
@@ -154,38 +155,43 @@ input_visibility_transformator <- function(label = "Toggle Input Visibility",
           discovered <- discovered_inputs()
           parents <- child_keys_of()
           new_items <- Filter(function(inp) !inp$key %in% registered_keys, discovered)
-          if (length(new_items) == 0) return()
+          if (length(new_items) == 0) {
+            return()
+          }
           registered_keys <<- c(registered_keys, vapply(new_items, `[[`, character(1), "key"))
 
           lapply(new_items, function(inp) {
             cb_id <- paste0("vis_", gsub("[^a-zA-Z0-9_]", "_", inp$key))
             is_parent <- inp$key %in% names(parents)
 
-            shiny::observeEvent(input[[cb_id]], {
-              visible <- isTRUE(input[[cb_id]])
-              send_toggle(inp$key, visible)
+            shiny::observeEvent(input[[cb_id]],
+              {
+                visible <- isTRUE(input[[cb_id]])
+                send_toggle(inp$key, visible)
 
-              if (is_parent) {
-                child_keys <- parents[[inp$key]]
-                for (ck in child_keys) {
-                  child_cb_id <- paste0("vis_", gsub("[^a-zA-Z0-9_]", "_", ck))
-                  if (visible) {
-                    session$sendCustomMessage(
-                      paste0(ns_prefix, "toggle_child_ui"),
-                      list(cb_id = ns(child_cb_id), visible = TRUE)
-                    )
-                    child_visible <- isTRUE(input[[child_cb_id]])
-                    send_toggle(ck, child_visible)
-                  } else {
-                    session$sendCustomMessage(
-                      paste0(ns_prefix, "toggle_child_ui"),
-                      list(cb_id = ns(child_cb_id), visible = FALSE)
-                    )
-                    send_toggle(ck, FALSE)
+                if (is_parent) {
+                  child_keys <- parents[[inp$key]]
+                  for (ck in child_keys) {
+                    child_cb_id <- paste0("vis_", gsub("[^a-zA-Z0-9_]", "_", ck))
+                    if (visible) {
+                      session$sendCustomMessage(
+                        paste0(ns_prefix, "toggle_child_ui"),
+                        list(cb_id = ns(child_cb_id), visible = TRUE)
+                      )
+                      child_visible <- isTRUE(input[[child_cb_id]])
+                      send_toggle(ck, child_visible)
+                    } else {
+                      session$sendCustomMessage(
+                        paste0(ns_prefix, "toggle_child_ui"),
+                        list(cb_id = ns(child_cb_id), visible = FALSE)
+                      )
+                      send_toggle(ck, FALSE)
+                    }
                   }
                 }
-              }
-            }, ignoreInit = TRUE)
+              },
+              ignoreInit = TRUE
+            )
           })
         })
 
