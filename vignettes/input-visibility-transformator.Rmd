@@ -144,17 +144,23 @@ if (interactive()) shiny::shinyApp(app$ui, app$server)
 
 ## How it works
 
-1. After the module's encoding panel renders, a small JavaScript snippet
-   walks the sidebar DOM and assigns a stable `data-vis-key` attribute to
-   each top-level input container.
+1. After the module's encoding panel renders, a JavaScript snippet walks the
+   sidebar and assigns a stable `data-vis-key` attribute to each input
+   container. Keys are derived from element IDs or DOM position, so they
+   remain stable across re-discovery passes even when siblings are hidden.
 2. The discovered inputs are sent back to R via `Shiny.setInputValue`.
-3. R renders a **Manage Input Visibility** `<details>` panel containing one
-   checkbox per discovered input.
+3. R renders a checkbox list inside the transformator's own accordion panel
+   with Show all / Hide all links.
 4. Toggling a checkbox sends a custom Shiny message that sets
    `element.style.display` on the corresponding DOM node — the input is
    hidden visually but remains fully functional in the background.
 5. Inputs whose labels match any entry in `hidden_by_default` start hidden.
-   They can be revealed at any time by checking the corresponding box.
+   They can be revealed at any time by unchecking and re-checking the
+   corresponding box (or using Show all).
+6. Accordion sections (e.g. "Additional table settings") are treated as
+   parent items. Toggling a parent cascades to all its children.
+7. A `MutationObserver` watches the sidebar for late-rendered elements
+   (e.g. arm variable buckets) and triggers re-discovery automatically.
 
 ## Notes
 
