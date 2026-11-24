@@ -28,8 +28,9 @@
 #'
 #' @export
 input_visibility_transformator <- function(
-    label = "Toggle Input Visibility",
-    hidden_by_default = character(0)) {
+  label = "Toggle Input Visibility",
+  hidden_by_default = character(0)
+) {
   checkmate::assert_string(label)
   checkmate::assert_character(
     hidden_by_default,
@@ -164,7 +165,9 @@ input_visibility_transformator <- function(
             function(inp) !inp$key %in% registered_keys,
             discovered
           )
-          if (length(new_items) == 0L) return()
+          if (length(new_items) == 0L) {
+            return()
+          }
           registered_keys <<- c(
             registered_keys,
             vapply(new_items, `[[`, character(1), "key")
@@ -174,26 +177,29 @@ input_visibility_transformator <- function(
             cb_id <- .vis_cb_id(inp$key)
             is_parent <- inp$key %in% names(parents)
 
-            shiny::observeEvent(input[[cb_id]], {
-              visible <- isTRUE(input[[cb_id]])
-              send_toggle(inp$key, visible)
+            shiny::observeEvent(input[[cb_id]],
+              {
+                visible <- isTRUE(input[[cb_id]])
+                send_toggle(inp$key, visible)
 
-              if (is_parent) {
-                for (ck in parents[[inp$key]]) {
-                  child_cb <- .vis_cb_id(ck)
-                  shiny::updateCheckboxInput(
-                    session,
-                    child_cb,
-                    value = visible
-                  )
-                  session$sendCustomMessage(
-                    paste0(ns_prefix, "toggle_child_ui"),
-                    list(cb_id = ns(child_cb), visible = visible)
-                  )
-                  send_toggle(ck, visible)
+                if (is_parent) {
+                  for (ck in parents[[inp$key]]) {
+                    child_cb <- .vis_cb_id(ck)
+                    shiny::updateCheckboxInput(
+                      session,
+                      child_cb,
+                      value = visible
+                    )
+                    session$sendCustomMessage(
+                      paste0(ns_prefix, "toggle_child_ui"),
+                      list(cb_id = ns(child_cb), visible = visible)
+                    )
+                    send_toggle(ck, visible)
+                  }
                 }
-              }
-            }, ignoreInit = TRUE)
+              },
+              ignoreInit = TRUE
+            )
           })
         })
 
@@ -252,7 +258,9 @@ input_visibility_transformator <- function(
     function(x) identical(x$key, parent_key),
     discovered
   )
-  if (length(parent) == 0L) return(TRUE)
+  if (length(parent) == 0L) {
+    return(TRUE)
+  }
   .is_default_visible(parent[[1L]]$label, hidden_lower)
 }
 
