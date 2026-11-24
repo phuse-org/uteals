@@ -174,9 +174,10 @@ input_visibility_transformator <- function(
             cb_id <- .vis_cb_id(inp$key)
             is_parent <- inp$key %in% names(parents)
 
-            shiny::observeEvent(input[[cb_id]], {
-              visible <- isTRUE(input[[cb_id]])
-              send_toggle(inp$key, visible)
+            shiny::observeEvent(input[[cb_id]],
+              {
+                visible <- isTRUE(input[[cb_id]])
+                send_toggle(inp$key, visible)
 
               if (is_parent) {
                 for (ck in parents[[inp$key]]) {
@@ -192,8 +193,9 @@ input_visibility_transformator <- function(
                   )
                   send_toggle(ck, visible)
                 }
-              }
-            }, ignoreInit = TRUE)
+              },
+              ignoreInit = TRUE
+            )
           })
         })
 
