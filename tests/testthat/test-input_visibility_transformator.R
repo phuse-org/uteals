@@ -17,7 +17,6 @@ testthat::test_that(".normalise_discovered handles data.frame input", {
 })
 
 testthat::test_that(".normalise_discovered handles data.frame without parentKey column", {
-
   raw <- data.frame(
     key = c("a", "b"),
     label = c("A", "B"),
