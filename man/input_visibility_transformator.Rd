@@ -25,15 +25,18 @@ module's encoding panel and provides toggle controls to show or hide them.
 }
 \examples{
 \dontrun{
-tm_t_frequency_j(
-  ...,
+teal.modules.clinical::tm_t_events(
+  label = "AE Table",
+  dataname = "ADAE",
+  arm_var = teal.transform::choices_selected(c("ARM", "ARMCD"), "ARM"),
+  llt = teal.transform::choices_selected("AEDECOD", "AEDECOD"),
+  hlt = teal.transform::choices_selected("AEBODSYS", "AEBODSYS"),
   transformators = list(
     input_visibility_transformator(
-      hidden_by_default = c("Stratify", "Risk Difference")
+      hidden_by_default = c("Sort", "Prune")
     )
   )
 )
 }
 
 }
-\keyword{internal}
