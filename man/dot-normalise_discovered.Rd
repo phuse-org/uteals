@@ -2,7 +2,7 @@
 % Please edit documentation in R/input_visibility_transformator.R
 \name{.normalise_discovered}
 \alias{.normalise_discovered}
-\title{Normalise the discovered_inputs payload from JS}
+\title{Convert the discovered_inputs payload into a list}
 \usage{
 .normalise_discovered(raw)
 }
@@ -14,7 +14,7 @@ A list of lists, each with \code{key}, \code{label}, and optionally
 \code{parentKey}.
 }
 \description{
-Shiny deserialises the JS array-of-objects in different ways depending
-on shape.
+Shiny converts the array of objects sent by the browser in different
+ways depending on its shape.
 }
 \keyword{internal}

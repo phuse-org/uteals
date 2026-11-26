@@ -109,6 +109,14 @@ testthat::test_that(".is_parent_visible returns FALSE when parent matches hidden
   )
 })
 
+# ---- exports ---------------------------------------------------------------
+
+testthat::test_that("input_visibility_transformator is exported", {
+  testthat::expect_true(
+    "input_visibility_transformator" %in% getNamespaceExports("uteals")
+  )
+})
+
 # ---- input validation -----------------------------------------------------
 
 testthat::test_that("hidden_by_default rejects empty strings", {

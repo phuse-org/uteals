@@ -2,11 +2,11 @@
 % Please edit documentation in R/input_visibility_transformator.R
 \name{.vis_cb_id}
 \alias{.vis_cb_id}
-\title{Sanitise a vis-key into a valid checkbox input ID}
+\title{Convert a visibility key into a valid checkbox input ID}
 \usage{
 .vis_cb_id(key)
 }
 \description{
-Sanitise a vis-key into a valid checkbox input ID
+Convert a visibility key into a valid checkbox input ID
 }
 \keyword{internal}

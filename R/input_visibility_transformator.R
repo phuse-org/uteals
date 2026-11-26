@@ -251,7 +251,7 @@ input_visibility_transformator <- function(
   paste(readLines(js_path, warn = FALSE), collapse = "\n")
 }
 
-#' Sanitise a vis-key into a valid checkbox input ID
+#' Convert a visibility key into a valid checkbox input ID
 #' @keywords internal
 .vis_cb_id <- function(key) {
   paste0("vis_", gsub("[^a-zA-Z0-9_]", "_", key))
@@ -278,10 +278,10 @@ input_visibility_transformator <- function(
   .is_default_visible(parent[[1L]]$label, hidden_lower)
 }
 
-#' Normalise the discovered_inputs payload from JS
+#' Convert the discovered_inputs payload into a list
 #'
-#' Shiny deserialises the JS array-of-objects in different ways depending
-#' on shape.
+#' Shiny converts the array of objects sent by the browser in different
+#' ways depending on its shape.
 #' @param raw Raw input value from Shiny.
 #' @return A list of lists, each with `key`, `label`, and optionally
 #'   `parentKey`.
