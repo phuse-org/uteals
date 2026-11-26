@@ -32,6 +32,8 @@
 
 - [`create_rel_risk_transformator()`](https://phuse-org.github.io/uteals/reference/create_rel_risk_transformator.md)
   **\[experimental\]** : Create Relative risk column
+- [`input_visibility_transformator()`](https://phuse-org.github.io/uteals/reference/input_visibility_transformator.md)
+  : Input Visibility Transformator
 - [`merge_levels_transformator()`](https://phuse-org.github.io/uteals/reference/merge_levels_transformator.md)
   **\[experimental\]** : Combine levels of a variable into one level
 - [`or_filtering_transformator()`](https://phuse-org.github.io/uteals/reference/or_filtering_transformator.md)

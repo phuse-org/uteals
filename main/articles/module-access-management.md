@@ -33,7 +33,7 @@ Here’s a minimal example to get started:
 
 \
 `# 1. Create modules`\
-`mods`` ``<-`` `[`modules`](https://insightsengineering.github.io/teal/latest-tag/reference/teal_modules.html)`(`\
+`mods`` ``<-`` `[`modules`](https://rdrr.io/pkg/teal/man/teal_modules.html)`(`\
 `  `[`tm_data_table`](https://insightsengineering.github.io/teal.modules.general/latest-tag/reference/tm_data_table.html)`(``"Data Table"``)``,`\
 `  `[`tm_variable_browser`](https://insightsengineering.github.io/teal.modules.general/latest-tag/reference/tm_variable_browser.html)`(``"Variable Browser"``)`\
 `)`\
@@ -54,7 +54,7 @@ function to automatically generate the module structure:
 
 \
 `# Define your teal modules`\
-`mods`` ``<-`` `[`modules`](https://insightsengineering.github.io/teal/latest-tag/reference/teal_modules.html)`(`\
+`mods`` ``<-`` `[`modules`](https://rdrr.io/pkg/teal/man/teal_modules.html)`(`\
 `  `[`tm_data_table`](https://insightsengineering.github.io/teal.modules.general/latest-tag/reference/tm_data_table.html)`(``"Data Table"``)``,`\
 `  `[`tm_variable_browser`](https://insightsengineering.github.io/teal.modules.general/latest-tag/reference/tm_variable_browser.html)`(``"Variable Browser"``)``,`\
 `  `[`tm_g_scatterplot`](https://insightsengineering.github.io/teal.modules.general/latest-tag/reference/tm_g_scatterplot.html)`(``"Scatterplot"``, x ``=`` ``...``, y ``=`` ``...``)``,`\
@@ -168,7 +168,7 @@ parameters:
 \
 `### Data Setup`\
 `# Prepare sample data`\
-`data`` ``<-`` ``teal.data``::`[`teal_data`](https://insightsengineering.github.io/teal.data/latest-tag/reference/teal_data.html)`(`\
+`data`` ``<-`` ``teal.data``::`[`teal_data`](https://rdrr.io/pkg/teal.data/man/teal_data.html)`(`\
 `  IRIS ``=`` ``iris``,`\
 `  MTCARS ``=`` ``mtcars``,`\
 `  code ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"IRIS <- iris"``, ``"MTCARS <- mtcars"``)`\
@@ -176,25 +176,25 @@ parameters:
 \
 `### Module Definition`\
 `# Define all available modules`\
-`all_modules`` ``<-`` `[`modules`](https://insightsengineering.github.io/teal/latest-tag/reference/teal_modules.html)`(`\
+`all_modules`` ``<-`` `[`modules`](https://rdrr.io/pkg/teal/man/teal_modules.html)`(`\
 `  `[`tm_data_table`](https://insightsengineering.github.io/teal.modules.general/latest-tag/reference/tm_data_table.html)`(``"Data Table"``)``,`\
 `  `[`tm_variable_browser`](https://insightsengineering.github.io/teal.modules.general/latest-tag/reference/tm_variable_browser.html)`(``"Variable Browser"``)``,`\
 `  `[`tm_g_scatterplot`](https://insightsengineering.github.io/teal.modules.general/latest-tag/reference/tm_g_scatterplot.html)`(`\
 `    label ``=`` ``"Scatterplot"``,`\
-`    x ``=`` `[`data_extract_spec`](https://insightsengineering.github.io/teal.transform/latest-tag/reference/data_extract_spec.html)`(`\
+`    x ``=`` `[`data_extract_spec`](https://rdrr.io/pkg/teal.transform/man/data_extract_spec.html)`(`\
 `      dataname ``=`` ``"IRIS"``,`\
-`      select ``=`` `[`select_spec`](https://insightsengineering.github.io/teal.transform/latest-tag/reference/select_spec.html)`(``choices ``=`` `[`variable_choices`](https://insightsengineering.github.io/teal.transform/latest-tag/reference/variable_choices.html)`(``iris``)``)`\
+`      select ``=`` `[`select_spec`](https://rdrr.io/pkg/teal.transform/man/select_spec.html)`(``choices ``=`` `[`variable_choices`](https://rdrr.io/pkg/teal.transform/man/variable_choices.html)`(``iris``)``)`\
 `    ``)``,`\
-`    y ``=`` `[`data_extract_spec`](https://insightsengineering.github.io/teal.transform/latest-tag/reference/data_extract_spec.html)`(`\
+`    y ``=`` `[`data_extract_spec`](https://rdrr.io/pkg/teal.transform/man/data_extract_spec.html)`(`\
 `      dataname ``=`` ``"IRIS"``,`\
-`      select ``=`` `[`select_spec`](https://insightsengineering.github.io/teal.transform/latest-tag/reference/select_spec.html)`(``choices ``=`` `[`variable_choices`](https://insightsengineering.github.io/teal.transform/latest-tag/reference/variable_choices.html)`(``iris``)``)`\
+`      select ``=`` `[`select_spec`](https://rdrr.io/pkg/teal.transform/man/select_spec.html)`(``choices ``=`` `[`variable_choices`](https://rdrr.io/pkg/teal.transform/man/variable_choices.html)`(``iris``)``)`\
 `    ``)`\
 `  ``)``,`\
 `  `[`tm_outliers`](https://insightsengineering.github.io/teal.modules.general/latest-tag/reference/tm_outliers.html)`(`\
 `    label ``=`` ``"Summary Statistics"``,`\
-`    outlier_var ``=`` `[`data_extract_spec`](https://insightsengineering.github.io/teal.transform/latest-tag/reference/data_extract_spec.html)`(`\
+`    outlier_var ``=`` `[`data_extract_spec`](https://rdrr.io/pkg/teal.transform/man/data_extract_spec.html)`(`\
 `      dataname ``=`` ``"MTCARS"``,`\
-`      select ``=`` `[`select_spec`](https://insightsengineering.github.io/teal.transform/latest-tag/reference/select_spec.html)`(``choices ``=`` `[`variable_choices`](https://insightsengineering.github.io/teal.transform/latest-tag/reference/variable_choices.html)`(``mtcars``, `[`c`](https://rdrr.io/r/base/c.html)`(``"mpg"``, ``"hp"``, ``"wt"``)``)``)`\
+`      select ``=`` `[`select_spec`](https://rdrr.io/pkg/teal.transform/man/select_spec.html)`(``choices ``=`` `[`variable_choices`](https://rdrr.io/pkg/teal.transform/man/variable_choices.html)`(``mtcars``, `[`c`](https://rdrr.io/r/base/c.html)`(``"mpg"``, ``"hp"``, ``"wt"``)``)``)`\
 `    ``)`\
 `  ``)`\
 `)`\
@@ -241,8 +241,8 @@ parameters:
 \
 `  ``# Handle no access`\
 `  ``if`` ``(`[`is.null`](https://rdrr.io/r/base/NULL.html)`(``filtered_modules``)``)`` ``{`\
-`    ``filtered_modules`` ``<-`` `[`modules`](https://insightsengineering.github.io/teal/latest-tag/reference/teal_modules.html)`(`\
-`      `[`module`](https://insightsengineering.github.io/teal/latest-tag/reference/teal_modules.html)`(`\
+`    ``filtered_modules`` ``<-`` `[`modules`](https://rdrr.io/pkg/teal/man/teal_modules.html)`(`\
+`      `[`module`](https://rdrr.io/pkg/teal/man/teal_modules.html)`(`\
 `        label ``=`` ``"No Access"``,`\
 `        ui ``=`` ``function``(``id``)`` ``tags``$``div``(`\
 `          class ``=`` ``"alert alert-warning"``,`\
@@ -257,14 +257,14 @@ parameters:
 `  ``# Render teal UI`\
 `  ``output``$``teal_ui`` ``<-`` `[`renderUI`](https://rdrr.io/pkg/shiny/man/renderUI.html)`(``{`\
 `    `[`tagList`](https://rstudio.github.io/htmltools/reference/tagList.html)`(`\
-`      `[`ui_teal`](https://insightsengineering.github.io/teal/latest-tag/reference/module_teal.html)`(``"teal_app"``, ``filtered_modules``)``,`\
-`      `[`ui_session_info`](https://insightsengineering.github.io/teal/latest-tag/reference/module_session_info.html)`(``"session_info"``)`\
+`      `[`ui_teal`](https://rdrr.io/pkg/teal/man/module_teal.html)`(``"teal_app"``, ``filtered_modules``)``,`\
+`      `[`ui_session_info`](https://rdrr.io/pkg/teal/man/module_session_info.html)`(``"session_info"``)`\
 `    ``)`\
 `  ``}``)`\
 \
 `  ``# Teal server`\
-`  `[`srv_teal`](https://insightsengineering.github.io/teal/latest-tag/reference/module_teal.html)`(``"teal_app"``, data ``=`` ``data``, modules ``=`` ``filtered_modules``)`\
-`  `[`srv_session_info`](https://insightsengineering.github.io/teal/latest-tag/reference/module_session_info.html)`(``"session_info"``)`\
+`  `[`srv_teal`](https://rdrr.io/pkg/teal/man/module_teal.html)`(``"teal_app"``, data ``=`` ``data``, modules ``=`` ``filtered_modules``)`\
+`  `[`srv_session_info`](https://rdrr.io/pkg/teal/man/module_session_info.html)`(``"session_info"``)`\
 `}`\
 \
 `### Application Launch`\
@@ -332,4 +332,4 @@ maintaining the flexibility and power of the teal framework.
 - [`rAccess`
   Documentation](https://johnsonandjohnson.github.io/rAccess/)
 - [`Teal` as `Shiny`
-  Module](https://insightsengineering.github.io/teal/latest-tag/articles/teal-as-a-shiny-module.html)
+  Module](https://CRAN.R-project.org/package=teal/vignettes/teal-as-a-shiny-module.html)

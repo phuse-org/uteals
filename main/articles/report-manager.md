@@ -26,14 +26,14 @@ multi-user report management. It allows users to:
 Add
 [`tm_report_manager()`](https://phuse-org.github.io/uteals/reference/tm_report_manager.md)
 to your
-[`teal::modules()`](https://insightsengineering.github.io/teal/latest-tag/reference/teal_modules.html)
+[`teal::modules()`](https://rdrr.io/pkg/teal/man/teal_modules.html)
 call:
 
 \
-`app`` ``<-`` ``teal``::`[`init`](https://insightsengineering.github.io/teal/latest-tag/reference/init.html)`(`\
-`  data ``=`` ``teal.data``::`[`teal_data`](https://insightsengineering.github.io/teal.data/latest-tag/reference/teal_data.html)`(``IRIS ``=`` ``iris``)``,`\
-`  modules ``=`` ``teal``::`[`modules`](https://insightsengineering.github.io/teal/latest-tag/reference/teal_modules.html)`(`\
-`    ``teal``::`[`example_module`](https://insightsengineering.github.io/teal/latest-tag/reference/example_module.html)`(``)``,`\
+`app`` ``<-`` ``teal``::`[`init`](https://rdrr.io/pkg/teal/man/init.html)`(`\
+`  data ``=`` ``teal.data``::`[`teal_data`](https://rdrr.io/pkg/teal.data/man/teal_data.html)`(``IRIS ``=`` ``iris``)``,`\
+`  modules ``=`` ``teal``::`[`modules`](https://rdrr.io/pkg/teal/man/teal_modules.html)`(`\
+`    ``teal``::`[`example_module`](https://rdrr.io/pkg/teal/man/example_module.html)`(``)``,`\
 `    `[`tm_report_manager`](https://phuse-org.github.io/uteals/reference/tm_report_manager.md)`(``)`\
 `  ``)`\
 `)`\
@@ -133,13 +133,13 @@ candidates.
 ## Complete Example
 
 \
-`app`` ``<-`` ``teal``::`[`init`](https://insightsengineering.github.io/teal/latest-tag/reference/init.html)`(`\
-`  data ``=`` ``teal.data``::`[`teal_data`](https://insightsengineering.github.io/teal.data/latest-tag/reference/teal_data.html)`(`\
-`    ADSL ``=`` ``teal.data``::`[`rADSL`](https://insightsengineering.github.io/teal.data/latest-tag/reference/random_cdisc_data.html)`,`\
+`app`` ``<-`` ``teal``::`[`init`](https://rdrr.io/pkg/teal/man/init.html)`(`\
+`  data ``=`` ``teal.data``::`[`teal_data`](https://rdrr.io/pkg/teal.data/man/teal_data.html)`(`\
+`    ADSL ``=`` ``teal.data``::`[`rADSL`](https://rdrr.io/pkg/teal.data/man/random_cdisc_data.html)`,`\
 `    code ``=`` ``"ADSL <- teal.data::rADSL"`\
 `  ``)``,`\
-`  modules ``=`` ``teal``::`[`modules`](https://insightsengineering.github.io/teal/latest-tag/reference/teal_modules.html)`(`\
-`    ``teal``::`[`example_module`](https://insightsengineering.github.io/teal/latest-tag/reference/example_module.html)`(``label ``=`` ``"Summary"``)``,`\
+`  modules ``=`` ``teal``::`[`modules`](https://rdrr.io/pkg/teal/man/teal_modules.html)`(`\
+`    ``teal``::`[`example_module`](https://rdrr.io/pkg/teal/man/example_module.html)`(``label ``=`` ``"Summary"``)``,`\
 `    `[`tm_report_manager`](https://phuse-org.github.io/uteals/reference/tm_report_manager.md)`(`\
 `      reports_path ``=`` ``"reports"``,`\
 `      auto_save ``=`` ``TRUE`\
@@ -170,5 +170,5 @@ report state:
 ## Further Reading
 
 - [`teal.reporter`
-  Documentation](https://insightsengineering.github.io/teal.reporter/)
-- [`teal` Documentation](https://insightsengineering.github.io/teal/)
+  Documentation](https://CRAN.R-project.org/package=teal.reporter)
+- [`teal` Documentation](https://CRAN.R-project.org/package=teal)

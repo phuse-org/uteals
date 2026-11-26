@@ -2,7 +2,15 @@
 
 ## Version 0.0.6.9000
 
+- Added
+  [`input_visibility_transformator()`](https://phuse-org.github.io/uteals/reference/input_visibility_transformator.md):
+  a `teal_transform_module` that auto-discovers Shiny inputs in a
+  module’s encoding panel and provides per-input visibility toggles with
+  Show all / Hide all controls.
+
 ## Version 0.0.6
+
+CRAN release: 2026-10-14
 
 - Added
   [`use_freeze_tables()`](https://phuse-org.github.io/uteals/reference/use_freeze_tables.md)

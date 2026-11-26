@@ -25,7 +25,7 @@ watermark_decorator(output_name, watermark_text = "", font_size = 90)
 
 ## Value
 
-[`teal::teal_transform_module()`](https://insightsengineering.github.io/teal/latest-tag/reference/teal_transform_module.html)
+[`teal::teal_transform_module()`](https://rdrr.io/pkg/teal/man/teal_transform_module.html)
 
 ## Details
 

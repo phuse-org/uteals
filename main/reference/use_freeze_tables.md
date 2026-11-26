@@ -2,11 +2,10 @@
 
 **\[experimental\]** Makes the header row and/or the first column of
 tables rendered with
-[`teal.widgets::table_with_settings_ui()`](https://insightsengineering.github.io/teal.widgets/latest-tag/reference/table_with_settings.html)
+[`teal.widgets::table_with_settings_ui()`](https://rdrr.io/pkg/teal.widgets/man/table_with_settings.html)
 sticky, so that the headers and row labels stay visible while scrolling.
 Include the returned tags once in the app UI, e.g. in the `header`
-argument of
-[`teal::init()`](https://insightsengineering.github.io/teal/latest-tag/reference/init.html).
+argument of [`teal::init()`](https://rdrr.io/pkg/teal/man/init.html).
 
 ## Usage
 

@@ -156,7 +156,7 @@ This assigns a value in `current_report_title` field
 
 (character) A path of desired report Save report with provided title
 This utilizes methods from
-[`teal.reporter::Reporter`](https://insightsengineering.github.io/teal.reporter/latest-tag/reference/Reporter.html)
+[`teal.reporter::Reporter`](https://rdrr.io/pkg/teal.reporter/man/Reporter.html)
 to store files required to load and save reports If a report with
 specific title exists, it will overwrite it.
 
@@ -177,14 +177,14 @@ specific title exists, it will overwrite it.
 - `reporter`:
 
   (`Reporter`) A reporter object passed from
-  [`teal::init`](https://insightsengineering.github.io/teal/latest-tag/reference/init.html)
+  [`teal::init`](https://rdrr.io/pkg/teal/man/init.html)
 
 - `first`:
 
   (`logical`) Whether this is the first time saving the report.
 
   Load report to report previewer This utilizes methods from
-  [`teal.reporter::Reporter`](https://insightsengineering.github.io/teal.reporter/latest-tag/reference/Reporter.html)
+  [`teal.reporter::Reporter`](https://rdrr.io/pkg/teal.reporter/man/Reporter.html)
   to load reports
 
 ------------------------------------------------------------------------
@@ -204,7 +204,7 @@ specific title exists, it will overwrite it.
 - `reporter`:
 
   (`Reporter`) A reporter object passed from
-  [`teal::init`](https://insightsengineering.github.io/teal/latest-tag/reference/init.html)
+  [`teal::init`](https://rdrr.io/pkg/teal/man/init.html)
 
 - `skip_lock`:
 
@@ -363,8 +363,8 @@ logical indicating if this is a new report Create new report with title
 - `reporter`:
 
   (Reporter) A reporter object passed from
-  [`teal::init`](https://insightsengineering.github.io/teal/latest-tag/reference/init.html)
-  Unlock a locked report
+  [`teal::init`](https://rdrr.io/pkg/teal/man/init.html) Unlock a locked
+  report
 
 ------------------------------------------------------------------------
 
@@ -462,13 +462,13 @@ to generate these cards.
 - `rp`:
 
   (Reporter) A reporter object passed from
-  [`teal::init`](https://insightsengineering.github.io/teal/latest-tag/reference/init.html)
-  Get current user name Get metadata file path Lock report so that it
-  can't be overwritten by another user Unlock report Save creator
-  information Save code from each card as `code.rds` in the report
-  directory. Extract all table-type content from a Reporter as a named
-  list of data.frames Register `onSessionEnded` to unlock report when
-  session is closed
+  [`teal::init`](https://rdrr.io/pkg/teal/man/init.html) Get current
+  user name Get metadata file path Lock report so that it can't be
+  overwritten by another user Unlock report Save creator information
+  Save code from each card as `code.rds` in the report directory.
+  Extract all table-type content from a Reporter as a named list of
+  data.frames Register `onSessionEnded` to unlock report when session is
+  closed
 
 ------------------------------------------------------------------------
 

@@ -31,7 +31,7 @@ create_rel_risk_transformator(dataname, column_name, control_group, label_name)
 
 ## Value
 
-[`teal::teal_transform_module`](https://insightsengineering.github.io/teal/latest-tag/reference/teal_transform_module.html)
+[`teal::teal_transform_module`](https://rdrr.io/pkg/teal/man/teal_transform_module.html)
 
 ## Details
 

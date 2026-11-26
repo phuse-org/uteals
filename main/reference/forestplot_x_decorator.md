@@ -11,7 +11,7 @@ forestplot_x_decorator()
 
 ## Value
 
-[`teal::teal_transform_module`](https://insightsengineering.github.io/teal/latest-tag/reference/teal_transform_module.html)
+[`teal::teal_transform_module`](https://rdrr.io/pkg/teal/man/teal_transform_module.html)
 Returns a modified plot object with the transformation applied.
 
 ## Details

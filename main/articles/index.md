@@ -8,3 +8,5 @@
   \`tm_report_manager\`](https://phuse-org.github.io/uteals/articles/report-manager.md):
 - [Excel structure for
   \`title_footer_decorator\`](https://phuse-org.github.io/uteals/articles/title-footer-decorator-excel-structure.md):
+- [Toggling Input Visibility with
+  \`input_visibility_transformator\`](https://phuse-org.github.io/uteals/articles/input-visibility-transformator.md):
