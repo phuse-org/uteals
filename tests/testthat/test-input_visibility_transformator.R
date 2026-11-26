@@ -164,3 +164,67 @@ testthat::test_that("server builds parent-child map from parentKey", {
     testthat::expect_null(parents[["standalone"]])
   })
 })
+
+# ---- testServer: state across re-renders -----------------------------------
+
+testthat::test_that("re-rendering the toggle list keeps current checkbox values", {
+  srv <- input_visibility_transformator()$server
+
+  shiny::testServer(srv, args = list(data = shiny::reactive(NULL)), {
+    session$setInputs(discovered_inputs = list(list(key = "k1", label = "A")))
+    session$setInputs(vis_k1 = FALSE)
+    # A late-rendered input triggers a new discovery payload and a re-render.
+    session$setInputs(
+      discovered_inputs = list(
+        list(key = "k1", label = "A"),
+        list(key = "k2", label = "B")
+      )
+    )
+    html <- as.character(output$toggle_ui$html)
+    testthat::expect_false(grepl('vis_k1"[^>]*checked', html))
+    testthat::expect_true(grepl('vis_k2"[^>]*checked', html))
+  })
+})
+
+testthat::test_that("child rows follow the parent's current value on re-render", {
+  srv <- input_visibility_transformator()$server
+
+  shiny::testServer(srv, args = list(data = shiny::reactive(NULL)), {
+    session$setInputs(
+      discovered_inputs = list(
+        list(key = "p", label = "Settings"),
+        list(key = "c", label = "Option", parentKey = "p")
+      )
+    )
+    testthat::expect_false(
+      grepl("display:none", as.character(output$toggle_ui$html), fixed = TRUE)
+    )
+    session$setInputs(vis_p = FALSE)
+    session$setInputs(
+      discovered_inputs = list(
+        list(key = "p", label = "Settings"),
+        list(key = "c", label = "Option", parentKey = "p"),
+        list(key = "late", label = "Late")
+      )
+    )
+    testthat::expect_true(
+      grepl("display:none", as.character(output$toggle_ui$html), fixed = TRUE)
+    )
+  })
+})
+
+testthat::test_that("hidden_by_default inputs start unchecked", {
+  srv <- input_visibility_transformator(hidden_by_default = "sort")$server
+
+  shiny::testServer(srv, args = list(data = shiny::reactive(NULL)), {
+    session$setInputs(
+      discovered_inputs = list(
+        list(key = "a", label = "Arm"),
+        list(key = "s", label = "Sort Criteria")
+      )
+    )
+    html <- as.character(output$toggle_ui$html)
+    testthat::expect_true(grepl('vis_a"[^>]*checked', html))
+    testthat::expect_false(grepl('vis_s"[^>]*checked', html))
+  })
+})

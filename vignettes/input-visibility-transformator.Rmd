@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 `input_visibility_transformator` is a `teal_transform_module` that automatically
 discovers the Shiny inputs rendered in a module's encoding panel and adds a
-collapsible **Manage Input Visibility** control. Users can show or hide individual
+collapsible **Toggle Input Visibility** control. Users can show or hide individual
 inputs without any changes to the underlying module code.
 
 ## When to use it
@@ -145,17 +145,18 @@ if (interactive()) shiny::shinyApp(app$ui, app$server)
 
 1. After the module's encoding panel renders, a JavaScript snippet walks the
    sidebar and assigns a stable `data-vis-key` attribute to each input
-   container. Keys are derived from element IDs or DOM position, so they
-   remain stable across re-discovery passes even when siblings are hidden.
+   container. A key is derived from the element's ID or its DOM path when it
+   is first seen and is never reassigned, so keys stay stable across
+   re-discovery passes even when siblings are hidden.
 2. The discovered inputs are sent back to R via `Shiny.setInputValue`.
-3. R renders a checkbox list inside the transformator's own accordion panel
+3. R renders a checkbox list inside the accordion panel of the transformator
    with Show all / Hide all links.
 4. Toggling a checkbox sends a custom Shiny message that sets
    `element.style.display` on the corresponding DOM node — the input is
    hidden visually but remains fully functional in the background.
 5. Inputs whose labels match any entry in `hidden_by_default` start hidden.
-   They can be revealed at any time by unchecking and re-checking the
-   corresponding box (or using Show all).
+   Their boxes start unchecked; check a box (or use Show all) to reveal the
+   input.
 6. Accordion sections (e.g. "Additional table settings") are treated as
    parent items. Toggling a parent cascades to all its children.
 7. A `MutationObserver` watches the sidebar for late-rendered elements

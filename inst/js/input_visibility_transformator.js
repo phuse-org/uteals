@@ -79,24 +79,40 @@
     if (t) return t.textContent.trim();
     return lbl(el);
   }
-  function addItem(out, seen, el, prefix, useLbl, parentKey) {
-    // Use the element's own id for a stable key; fall back to data-vis-key
-    // if already assigned from a previous pass, ensuring re-discovery
-    // produces identical keys regardless of sibling visibility.
-    var id = el.id || el.getAttribute('data-vis-key') || null;
-    if (!id) {
-      // Generate a deterministic key from the element's position among
-      // its siblings (counting ALL siblings, not just visible ones).
-      var parent = el.parentNode;
-      var idx = 0;
-      if (parent) {
-        for (var n = 0; n < parent.children.length; n++) {
-          if (parent.children[n] === el) { idx = n; break; }
-        }
-      }
-      id = 'pos_' + idx;
+  // Path of child indices from the discovery root down to `el`. Unique for
+  // every element under the root, unlike an index among siblings alone.
+  var discoveryRoot = null, issued = {}, idKeys = {};
+  function keyEl(k) {
+    return document.querySelector(
+      '[data-vis-key="' + String(k).replace(/["\\]/g, '\\$&') + '"]'
+    );
+  }
+  function domPath(el) {
+    var parts = [];
+    while (el && el !== discoveryRoot && el.parentElement) {
+      parts.unshift(Array.prototype.indexOf.call(el.parentElement.children, el));
+      el = el.parentElement;
     }
-    var k = P + prefix + id;
+    return parts.join('_');
+  }
+  function addItem(out, seen, el, prefix, useLbl, parentKey) {
+    // A key assigned in an earlier pass is reused as-is, so keys never change
+    // between re-discovery passes. New elements get a key from their own id
+    // or, failing that, from their full DOM path.
+    var k = el.getAttribute('data-vis-key') || (el.id && idKeys[el.id]);
+    if (!k) {
+      // The suffix is sanitised the same way R builds checkbox ids, so keys
+      // that are distinct here stay distinct as checkbox ids. A key is never
+      // issued twice: a later element can land on a path that an earlier one
+      // (live or since removed) held, and must not inherit its state.
+      var base = P + (prefix + (el.id ? 'id_' + el.id : 'pos_' + domPath(el)))
+        .replace(/[^A-Za-z0-9_]/g, '_');
+      k = base;
+      for (var n = 1; issued[k] || keyEl(k); n++) k = base + '_n' + n;
+      issued[k] = true;
+      // An element Shiny re-renders keeps its id, so it keeps its key.
+      if (el.id) idKeys[el.id] = k;
+    }
     if (seen[k]) return;
     seen[k] = true;
     el.setAttribute('data-vis-key', k);
@@ -173,14 +189,19 @@
   function discover(enc) {
     var wr = findWrap(enc);
     if (!wr) return [];
+    discoveryRoot = wr;
     var out = [], seen = {};
     discoverChildren(wr.children, out, seen);
     return out;
   }
 
   // ---- toggle ----
+  // Wanted visibility per key, re-applied on every discovery pass so that an
+  // element Shiny re-renders does not reappear while its box is unchecked.
+  var desired = {};
   function vis(k, v) {
-    var e = document.querySelector('[data-vis-key="' + k + '"]');
+    desired[k] = v;
+    var e = keyEl(k);
     if (e) e.style.display = v ? '' : 'none';
   }
   Shiny.addCustomMessageHandler(P + 'toggle_input', function (m) {
@@ -194,7 +215,7 @@
   });
 
   // ---- init ----
-  var lastKeyStr = '';
+  var lastKeyStr = '', defaultsApplied = {};
   function go() {
     if (typeof Shiny === 'undefined' || !Shiny.setInputValue) return false;
     var s = document.getElementById(C);
@@ -206,16 +227,30 @@
     var inp = discover(enc);
     if (inp.length === 0) return false;
 
-    // Build a fingerprint of all keys; only push to Shiny when it changes.
+    for (var dk in desired) {
+      if (desired.hasOwnProperty(dk)) {
+        var de = keyEl(dk);
+        if (de) de.style.display = desired[dk] ? '' : 'none';
+      }
+    }
+
+    // Build a fingerprint of all keys and labels; only push to Shiny when it
+    // changes.
     var keys = [];
-    for (var i = 0; i < inp.length; i++) keys.push(inp[i].key);
+    for (var i = 0; i < inp.length; i++) {
+      keys.push(inp[i].key + '=' + inp[i].label + '<' + (inp[i].parentKey || ''));
+    }
     var keyStr = keys.join('|');
     if (keyStr === lastKeyStr) return true; // stable — nothing to do
     lastKeyStr = keyStr;
     ok = true;
 
     Shiny.setInputValue(P + 'discovered_inputs', inp);
+    // Apply hidden_by_default only the first time a key is seen, so a later
+    // pass never re-hides an input the user has chosen to show.
     inp.forEach(function (x) {
+      if (defaultsApplied[x.key]) return;
+      defaultsApplied[x.key] = true;
       var lo = x.label.toLowerCase();
       for (var j = 0; j < H.length; j++) {
         if (lo.indexOf(H[j]) !== -1) { vis(x.key, false); break; }

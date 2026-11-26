@@ -89,7 +89,13 @@ input_visibility_transformator <- function(
         output$toggle_ui <- shiny::renderUI({
           discovered <- discovered_inputs()
           hidden_lower <- tolower(hidden_by_default)
-          parents <- child_keys_of()
+
+          # When the list is re-rendered (e.g. a late input was discovered),
+          # keep each checkbox's current value instead of resetting it.
+          current_value <- function(key, default) {
+            value <- shiny::isolate(input[[.vis_cb_id(key)]])
+            if (is.null(value)) default else isTRUE(value)
+          }
 
           is_child <- vapply(
             discovered,
@@ -107,13 +113,12 @@ input_visibility_transformator <- function(
             cb <- shiny::checkboxInput(
               ns(cb_id),
               label = inp$label,
-              value = default_visible
+              value = current_value(inp$key, default_visible)
             )
             if (is_child[i]) {
-              parent_visible <- .is_parent_visible(
+              parent_visible <- current_value(
                 inp$parentKey,
-                discovered,
-                hidden_lower
+                .is_parent_visible(inp$parentKey, discovered, hidden_lower)
               )
               shiny::tags$div(
                 class = "vis-child-item",
@@ -160,7 +165,6 @@ input_visibility_transformator <- function(
 
         shiny::observeEvent(discovered_inputs(), {
           discovered <- discovered_inputs()
-          parents <- child_keys_of()
           new_items <- Filter(
             function(inp) !inp$key %in% registered_keys,
             discovered
@@ -175,15 +179,25 @@ input_visibility_transformator <- function(
 
           lapply(new_items, function(inp) {
             cb_id <- .vis_cb_id(inp$key)
-            is_parent <- inp$key %in% names(parents)
+            # The first value is the checkbox binding its rendered state, which
+            # the JS has already applied. Acting on it would cascade a visible
+            # parent onto children that are hidden by default.
+            first_value <- TRUE
 
             shiny::observeEvent(input[[cb_id]],
               {
+                if (first_value) {
+                  first_value <<- FALSE
+                  return()
+                }
                 visible <- isTRUE(input[[cb_id]])
                 send_toggle(inp$key, visible)
 
-                if (is_parent) {
-                  for (ck in parents[[inp$key]]) {
+                # Look the children up now, not at registration time, so
+                # children discovered in a later pass also cascade.
+                children <- child_keys_of()[[inp$key]]
+                if (length(children) > 0L) {
+                  for (ck in children) {
                     child_cb <- .vis_cb_id(ck)
                     shiny::updateCheckboxInput(
                       session,
