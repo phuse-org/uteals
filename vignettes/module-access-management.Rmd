@@ -339,4 +339,4 @@ This integration enables secure, role-based access control while maintaining the
 ## Further Reading
 
 - [`rAccess` Documentation](https://johnsonandjohnson.github.io/rAccess/)
-- [`Teal` as `Shiny` Module](https://insightsengineering.github.io/teal/latest-tag/articles/teal-as-a-shiny-module.html)
+- [`Teal` as `Shiny` Module](https://cran.r-project.org/web/packages/teal/vignettes/teal-as-a-shiny-module.html)

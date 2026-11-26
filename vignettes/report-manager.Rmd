@@ -179,5 +179,5 @@ state:
 
 ## Further Reading
 
-- [`teal.reporter` Documentation](https://insightsengineering.github.io/teal.reporter/)
-- [`teal` Documentation](https://insightsengineering.github.io/teal/)
+- [`teal.reporter` Documentation](https://cran.r-project.org/package=teal.reporter)
+- [`teal` Documentation](https://cran.r-project.org/package=teal)
