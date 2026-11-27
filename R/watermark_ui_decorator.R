@@ -98,19 +98,20 @@
 #'
 #' @export
 watermark_ui_decorator <- function(
-    watermark_text = "DRAFT",
-    color = "#C8C8C8",
-    opacity = 0.3,
-    font_size = 6,
-    rotation = -30,
-    n_repeats = 1L) {
+  watermark_text = "DRAFT",
+  color = "#C8C8C8",
+  opacity = 0.3,
+  font_size = 6,
+  rotation = -30,
+  n_repeats = 1L
+) {
   checkmate::assert_string(watermark_text, min.chars = 1)
   checkmate::assert_string(color, pattern = "^#[0-9A-Fa-f]{6}$")
   checkmate::assert_number(opacity, lower = 0, upper = 1)
   checkmate::assert_number(font_size, lower = 0.5)
   checkmate::assert_number(rotation)
   checkmate::assert_int(n_repeats, lower = 1)
-  
+
   watermark_js <- paste0(
     "(function() {",
     "  var uid = '%s';",
@@ -218,7 +219,7 @@ watermark_ui_decorator <- function(
     "  });",
     "})();"
   )
-  
+
   color_binding_js <- paste0(
     "(function() {",
     "  var colorId = '%s';",
@@ -237,13 +238,13 @@ watermark_ui_decorator <- function(
     "  Shiny.inputBindings.register(binding, 'watermark.colorBinding.' + colorId);",
     "})();"
   )
-  
+
   teal::teal_transform_module(
     label = "Watermark",
     ui = function(id) {
       ns <- shiny::NS(id)
       uid <- gsub("[^a-zA-Z0-9]", "", ns("wm"))
-      
+
       shiny::tagList(
         shiny::textInput(ns("watermark_text"), "Watermark text", value = watermark_text),
         shiny::tags$div(
@@ -267,21 +268,21 @@ watermark_ui_decorator <- function(
       shiny::moduleServer(id, function(input, output, session) {
         uid <- gsub("[^a-zA-Z0-9]", "", session$ns("wm"))
         msg_type <- paste0("watermark-update-", uid)
-        
+
         shiny::observe({
           txt <- input$watermark_text
           col <- input$color
           opa <- input$opacity
-          fs  <- input$font_size
+          fs <- input$font_size
           rot <- input$rotation
-          nr  <- input$n_repeats
+          nr <- input$n_repeats
           shiny::req(nchar(txt) > 0, nchar(col) > 0, !is.null(opa), fs > 0, nr >= 1)
           session$sendCustomMessage(msg_type, list(
             text = txt, color = col, opacity = opa, fontSize = fs,
             rotation = rot, nRepeats = as.integer(nr)
           ))
         })
-        
+
         shiny::reactive({
           shiny::req(data())
           data()
